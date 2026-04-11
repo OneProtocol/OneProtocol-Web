@@ -342,6 +342,11 @@
       if (error) { btn.disabled = false; btn.textContent = 'Reenviar correo de confirmación'; }
     }
   </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function(){});
+    }
+  </script>
 
 </body>
 </html>

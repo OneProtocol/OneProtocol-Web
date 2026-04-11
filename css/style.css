@@ -1111,7 +1111,42 @@ a { text-decoration: none; color: inherit; }
   .mockup-stat-cards .mstat:nth-child(3) { display: none; }
 }
 
+/* Features dots */
+.features-dots {
+  display: none;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+.features-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: rgba(255,255,255,.18); border: none; cursor: pointer; padding: 0;
+  transition: all .25s;
+}
+.features-dot.active { width: 20px; background: var(--blue); }
+
 @media (max-width: 600px) {
+  /* Features → swipe carousel */
+  .features-grid {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 12px;
+    padding: 8px 20px 12px;
+    margin: 0 -20px;
+  }
+  .features-grid::-webkit-scrollbar { display: none; }
+
+  .feature-card {
+    flex: 0 0 78vw;
+    max-width: 300px;
+    scroll-snap-align: center;
+  }
+
+  .features-dots { display: flex; }
+
   /* Pricing → swipe carousel */
   .pricing-grid {
     display: flex;

@@ -330,7 +330,7 @@
       <h2 class="section-title">Todo lo que un coach profesional necesita</h2>
       <p class="section-sub">Sin configuraciones complejas. Sin apps de terceros. Sin excusas.</p>
 
-      <div class="features-grid">
+      <div class="features-grid" id="featuresCarousel">
 
         <div class="feature-card">
           <div class="feature-icon blue">
@@ -423,6 +423,19 @@
         </div>
 
       </div>
+
+      <!-- Features dots (mobile only) -->
+      <div class="features-dots" id="featuresDots">
+        <button class="features-dot active" data-f="0"></button>
+        <button class="features-dot" data-f="1"></button>
+        <button class="features-dot" data-f="2"></button>
+        <button class="features-dot" data-f="3"></button>
+        <button class="features-dot" data-f="4"></button>
+        <button class="features-dot" data-f="5"></button>
+        <button class="features-dot" data-f="6"></button>
+        <button class="features-dot" data-f="7"></button>
+      </div>
+
     </div>
   </section>
 
@@ -589,6 +602,11 @@
   </footer>
 
   <script>
+  // ── Service Worker ────────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  }
+
   // ── Phone carousel ────────────────────────────────────────────
   (function(){
     var car   = document.getElementById('phoneCarousel');
@@ -622,6 +640,26 @@
     car.addEventListener('touchend',   function(){ startAuto(); }, { passive:true });
 
     startAuto();
+  })();
+
+  // ── Features carousel dots (mobile) ─────────────────────────
+  (function(){
+    var car  = document.getElementById('featuresCarousel');
+    var dots = document.querySelectorAll('.features-dot');
+    if(!car || !dots.length) return;
+
+    car.addEventListener('scroll', function(){
+      var cardW = car.scrollWidth / dots.length;
+      var i = Math.min(dots.length - 1, Math.round(car.scrollLeft / cardW));
+      dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
+    }, { passive:true });
+
+    dots.forEach(function(d){
+      d.addEventListener('click', function(){
+        var cardW = car.scrollWidth / dots.length;
+        car.scrollTo({ left: parseInt(d.dataset.f) * cardW, behavior:'smooth' });
+      });
+    });
   })();
 
   // ── Pricing carousel dots (mobile) ───────────────────────────
