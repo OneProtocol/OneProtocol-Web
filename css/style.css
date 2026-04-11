@@ -539,6 +539,133 @@ a { text-decoration: none; color: inherit; }
 .pricing-note a { color: var(--blue2); }
 .pricing-note a:hover { text-decoration: underline; }
 
+/* ═══ REFERRAL SECTION ═══ */
+.referral-section {
+  padding: 96px 0;
+  border-top: 1px solid var(--line);
+}
+
+.referral-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.referral-title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--txt);
+}
+
+.referral-sub {
+  font-size: .95rem;
+  color: var(--txt2);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.referral-amounts {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.ref-amount { text-align: center; flex: 1; }
+.ref-plan {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.ref-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--blue2);
+  letter-spacing: -.03em;
+}
+.ref-value span { font-size: .75rem; font-weight: 400; color: var(--muted); }
+.ref-sep { color: var(--line2); font-size: 1.2rem; }
+
+.referral-note {
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 16px;
+}
+.referral-note strong { color: var(--txt2); }
+
+/* Right: how it works steps */
+.ref-how {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ref-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ref-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-brd);
+  color: var(--blue2);
+  font-size: .8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ref-step strong {
+  display: block;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 4px;
+}
+
+.ref-step p {
+  font-size: .82rem;
+  color: var(--txt2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ref-step code {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: .78rem;
+  color: var(--blue2);
+  font-family: monospace;
+}
+
+@media (max-width: 768px) {
+  .referral-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .referral-title { font-size: 1.6rem; }
+}
+
 /* ═══ CTA SECTION ═══ */
 .cta-section {
   position: relative;
