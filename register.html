@@ -120,7 +120,7 @@
                 <input class="field-input" type="text" id="referral" placeholder="ej: daniel-arevalo" autocomplete="off" />
               </div>
               <span class="field-error" id="err-referral"></span>
-              <span class="field-hint" id="hint-referral">¿Te recomendó un coach? Ponlo aquí.</span>
+              <span class="field-hint" id="hint-referral">El slug del coach que te recomendó — como aparece en su link de referido.</span>
             </div>
 
           </div>
@@ -210,16 +210,25 @@
       ['name','email','password','referral'].forEach(id => setError(id, ''));
     }
 
-    // ── Validate referral code ──
-    async function validateReferral(code) {
-      const slug = code.trim().toLowerCase();
-      const { data } = await db
-        .from('coaches')
-        .select('id')
-        .ilike('email', `%${slug}%`)
-        .limit(1);
-      return data && data.length > 0;
-    }
+    // ── Pre-llenar referido desde URL (?ref=slug) ──
+    (function() {
+      const ref = new URLSearchParams(window.location.search).get('ref');
+      if (ref) {
+        const input = document.getElementById('referral');
+        if (input) {
+          input.value = ref.trim().toLowerCase();
+          const hint = document.getElementById('hint-referral');
+          if (hint) hint.textContent = '✓ Código de referido aplicado automáticamente.';
+          hint.style.color = 'var(--blue2)';
+        }
+      }
+    })();
+
+    // ── Referral hint live — normaliza el slug mientras escribe ──
+    document.getElementById('referral').addEventListener('input', function() {
+      const val = this.value.trim().toLowerCase().replace(/\s+/g, '-');
+      this.value = val;
+    });
 
     // ── Submit ──
     document.getElementById('register-form').addEventListener('submit', async e => {
@@ -230,7 +239,7 @@
       const email    = document.getElementById('email').value.trim().toLowerCase();
       const password = document.getElementById('password').value;
       const brand    = document.getElementById('brand').value.trim();
-      const referral = document.getElementById('referral').value.trim();
+      const referral = document.getElementById('referral').value.trim().toLowerCase();
 
       let valid = true;
       if (!name)                                                   { setError('name',     'Ingresa tu nombre completo.'); valid = false; }
@@ -247,21 +256,6 @@
       btnSpinner.style.display = 'block';
       btnSubmit.disabled       = true;
       formError.style.display  = 'none';
-
-      // Validate referral if provided
-      if (referral) {
-        const hint = document.getElementById('hint-referral');
-        hint.textContent = 'Verificando código...';
-        const refValid = await validateReferral(referral);
-        hint.textContent = '¿Te recomendó un coach? Ponlo aquí.';
-        if (!refValid) {
-          setError('referral', 'Código de referido no encontrado.');
-          btnText.style.display    = 'block';
-          btnSpinner.style.display = 'none';
-          btnSubmit.disabled       = false;
-          return;
-        }
-      }
 
       const { error } = await db.auth.signUp({
         email,
