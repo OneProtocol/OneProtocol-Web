@@ -365,7 +365,7 @@
   flex-shrink: 0;
   margin-top: 1px;
 }
-.spam-callout strong {
+.spam-callout > div > strong {
   display: block;
   font-size: .82rem;
   color: var(--txt);
@@ -376,6 +376,11 @@
   color: var(--txt2);
   line-height: 1.6;
   margin: 0;
+}
+.spam-callout p strong {
+  display: inline;
+  font-size: inherit;
+  color: var(--txt);
 }
 
 /* ── Resend button ── */
