@@ -4,7 +4,7 @@
    v5 — 2026-04-11
 ═══════════════════════════════════════════════ */
 
-const CACHE_V = 'op-web-v6'; // ← increment on each deploy
+const CACHE_V = 'op-web-v7'; // ← increment on each deploy
 
 const PRECACHE = [
   '/',
