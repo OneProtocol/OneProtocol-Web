@@ -155,8 +155,22 @@
           Enviamos un enlace de confirmación a<br />
           <strong id="success-email"></strong>
         </p>
-        <p class="success-note">Confirma tu email para activar tu cuenta.<br />¿No lo ves? Revisa tu carpeta de spam.</p>
-        <a href="https://app.oneprotocol.fit" class="btn-submit" style="text-decoration:none; margin-top:8px;">
+
+        <!-- Spam callout -->
+        <div class="spam-callout">
+          <div class="spam-callout-icon">📂</div>
+          <div>
+            <strong>¿No lo ves en tu bandeja principal?</strong>
+            <p>El correo de confirmación a veces llega a <strong>Correo no deseado</strong> o <strong>Spam</strong>. Búscalo ahí y márcalo como "No es spam" para que futuros correos lleguen directo.</p>
+          </div>
+        </div>
+
+        <button id="resend-btn" type="button" class="btn-resend" onclick="resendConfirmation()">
+          Reenviar correo de confirmación
+        </button>
+        <p id="resend-msg" style="display:none; font-size:12px; color:var(--blue2); text-align:center; margin-top:8px;"></p>
+
+        <a href="https://app.oneprotocol.fit" class="btn-submit" style="text-decoration:none; margin-top:16px;">
           Ir al panel →
         </a>
       </div>
@@ -287,11 +301,46 @@
         return;
       }
 
+      // Guardar email para reenvío
+      window._registeredEmail = email;
+
       document.getElementById('success-email').textContent      = email;
       document.getElementById('view-form').style.display        = 'none';
       document.getElementById('view-success').style.display     = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // ── Reenviar correo de confirmación ──────────────────────────────────────
+    let _resendCooldown = false;
+    async function resendConfirmation() {
+      if (_resendCooldown) return;
+      const email = window._registeredEmail;
+      if (!email) return;
+
+      const btn = document.getElementById('resend-btn');
+      const msg = document.getElementById('resend-msg');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      const { error } = await db.auth.resend({ type: 'signup', email });
+
+      if (error) {
+        msg.textContent = 'No se pudo reenviar. Espera un momento e intenta de nuevo.';
+        msg.style.color = '#e55';
+      } else {
+        msg.textContent = '✓ Correo reenviado. Revisa también la carpeta de spam.';
+        msg.style.color = 'var(--blue2)';
+        _resendCooldown = true;
+        // Cooldown de 60s para no saturar
+        setTimeout(() => {
+          _resendCooldown = false;
+          btn.disabled = false;
+          btn.textContent = 'Reenviar correo de confirmación';
+        }, 60000);
+      }
+      msg.style.display = 'block';
+      if (error) { btn.disabled = false; btn.textContent = 'Reenviar correo de confirmación'; }
+    }
   </script>
 
 </body>

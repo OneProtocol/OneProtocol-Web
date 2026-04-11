@@ -347,6 +347,54 @@
   line-height: 1.6;
 }
 
+/* ── Spam callout ── */
+.spam-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 193, 7, 0.08);
+  border: 1px solid rgba(255, 193, 7, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+.spam-callout-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.spam-callout strong {
+  display: block;
+  font-size: .82rem;
+  color: var(--txt);
+  margin-bottom: 4px;
+}
+.spam-callout p {
+  font-size: .78rem;
+  color: var(--txt2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Resend button ── */
+.btn-resend {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  color: var(--txt2);
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-resend:hover { border-color: var(--blue2); color: var(--blue2); }
+.btn-resend:disabled { opacity: .45; cursor: default; }
+
 /* ── Desktop enhancement ── */
 @media (min-width: 600px) {
   .reg-header { padding: 32px 40px 0; justify-content: flex-start; }
