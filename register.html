@@ -338,28 +338,8 @@
       // Guardar email para reenvío
       window._registeredEmail = email;
 
-      // Registrar referido en Supabase si había código válido
-      // El trigger de Supabase crea el coach row — esperamos un momento y luego
-      // llamamos register_referral para crear la fila en la tabla referrals.
-      // Se hace fire-and-forget (no bloquea el flujo del usuario).
-      if (referral) {
-        setTimeout(async function() {
-          try {
-            // Obtener el coach_id del nuevo coach por email
-            const { data: newCoach } = await db
-              .from('coaches')
-              .select('id')
-              .eq('email', email)
-              .maybeSingle();
-            if (newCoach?.id) {
-              await db.rpc('register_referral', {
-                p_referrer_slug: referral,
-                p_referred_id:   newCoach.id
-              });
-            }
-          } catch(_) { /* silencioso — no crítico */ }
-        }, 3000); // espera 3s a que el trigger de Supabase cree el coach row
-      }
+      // El referido se registra automáticamente vía trigger en Supabase
+      // cuando se crea la fila en la tabla coaches (lee referred_by de auth.users metadata).
 
       document.getElementById('success-email').textContent      = email;
       document.getElementById('view-form').style.display        = 'none';

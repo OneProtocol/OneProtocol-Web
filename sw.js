@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════
    OneProtocol Web — Service Worker
    Bump CACHE_V on every deploy to invalidate cache
-   v4 — 2026-04-11
+   v5 — 2026-04-11
 ═══════════════════════════════════════════════ */
 
-const CACHE_V = 'op-web-v4'; // ← increment on each deploy
+const CACHE_V = 'op-web-v5'; // ← increment on each deploy
 
 const PRECACHE = [
   '/',

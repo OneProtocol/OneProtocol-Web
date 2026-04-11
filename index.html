@@ -630,48 +630,75 @@
       <div class="referral-head">
         <div class="section-label">Programa de referidos</div>
         <h2 class="referral-title">Gana un 25% por cada coach que traigas</h2>
-        <p class="referral-sub">Recomienda OneProtocol a otros coaches. Cada vez que uno de ellos pague su plan mensual, tú recibes el 25% — de forma recurrente, mientras sigan activos.</p>
+        <p class="referral-sub">Por cada nuevo coach que se registre con tu código recibes el 25% de su primer pago — disponible mientras tú mantengas tu plan activo.</p>
       </div>
 
-      <div class="referral-amounts">
-        <div class="ref-amount">
-          <div class="ref-plan">Starter</div>
-          <div class="ref-value">$5<span>/mes</span></div>
-          <div class="ref-tag">por referido</div>
+      <!-- Cards carousel -->
+      <div class="ref-cards-outer">
+        <div class="ref-cards" id="refCards">
+
+          <div class="ref-card">
+            <div class="feature-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="ref-card-step">Paso 1</div>
+            <h3>Obtén tu código único</h3>
+            <p>Al crear tu cuenta en OneProtocol recibes un slug personal basado en tu nombre (ej. <code>carlos-mendoza</code>). Es tuyo para siempre y visible en tu panel.</p>
+          </div>
+
+          <div class="ref-card">
+            <div class="feature-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+            </div>
+            <div class="ref-card-step">Paso 2</div>
+            <h3>Comparte tu código o link</h3>
+            <p>Dile tu código directamente o envía tu link de registro <code>oneprotocol.fit/register?ref=tu-código</code>. El nuevo coach lo ingresa al registrarse.</p>
+          </div>
+
+          <div class="ref-card ref-card--highlight">
+            <div class="feature-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v12M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4.5"/>
+              </svg>
+            </div>
+            <div class="ref-card-step">Paso 3</div>
+            <h3>Cobra tu bono al instante</h3>
+            <p>Cuando el coach referido activa su plan, recibes el 25% de su primer pago.<br><br>
+            Starter <strong>$5</strong> &nbsp;·&nbsp; Pro <strong>$7.50</strong> &nbsp;·&nbsp; Elite <strong>$10</strong></p>
+          </div>
+
+          <div class="ref-card">
+            <div class="feature-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <div class="ref-card-step">Condición</div>
+            <h3>Solo si tu plan está activo</h3>
+            <p>El bono se acredita únicamente si tú tienes un plan pagado (Starter, Pro o Elite) en el momento en que el referido se registra. Sin plan activo, no aplica.</p>
+          </div>
+
         </div>
-        <div class="ref-amount ref-amount--featured">
-          <div class="ref-badge">Más popular</div>
-          <div class="ref-plan">Pro</div>
-          <div class="ref-value">$7.50<span>/mes</span></div>
-          <div class="ref-tag">por referido</div>
-        </div>
-        <div class="ref-amount">
-          <div class="ref-plan">Elite</div>
-          <div class="ref-value">$10<span>/mes</span></div>
-          <div class="ref-tag">por referido</div>
+
+        <!-- Dots (mobile) -->
+        <div class="ref-dots-wrap" id="refDots">
+          <span class="ref-dot ref-dot--on" onclick="refGoTo(0)"></span>
+          <span class="ref-dot" onclick="refGoTo(1)"></span>
+          <span class="ref-dot" onclick="refGoTo(2)"></span>
+          <span class="ref-dot" onclick="refGoTo(3)"></span>
         </div>
       </div>
 
-      <p class="referral-note">Con 10 coaches en plan Pro ganas <strong>$75 mensuales</strong> de forma recurrente — sin hacer nada extra.</p>
-
-      <div class="ref-how">
-        <div class="ref-step">
-          <div class="ref-step-num">1</div>
-          <strong>Regístrate en OneProtocol</strong>
-          <p>Al crear tu cuenta recibes un código único — tu slug personal (ej. <code>carlos-mendoza</code>).</p>
-        </div>
-        <div class="ref-step">
-          <div class="ref-step-num">2</div>
-          <strong>Comparte tu código o link</strong>
-          <p>El otro coach lo ingresa al registrarse. Lo verás en tu panel en tiempo real.</p>
-        </div>
-        <div class="ref-step">
-          <div class="ref-step-num">3</div>
-          <strong>Cobra cada mes que sigan activos</strong>
-          <p>No es un bono único — es comisión recurrente mientras el coach mantenga su plan.</p>
-        </div>
-      </div>
-
+      <p class="referral-note">Con 10 coaches referidos en plan Pro, recibes <strong>$75</strong> — sin hacer nada extra.</p>
       <div class="referral-cta">
         <a href="/register" class="btn-primary btn-lg">Crear cuenta y obtener mi código →</a>
       </div>
@@ -785,6 +812,24 @@
         car.scrollTo({ left: parseInt(d.dataset.p) * cardW, behavior:'smooth' });
       });
     });
+  })();
+
+  // ── Referral cards carousel dots (mobile) ────────────────────
+  function refGoTo(i) {
+    var c = document.getElementById('refCards');
+    if (!c) return;
+    var card = c.children[i];
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  (function(){
+    var c    = document.getElementById('refCards');
+    var dots = document.querySelectorAll('#refDots .ref-dot');
+    if (!c || !dots.length) return;
+    c.addEventListener('scroll', function(){
+      var cardW = c.scrollWidth / dots.length;
+      var i = Math.min(dots.length - 1, Math.round(c.scrollLeft / cardW));
+      dots.forEach(function(d, j){ d.classList.toggle('ref-dot--on', j === i); });
+    }, { passive: true });
   })();
   </script>
 
