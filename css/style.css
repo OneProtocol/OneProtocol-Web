@@ -667,14 +667,20 @@ a { text-decoration: none; color: inherit; }
 .referral-cta { text-align: center; }
 
 /* ── Responsive ── */
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .ref-cards { grid-template-columns: repeat(2, 1fr); }
   .referral-title { font-size: 1.9rem; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .referral-section { padding: 64px 0; }
   .referral-title { font-size: 1.6rem; }
+
+  /* Escape container → carrusel full-bleed */
+  .ref-cards-outer {
+    margin-left:  -24px;
+    margin-right: -24px;
+  }
 
   .ref-cards {
     display: flex;
@@ -683,14 +689,14 @@ a { text-decoration: none; color: inherit; }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 12px;
-    padding: 4px 0 8px;
+    padding: 4px 24px 8px;
   }
   .ref-cards::-webkit-scrollbar { display: none; }
 
   .ref-card {
-    flex: 0 0 82vw;
-    max-width: 300px;
-    scroll-snap-align: center;
+    flex: 0 0 78vw;
+    max-width: 320px;
+    scroll-snap-align: start;
   }
 
   .ref-dots-wrap { display: flex; }
