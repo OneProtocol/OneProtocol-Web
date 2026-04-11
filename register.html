@@ -238,10 +238,44 @@
       }
     })();
 
-    // ── Referral hint live — normaliza el slug mientras escribe ──
+    // ── Referral: normalizar + validar contra Supabase ──────────
+    let _refValid = false; // true cuando el código fue validado
+    let _refTimer = null;
+
     document.getElementById('referral').addEventListener('input', function() {
-      const val = this.value.trim().toLowerCase().replace(/\s+/g, '-');
+      const val = this.value.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       this.value = val;
+
+      const hint = document.getElementById('hint-referral');
+      _refValid = false;
+
+      if (!val) {
+        hint.textContent = 'El código del coach que te recomendó.';
+        hint.style.color = '';
+        return;
+      }
+
+      hint.textContent = 'Verificando...';
+      hint.style.color = '';
+      clearTimeout(_refTimer);
+
+      _refTimer = setTimeout(async function() {
+        try {
+          const { data, error } = await db.rpc('validate_referral_slug', { p_slug: val });
+          if (!error && data && data.length > 0) {
+            _refValid = true;
+            hint.textContent = '✓ Referido por ' + data[0].coach_name;
+            hint.style.color = '#2eab65';
+          } else {
+            _refValid = false;
+            hint.textContent = 'Código no encontrado. Verifica con el coach que te lo compartió.';
+            hint.style.color = '#e55';
+          }
+        } catch(_) {
+          hint.textContent = 'No se pudo verificar. Se guardará igual.';
+          hint.style.color = '';
+        }
+      }, 600);
     });
 
     // ── Submit ──
@@ -303,6 +337,29 @@
 
       // Guardar email para reenvío
       window._registeredEmail = email;
+
+      // Registrar referido en Supabase si había código válido
+      // El trigger de Supabase crea el coach row — esperamos un momento y luego
+      // llamamos register_referral para crear la fila en la tabla referrals.
+      // Se hace fire-and-forget (no bloquea el flujo del usuario).
+      if (referral) {
+        setTimeout(async function() {
+          try {
+            // Obtener el coach_id del nuevo coach por email
+            const { data: newCoach } = await db
+              .from('coaches')
+              .select('id')
+              .eq('email', email)
+              .maybeSingle();
+            if (newCoach?.id) {
+              await db.rpc('register_referral', {
+                p_referrer_slug: referral,
+                p_referred_id:   newCoach.id
+              });
+            }
+          } catch(_) { /* silencioso — no crítico */ }
+        }, 3000); // espera 3s a que el trigger de Supabase cree el coach row
+      }
 
       document.getElementById('success-email').textContent      = email;
       document.getElementById('view-form').style.display        = 'none';
