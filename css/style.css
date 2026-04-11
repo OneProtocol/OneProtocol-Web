@@ -602,13 +602,10 @@ a { text-decoration: none; color: inherit; }
   gap: 10px;
 }
 
-.footer-logo { height: 26px; width: auto; }
-
-.footer-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--txt);
-  letter-spacing: -.01em;
+.footer-logo-full {
+  height: 40px;
+  width: auto;
+  mix-blend-mode: screen;
 }
 
 .footer-tagline {
