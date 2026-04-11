@@ -1306,110 +1306,68 @@ a { text-decoration: none; color: inherit; }
 }
 .features-dot.active { width: 20px; background: var(--blue); }
 
-/* ── Vertical feature slider (built by JS on mobile) ── */
-.fv-wrap {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--bg2);
-  margin-bottom: 24px;
-  display: none; /* shown by JS */
-}
+/* ── Vertical feature snap (CSS-native, mobile) ── */
+@media (max-width: 768px) {
+  .features-grid {
+    display: flex !important;
+    flex-direction: column;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    height: 72vmax;
+    min-height: 340px;
+    max-height: 500px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: var(--bg2);
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+  .features-grid::-webkit-scrollbar { display: none; }
 
-.fv-slider {
-  height: 68vmax;
-  min-height: 300px;
-  max-height: 500px;
-  position: relative;
-  overflow: hidden;
-  -webkit-tap-highlight-color: transparent;
-}
+  .feature-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    padding: 36px 28px;
+    transform: none !important;
+    transition: none;
+  }
+  .feature-card:last-child { border-bottom: none; }
+  .feature-card h3 { font-size: 1.2rem; }
 
-.fv-slide {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 36px 28px 52px;
-  transform: translateY(100%);
-  transition: transform .44s cubic-bezier(.4,0,.25,1);
-  will-change: transform;
-}
-.fv-slide.fv-active { transform: translateY(0); }
-.fv-slide.fv-above  { transform: translateY(-100%); }
+  /* Scroll hint indicator */
+  .features-grid::after {
+    content: '↕ desliza';
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    padding: 8px 0;
+    background: linear-gradient(to bottom, transparent, var(--bg2) 60%);
+    pointer-events: none;
+  }
 
-.fv-slide .feature-icon { margin-bottom: 22px; width: 52px; height: 52px; border-radius: 13px; }
-.fv-slide .feature-icon svg { width: 26px; height: 26px; }
-.fv-slide h3 { font-size: 1.25rem; font-weight: 800; color: var(--txt); margin-bottom: 12px; line-height: 1.2; letter-spacing: -.02em; }
-.fv-slide p  { font-size: .88rem; color: var(--txt2); line-height: 1.7; }
-.fv-slide .feature-tag { margin-top: 16px; }
-
-/* Dots — right side, vertical */
-.fv-dots {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
+  .features-dots { display: none !important; }
 }
-.fv-dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.18);
-  cursor: pointer;
-  transition: height .25s, background .25s;
-}
-.fv-dot.on {
-  height: 16px;
-  background: var(--blue2);
-}
-
-/* Counter bottom-left */
-.fv-counter {
-  position: absolute;
-  bottom: 14px;
-  left: 20px;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-/* Arrow hints bottom-right */
-.fv-hints {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  display: flex;
-  gap: 4px;
-}
-.fv-hint-arr {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.04);
-  color: var(--muted);
-  font-size: .75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: background .15s, color .15s;
-}
-.fv-hint-arr:active { background: var(--blue-bg); color: var(--blue2); }
 
 @media (max-width: 600px) {
-  /* Features → vertical slider (JS replaces grid) */
-  .features-dots { display: none !important; }
 
   /* Pricing → swipe carousel */
   .pricing-grid {
