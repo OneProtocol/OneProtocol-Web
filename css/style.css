@@ -436,7 +436,7 @@ a { text-decoration: none; color: inherit; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .plan-card {
@@ -515,6 +515,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
 }
 
 .plan-features li {
