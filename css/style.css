@@ -60,19 +60,6 @@ body {
 .stagger-2 { transition-delay: .17s; }
 .stagger-3 { transition-delay: .26s; }
 
-/* Items inside horizontal carousels: fade only — sin Y movement */
-.features-grid .reveal,
-.pricing-grid  .reveal,
-.ref-cards     .reveal {
-  transform: none;
-  opacity: 0;
-}
-.features-grid .reveal.visible,
-.pricing-grid  .reveal.visible,
-.ref-cards     .reveal.visible {
-  transform: none;
-  opacity: 1;
-}
 
 /* ── Touch feedback ── */
 .touch-scale {
