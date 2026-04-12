@@ -41,7 +41,7 @@ body {
   color: var(--txt);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip no crea scroll container — hidden sí, y rompe carruseles en iOS */
   padding-top: 40px; /* founder banner height */
 }
 
@@ -87,12 +87,12 @@ body {
 }
 .touch-scale:active { opacity: .7; }
 
-/* Cards dentro de carruseles horizontales: ceden el gesto al scroll */
+/* Cards: evitar delay de double-tap sin bloquear ninguna dirección de scroll */
 .feature-card,
 .plan-card,
 .ref-card,
 .phone-slide {
-  touch-action: pan-x;
+  touch-action: manipulation;
 }
 
 .container {
