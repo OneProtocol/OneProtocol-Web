@@ -945,7 +945,6 @@ a { text-decoration: none; color: inherit; }
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     gap: 12px;
     padding: 4px 0 8px;
@@ -1543,7 +1542,6 @@ a { text-decoration: none; color: inherit; }
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
@@ -1569,7 +1567,6 @@ a { text-decoration: none; color: inherit; }
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;

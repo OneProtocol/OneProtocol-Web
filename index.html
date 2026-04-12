@@ -772,6 +772,38 @@
       dots.forEach(function(d, j){ d.classList.toggle('ref-dot--on', j === i); });
     }, { passive: true });
   })();
+  // ── Swipe horizontal en carruseles CSS ───────────────────────
+  // Detecta dirección del gesto: si es más horizontal que vertical,
+  // previene el scroll vertical de la página y deja al carrusel scrollear.
+  // No usa touch-action (rompe clicks en iOS).
+  (function(){
+    var carIds = ['featuresCarousel', 'pricingCarousel', 'refCards'];
+    carIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      var startX = 0, startY = 0, decided = false, isHoriz = false;
+
+      el.addEventListener('touchstart', function(e){
+        startX  = e.touches[0].clientX;
+        startY  = e.touches[0].clientY;
+        decided = false;
+        isHoriz = false;
+      }, { passive: true });
+
+      el.addEventListener('touchmove', function(e){
+        if (!decided) {
+          var dx = Math.abs(e.touches[0].clientX - startX);
+          var dy = Math.abs(e.touches[0].clientY - startY);
+          if (dx > 6 || dy > 6) {        // umbral mínimo para decidir
+            isHoriz = dx > dy;
+            decided = true;
+          }
+        }
+        if (isHoriz) e.preventDefault(); // bloquea scroll página solo si es swipe horizontal
+      }, { passive: false });
+    });
+  })();
+
   // ── Founding promo ────────────────────────────────────────────
   (function(){
     var SPOTS_TAKEN = 0;                              // ← actualizar manualmente
