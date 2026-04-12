@@ -42,6 +42,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  padding-top: 40px; /* founder banner height */
 }
 
 /* ── Reveal on scroll ── */
@@ -204,8 +205,10 @@ a { text-decoration: none; color: inherit; }
 
 /* ═══ FOUNDING PROMO BANNER ═══ */
 .founder-banner {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 101;
   background: #0c0c0e;
   border-bottom: 1px solid rgba(217,119,6,.2);
@@ -290,7 +293,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══ NAV ═══ */
 .nav {
   position: sticky;
-  top: 40px;
+  top: 0;
   z-index: 100;
   background: rgba(13,13,15,.85);
   backdrop-filter: blur(18px);
