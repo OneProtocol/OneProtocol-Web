@@ -87,14 +87,6 @@ body {
 }
 .touch-scale:active { opacity: .7; }
 
-/* Cards: evitar delay de double-tap */
-.feature-card,
-.plan-card,
-.ref-card,
-.phone-slide {
-  touch-action: manipulation;
-}
-/* En mobile dentro del carrusel, pan-x tiene prioridad (definido en media query) */
 
 .container {
   width: 100%;
@@ -953,7 +945,6 @@ a { text-decoration: none; color: inherit; }
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     gap: 12px;
     padding: 4px 0 8px;
@@ -964,7 +955,6 @@ a { text-decoration: none; color: inherit; }
     flex: 0 0 85vw;
     max-width: 320px;
     scroll-snap-align: start;
-    touch-action: pan-x;
   }
 
   .ref-card:first-child { margin-left: 4px; }
@@ -1552,7 +1542,6 @@ a { text-decoration: none; color: inherit; }
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
@@ -1564,7 +1553,6 @@ a { text-decoration: none; color: inherit; }
     flex: 0 0 85vw;
     max-width: 300px;
     scroll-snap-align: start;
-    touch-action: pan-x;
   }
 
   .feature-card:first-child { margin-left: 4px; }
@@ -1579,7 +1567,6 @@ a { text-decoration: none; color: inherit; }
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
@@ -1591,7 +1578,6 @@ a { text-decoration: none; color: inherit; }
     flex: 0 0 88vw;
     max-width: 320px;
     scroll-snap-align: start;
-    touch-action: pan-x;
   }
 
   .plan-card:first-child { margin-left: 4px; }
