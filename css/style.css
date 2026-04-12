@@ -942,7 +942,7 @@ a { text-decoration: none; color: inherit; }
   .ref-cards {
     display: flex;
     overflow-x: scroll;
-    overflow-y: visible;
+    overflow-y: clip;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -1539,7 +1539,7 @@ a { text-decoration: none; color: inherit; }
   .features-grid {
     display: flex;
     overflow-x: scroll;
-    overflow-y: visible;
+    overflow-y: clip;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -1564,7 +1564,7 @@ a { text-decoration: none; color: inherit; }
   .pricing-grid {
     display: flex;
     overflow-x: scroll;
-    overflow-y: visible;
+    overflow-y: clip;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
