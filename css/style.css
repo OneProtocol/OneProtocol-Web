@@ -1550,23 +1550,24 @@ a { text-decoration: none; color: inherit; }
   .features-grid {
     display: flex;
     overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
-    padding: 8px 20px 12px;
-    margin: 0 -20px;
+    padding: 4px 0 8px;
   }
   .features-grid::-webkit-scrollbar { display: none; }
 
   .feature-card {
-    flex: 0 0 78vw;
+    flex: 0 0 85vw;
     max-width: 300px;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
+
+  .feature-card:first-child { margin-left: 4px; }
+  .feature-card:last-child  { margin-right: 4px; }
 
   .features-dots { display: flex; }
 
@@ -1574,23 +1575,24 @@ a { text-decoration: none; color: inherit; }
   .pricing-grid {
     display: flex;
     overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
-    padding: 8px 20px 12px;
-    margin: 0 -20px;
+    padding: 4px 0 8px;
   }
   .pricing-grid::-webkit-scrollbar { display: none; }
 
   .plan-card {
-    flex: 0 0 82vw;
+    flex: 0 0 88vw;
     max-width: 320px;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
+
+  .plan-card:first-child { margin-left: 4px; }
+  .plan-card:last-child  { margin-right: 4px; }
 
   .pricing-dots { display: flex; }
 }
@@ -1599,5 +1601,5 @@ a { text-decoration: none; color: inherit; }
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn-primary,
   .hero-ctas .btn-ghost { justify-content: center; }
-  .features-grid { grid-template-columns: 1fr; }
+  /* .features-grid usa flex carousel en mobile — no aplicar grid-template-columns */
 }
