@@ -145,35 +145,55 @@
       <!-- Success view -->
       <div id="view-success" style="display:none;" class="reg-success">
 
-        <div class="success-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
+        <!-- Logo -->
+        <a href="/" class="success-logo-link">
+          <img src="icons/logo-full.webp" alt="OneProtocol" class="success-logo" />
+        </a>
+
+        <!-- Animated icon -->
+        <div class="success-icon-wrap">
+          <div class="success-icon-ring"></div>
+          <div class="success-icon-ring success-icon-ring--2"></div>
+          <div class="success-icon-core">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
         </div>
 
+        <!-- Heading -->
         <div class="success-heading">
-          <h2 class="success-title">Revisa tu correo</h2>
+          <div class="success-badge">✓ Cuenta creada</div>
+          <h2 class="success-title">Revisa tu<br/>correo</h2>
           <p class="success-sub">Enviamos un enlace de confirmación a</p>
           <div class="success-email-pill" id="success-email"></div>
         </div>
 
+        <!-- Spam callout -->
         <div class="spam-callout">
-          <div class="spam-callout-icon">📂</div>
+          <div class="spam-callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
           <div class="spam-callout-body">
-            <strong>¿No lo ves en tu bandeja principal?</strong>
+            <strong>¿No ves el correo?</strong>
             <p>Revisa <strong>Spam</strong> o <strong>Correo no deseado</strong> y márcalo como "No es spam".</p>
           </div>
         </div>
 
+        <!-- Actions -->
         <div class="success-actions">
-          <a href="https://app.oneprotocol.fit" class="btn-submit" style="text-decoration:none;">
-            Ir al panel →
+          <a href="https://app.oneprotocol.fit" class="btn-submit btn-submit--success" style="text-decoration:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Ir al panel
           </a>
           <button id="resend-btn" type="button" class="btn-resend" onclick="resendConfirmation()">
             Reenviar correo de confirmación
           </button>
-          <p id="resend-msg" style="display:none; font-size:12px; color:var(--blue2); text-align:center;"></p>
+          <p id="resend-msg" style="display:none; font-size:12px; color:var(--blue2); text-align:center; margin:0;"></p>
         </div>
 
       </div>
@@ -246,7 +266,7 @@
     let _refTimer = null;
 
     document.getElementById('referral').addEventListener('input', function() {
-      const val = this.value.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const val = this.value.trim().toLowerCase().replace(/[\s.]+/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
       this.value = val;
 
       const hint = document.getElementById('hint-referral');
@@ -356,7 +376,8 @@
 
       document.getElementById('success-email').textContent = email;
       document.getElementById('view-form').style.display        = 'none';
-      document.getElementById('view-success').style.display     = 'block';
+      document.getElementById('view-success').style.display     = 'flex';
+      document.querySelector('.reg-header').style.display       = 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
