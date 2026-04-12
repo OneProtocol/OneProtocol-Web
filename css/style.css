@@ -715,8 +715,10 @@ a { text-decoration: none; color: inherit; }
   .ref-cards {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: none;
     gap: 12px;
     padding: 4px 24px 8px;
@@ -1330,8 +1332,10 @@ a { text-decoration: none; color: inherit; }
   .features-grid {
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
@@ -1352,7 +1356,10 @@ a { text-decoration: none; color: inherit; }
   .pricing-grid {
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
