@@ -4,7 +4,7 @@
    v5 — 2026-04-11
 ═══════════════════════════════════════════════ */
 
-const CACHE_V = 'op-web-v12'; // ← increment on each deploy
+const CACHE_V = 'op-web-v13'; // ← increment on each deploy
 
 const PRECACHE = [
   '/',
@@ -51,10 +51,13 @@ self.addEventListener('fetch', function (e) {
   // Skip Supabase / external API calls
   if (url.hostname.includes('supabase') || url.hostname.includes('resend')) return;
 
-  var isHTML = req.headers.get('Accept') && req.headers.get('Accept').includes('text/html');
+  var ext  = url.pathname.split('.').pop().toLowerCase();
+  var isHTML   = req.headers.get('Accept') && req.headers.get('Accept').includes('text/html');
+  var isAsset  = ['css','js'].indexOf(ext) !== -1;   // CSS & JS → always fresh
+  var isStatic = ['webp','png','jpg','jpeg','svg','ico','woff2','woff'].indexOf(ext) !== -1; // images → cache-first
 
-  if (isHTML) {
-    // HTML → network-first: always serve fresh, fallback to cache
+  if (isHTML || isAsset) {
+    // HTML + CSS/JS → network-first: always fetch fresh, cache as fallback
     e.respondWith(
       fetch(req)
         .then(function (res) {
@@ -64,13 +67,12 @@ self.addEventListener('fetch', function (e) {
         })
         .catch(function () {
           return caches.match(req).then(function (cached) {
-            return cached || caches.match('/index.html');
+            return cached || (isHTML ? caches.match('/index.html') : null);
           });
         })
     );
-  } else {
-    // Assets (CSS, JS, images) → stale-while-revalidate:
-    // serve cached immediately, update cache in background
+  } else if (isStatic) {
+    // Images → stale-while-revalidate: fast load, update in background
     e.respondWith(
       caches.open(CACHE_V).then(function (cache) {
         return cache.match(req).then(function (cached) {
@@ -78,10 +80,10 @@ self.addEventListener('fetch', function (e) {
             if (res && res.ok) cache.put(req, res.clone());
             return res;
           }).catch(function () { return cached; });
-
           return cached || networkFetch;
         });
       })
     );
   }
+  // Everything else: let browser handle normally (no SW intervention)
 });
