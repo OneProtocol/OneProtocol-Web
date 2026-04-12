@@ -934,8 +934,9 @@ a { text-decoration: none; color: inherit; }
   .referral-section { padding: 72px 0; }
   .referral-title { font-size: 1.8rem; }
 
-  .ref-stats { max-width: 100%; border-radius: 12px; padding: 20px 0; }
-  .ref-stat-num { font-size: 1.6rem; }
+  .ref-stats { max-width: 100%; border-radius: 12px; padding: 16px 0; }
+  .ref-stat-num { font-size: 1.4rem; }
+  .ref-stat-lbl { font-size: .6rem; white-space: nowrap; }
 
   .ref-callout {
     flex-direction: column;
@@ -1500,7 +1501,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  .founder-tag { display: none; }
   .founder-mid { display: none; }
 
   .nav-actions .btn-ghost { display: none; }
