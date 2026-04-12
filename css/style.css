@@ -657,7 +657,7 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(180deg, var(--bg) 0%, #0b1120 50%, var(--bg) 100%);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  overflow: hidden;
+  overflow: clip; /* clip no bloquea scroll de hijos — hidden sí, rompe carruseles en iOS */
 }
 
 .ref-glow {
@@ -941,14 +941,12 @@ a { text-decoration: none; color: inherit; }
 
   .ref-cards {
     display: flex;
-    overflow-x: scroll;
-    overflow-y: clip;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    touch-action: pan-x;
     gap: 12px;
-    padding: 4px 0 8px;
+    padding-bottom: 8px;
   }
   .ref-cards::-webkit-scrollbar { display: none; }
 
@@ -956,14 +954,7 @@ a { text-decoration: none; color: inherit; }
     flex: 0 0 85vw;
     max-width: 320px;
     scroll-snap-align: start;
-    touch-action: pan-x;
-    transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
   }
-  .ref-card:active { opacity: 1; }
-  .ref-card * { touch-action: pan-x; }
-
-  .ref-card:first-child { margin-left: 4px; }
-  .ref-card:last-child  { margin-right: 4px; }
 
   .ref-dots-wrap { display: flex; }
 }
@@ -1540,18 +1531,15 @@ a { text-decoration: none; color: inherit; }
 .features-dot.active { width: 20px; background: var(--blue); }
 
 @media (max-width: 600px) {
-  /* Features → horizontal swipe carousel */
+  /* ── Features carousel ── */
   .features-grid {
     display: flex;
-    overflow-x: scroll;
-    overflow-y: clip;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    -ms-overflow-style: none;
-    touch-action: pan-x;
     gap: 12px;
-    padding: 4px 0 8px;
+    padding-bottom: 8px;
   }
   .features-grid::-webkit-scrollbar { display: none; }
 
@@ -1559,46 +1547,27 @@ a { text-decoration: none; color: inherit; }
     flex: 0 0 85vw;
     max-width: 300px;
     scroll-snap-align: start;
-    touch-action: pan-x;
-    /* Evita que la transición de opacity en :active congele el scroll en iOS */
-    transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
   }
-  .feature-card:active { opacity: 1; }
-  /* touch-action no se hereda: aplicar a todos los hijos */
-  .feature-card * { touch-action: pan-x; }
-
-  .feature-card:first-child { margin-left: 4px; }
-  .feature-card:last-child  { margin-right: 4px; }
 
   .features-dots { display: flex; }
 
-  /* Pricing → swipe carousel */
+  /* ── Pricing carousel ── */
   .pricing-grid {
     display: flex;
-    overflow-x: scroll;
-    overflow-y: clip;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    -ms-overflow-style: none;
-    touch-action: pan-x;
     gap: 12px;
     padding: 20px 0 8px;
   }
   .pricing-grid::-webkit-scrollbar { display: none; }
 
   .plan-card {
-    flex: 0 0 88vw;
+    flex: 0 0 85vw;
     max-width: 320px;
     scroll-snap-align: start;
-    touch-action: pan-x;
-    transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
   }
-  .plan-card:active { opacity: 1; }
-  .plan-card * { touch-action: pan-x; }
-
-  .plan-card:first-child { margin-left: 4px; }
-  .plan-card:last-child  { margin-right: 4px; }
 
   .pricing-dots { display: flex; }
 }
