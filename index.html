@@ -330,6 +330,7 @@
       <h2 class="section-title reveal stagger-1">Todo lo que un coach profesional necesita</h2>
       <p class="section-sub">Sin configuraciones complejas. Sin apps de terceros. Sin excusas.</p>
 
+      <div class="features-vwrap">
       <div class="features-grid" id="featuresCarousel">
 
         <div class="feature-card touch-scale">
@@ -468,22 +469,9 @@
         </div>
 
       </div>
-
-      <!-- Features dots (mobile only) -->
-      <div class="features-dots" id="featuresDots">
-        <button class="features-dot active" data-f="0"></button>
-        <button class="features-dot" data-f="1"></button>
-        <button class="features-dot" data-f="2"></button>
-        <button class="features-dot" data-f="3"></button>
-        <button class="features-dot" data-f="4"></button>
-        <button class="features-dot" data-f="5"></button>
-        <button class="features-dot" data-f="6"></button>
-        <button class="features-dot" data-f="7"></button>
-        <button class="features-dot" data-f="8"></button>
-        <button class="features-dot" data-f="9"></button>
-        <button class="features-dot" data-f="10"></button>
-        <button class="features-dot" data-f="11"></button>
-      </div>
+      <!-- Vertical dots injected by JS on mobile -->
+      <div class="features-vdots" id="featuresVDots"></div>
+      </div><!-- /features-vwrap -->
 
     </div>
   </section>
@@ -774,24 +762,93 @@
     startAuto();
   })();
 
-  // ── Features carousel dots (mobile) ─────────────────────────
+  // ── Features: vertical slider (mobile ≤600px) ───────────────
   (function(){
-    var car  = document.getElementById('featuresCarousel');
-    var dots = document.querySelectorAll('.features-dot');
-    if(!car || !dots.length) return;
+    if (window.innerWidth > 600) return;
 
-    car.addEventListener('scroll', function(){
-      var cardW = car.scrollWidth / dots.length;
-      var i = Math.min(dots.length - 1, Math.round(car.scrollLeft / cardW));
-      dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
-    }, { passive:true });
+    var grid  = document.getElementById('featuresCarousel');
+    var dotsC = document.getElementById('featuresVDots');
+    if (!grid || !dotsC) return;
 
-    dots.forEach(function(d){
-      d.addEventListener('click', function(){
-        var cardW = car.scrollWidth / dots.length;
-        car.scrollTo({ left: parseInt(d.dataset.f) * cardW, behavior:'smooth' });
-      });
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.feature-card'));
+    var n = cards.length;
+    if (!n) return;
+
+    var cur  = 0;
+    var busy = false;
+
+    // Build dot buttons
+    cards.forEach(function(_, i) {
+      var d = document.createElement('button');
+      d.className = 'fvdot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Función ' + (i + 1));
+      d.addEventListener('click', function() { goTo(i); });
+      dotsC.appendChild(d);
     });
+
+    function updateDots() {
+      var ds = dotsC.querySelectorAll('.fvdot');
+      ds.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    }
+
+    function setClasses(idx) {
+      cards.forEach(function(c, i) {
+        c.classList.remove('fv-active', 'fv-above');
+        if (i < idx)  c.classList.add('fv-above');
+        if (i === idx) c.classList.add('fv-active');
+        // i > idx → no class → translateY(110%) via CSS (below, hidden)
+      });
+    }
+
+    function goTo(idx) {
+      if (busy) return;
+      idx = Math.max(0, Math.min(n - 1, idx));
+      if (idx === cur) return;
+      busy = true;
+      cur = idx;
+      setClasses(cur);
+      updateDots();
+      setTimeout(function() { busy = false; }, 420);
+    }
+
+    // Init: show first card instantly (no animation)
+    requestAnimationFrame(function() {
+      // Measure tallest card (offsetHeight works even on off-screen absolute elements)
+      var maxH = 0;
+      cards.forEach(function(c) { maxH = Math.max(maxH, c.offsetHeight); });
+      grid.style.height = (Math.max(maxH, 200) + 16) + 'px';
+
+      cards[0].style.transition = 'none';
+      cards[0].classList.add('fv-active');
+      requestAnimationFrame(function() { cards[0].style.transition = ''; });
+      updateDots();
+    });
+
+    // Touch handling — prevent page scroll only on clear vertical swipe
+    var ty0 = 0, tx0 = 0, locked = false;
+
+    grid.addEventListener('touchstart', function(e) {
+      ty0 = e.touches[0].clientY;
+      tx0 = e.touches[0].clientX;
+      locked = false;
+    }, { passive: true });
+
+    grid.addEventListener('touchmove', function(e) {
+      var dy = e.touches[0].clientY - ty0;
+      var dx = e.touches[0].clientX - tx0;
+      if (!locked && Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 8) {
+        locked = true;
+      }
+      if (locked) e.preventDefault(); // stop page scroll
+    }, { passive: false });
+
+    grid.addEventListener('touchend', function(e) {
+      if (!locked) return;
+      var dy = e.changedTouches[0].clientY - ty0;
+      if (dy < -40) goTo(cur + 1);      // swipe up → next
+      else if (dy > 40) goTo(cur - 1);  // swipe down → prev
+      locked = false;
+    }, { passive: true });
   })();
 
   // ── Pricing carousel dots (mobile) ───────────────────────────
@@ -812,20 +869,6 @@
         car.scrollTo({ left: parseInt(d.dataset.p) * cardW, behavior:'smooth' });
       });
     });
-  })();
-
-  // ── Features: vertical snap position tracker ─────────────────
-  (function(){
-    if (!window.matchMedia('(max-width: 768px)').matches) return;
-    var grid = document.getElementById('featuresCarousel');
-    if (!grid) return;
-    var cards = grid.querySelectorAll('.feature-card');
-    var total = cards.length;
-    // Auto-scroll hint: scroll to card 1 briefly then back to show it's scrollable
-    setTimeout(function(){
-      grid.scrollTo({ top: grid.querySelector('.feature-card').offsetHeight * 0.3, behavior: 'smooth' });
-      setTimeout(function(){ grid.scrollTo({ top: 0, behavior: 'smooth' }); }, 600);
-    }, 1200);
   })();
 
   // ── Reveal on scroll ─────────────────────────────────────────

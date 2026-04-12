@@ -1292,82 +1292,72 @@ a { text-decoration: none; color: inherit; }
   .hero-ctas  { justify-content: flex-start; }
 }
 
-/* Features dots */
-.features-dots {
+/* ── Features vertical slider ────────────────────────────────── */
+.features-vwrap {
+  position: relative;
+}
+
+/* Vertical indicator dots — hidden on desktop */
+.features-vdots {
   display: none;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
-.features-dot {
-  width: 6px; height: 6px; border-radius: 999px;
-  background: rgba(255,255,255,.18); border: none; cursor: pointer; padding: 0;
-  transition: all .25s;
+.fvdot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: height .25s ease, background .25s ease;
 }
-.features-dot.active { width: 20px; background: var(--blue); }
-
-/* ── Vertical feature snap (CSS-native, mobile) ── */
-@media (max-width: 768px) {
-  .features-grid {
-    display: flex !important;
-    flex-direction: column;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    height: 72vmax;
-    min-height: 340px;
-    max-height: 500px;
-    border-radius: 20px;
-    border: 1px solid var(--line);
-    background: var(--bg2);
-    gap: 0;
-    padding: 0;
-    margin: 0;
-    position: relative;
-  }
-  .features-grid::-webkit-scrollbar { display: none; }
-
-  .feature-card {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid var(--line);
-    background: transparent;
-    padding: 36px 28px;
-    transform: none !important;
-    transition: none;
-  }
-  .feature-card:last-child { border-bottom: none; }
-  .feature-card h3 { font-size: 1.2rem; }
-
-  /* Scroll hint indicator */
-  .features-grid::after {
-    content: '↕ desliza';
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: block;
-    font-size: .62rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    padding: 8px 0;
-    background: linear-gradient(to bottom, transparent, var(--bg2) 60%);
-    pointer-events: none;
-  }
-
-  .features-dots { display: none !important; }
+.fvdot.active {
+  height: 18px;
+  background: var(--blue);
 }
 
 @media (max-width: 600px) {
+  /* Features → vertical slide (iOS-widget style) */
+  .features-grid {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    height: 260px; /* JS overrides after measuring */
+  }
+
+  .feature-card {
+    position: absolute !important;
+    top: 0; left: 0; right: 0;
+    width: auto !important;
+    max-width: 100% !important;
+    flex: none !important;
+    margin: 0;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform .4s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    z-index: 0;
+  }
+  .feature-card.fv-active {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    z-index: 1;
+  }
+  .feature-card.fv-above {
+    transform: translateY(-110%) !important;
+    opacity: 0 !important;
+    z-index: 0;
+  }
+
+  .features-vdots { display: flex; }
 
   /* Pricing → swipe carousel */
   .pricing-grid {
@@ -1395,5 +1385,5 @@ a { text-decoration: none; color: inherit; }
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn-primary,
   .hero-ctas .btn-ghost { justify-content: center; }
-  .features-grid { grid-template-columns: 1fr; }
+  /* features-grid: already handled by 600px vertical slider block */
 }
