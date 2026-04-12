@@ -772,7 +772,48 @@
       dots.forEach(function(d, j){ d.classList.toggle('ref-dot--on', j === i); });
     }, { passive: true });
   })();
-  // touch-action: pan-x en CSS maneja la dirección del gesto nativamente.
+  // ── Carousel drag handler (iOS Safari fix) ───────────────────
+  // touch-action CSS no es suficiente en iOS; manejamos el drag manualmente.
+  (function() {
+    var IDS = ['featuresCarousel', 'pricingCarousel', 'refCards'];
+    IDS.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var sX, sY, sL, dir;
+
+      el.addEventListener('touchstart', function(e) {
+        sX = e.touches[0].clientX;
+        sY = e.touches[0].clientY;
+        sL = el.scrollLeft;
+        dir = null;
+        el.style.scrollSnapType = 'none'; // desactivar snap durante drag
+      }, { passive: true });
+
+      el.addEventListener('touchmove', function(e) {
+        var dx = sX - e.touches[0].clientX;
+        var dy = sY - e.touches[0].clientY;
+        if (dir === null && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) {
+          dir = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        }
+        if (dir === 'x') {
+          e.preventDefault(); // bloquear scroll vertical de página
+          el.scrollLeft = sL + dx;
+        }
+      }, { passive: false });
+
+      function onEnd() {
+        if (dir === 'x') {
+          var n = el.children.length;
+          var cw = n ? el.scrollWidth / n : el.offsetWidth;
+          el.scrollTo({ left: Math.round(el.scrollLeft / cw) * cw, behavior: 'smooth' });
+        }
+        el.style.scrollSnapType = ''; // restaurar snap CSS
+        dir = null;
+      }
+      el.addEventListener('touchend',    onEnd, { passive: true });
+      el.addEventListener('touchcancel', onEnd, { passive: true });
+    });
+  })();
 
   // ── Founding promo ────────────────────────────────────────────
   (function(){
