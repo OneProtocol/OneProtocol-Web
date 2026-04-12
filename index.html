@@ -735,7 +735,19 @@
   <script>
   // ── Service Worker ────────────────────────────────────────────
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      // Cuando un nuevo SW toma control (skipWaiting activó),
+      // recarga la página para que el usuario reciba CSS/JS frescos.
+      // Solo recarga una vez: si ya recargamos, el mismo SW sigue en control
+      // y controllerchange no vuelve a disparar → sin loop.
+      var refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function() {
+        if (!refreshing) {
+          refreshing = true;
+          window.location.reload();
+        }
+      });
+    }).catch(function(){});
   }
 
   // ── Phone carousel ────────────────────────────────────────────
