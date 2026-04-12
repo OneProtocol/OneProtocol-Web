@@ -202,10 +202,86 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 56px;
 }
 
+/* ═══ FOUNDING PROMO BANNER ═══ */
+.founder-banner {
+  position: sticky;
+  top: 0;
+  z-index: 101;
+  background: #0a0a0b;
+  border-bottom: 1px solid rgba(217,119,6,.25);
+}
+.founder-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 44px;
+  padding: 0 16px;
+}
+.founder-tag {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #d97706;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.founder-msg {
+  font-size: .75rem;
+  color: var(--txt2);
+  text-align: center;
+  flex: 1;
+}
+.founder-pct {
+  color: #d97706;
+  font-weight: 700;
+}
+.founder-sep { margin: 0 4px; opacity: .4; }
+.founder-countdown {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.cd-unit {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+}
+.cd-num {
+  font-size: .78rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--txt);
+  letter-spacing: .02em;
+}
+.cd-lbl {
+  font-size: .58rem;
+  color: var(--txt2);
+  margin-left: 1px;
+}
+.cd-sep {
+  font-size: .72rem;
+  color: rgba(255,255,255,.2);
+  margin: 0 2px;
+  line-height: 1;
+}
+
+/* Precio tachado — promo fundadores */
+.price-original {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--txt2);
+  text-decoration: line-through;
+  margin-right: 4px;
+  opacity: .55;
+}
+
 /* ═══ NAV ═══ */
 .nav {
   position: sticky;
-  top: 0;
+  top: 44px;
   z-index: 100;
   background: rgba(13,13,15,.85);
   backdrop-filter: blur(18px);

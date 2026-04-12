@@ -14,6 +14,27 @@
 </head>
 <body>
 
+  <!-- ═══ FOUNDING PROMO BANNER ═══ -->
+  <div class="founder-banner" id="foundingBanner">
+    <div class="founder-banner-inner container">
+      <div class="founder-tag">Miembros Fundadores</div>
+      <div class="founder-msg">
+        <span class="founder-pct">50% off</span> en todos los planes
+        <span class="founder-sep">·</span>
+        <span id="spotsLeft">10</span>&nbsp;de&nbsp;10 cupos disponibles
+      </div>
+      <div class="founder-countdown">
+        <div class="cd-unit"><span class="cd-num" id="cdD">30</span><span class="cd-lbl">d</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit"><span class="cd-num" id="cdH">00</span><span class="cd-lbl">h</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit"><span class="cd-num" id="cdM">00</span><span class="cd-lbl">m</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit"><span class="cd-num" id="cdS">00</span><span class="cd-lbl">s</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ NAV ═══ -->
   <nav class="nav">
     <div class="nav-inner container">
@@ -332,7 +353,8 @@
           <div class="plan-header">
             <div class="plan-name">Starter</div>
             <div class="plan-price">
-              <span class="price-amount">$20</span>
+              <span class="price-original">$20</span>
+              <span class="price-amount">$10</span>
               <span class="price-period">/mes</span>
             </div>
             <div class="plan-desc">Para coaches construyendo su base de clientes con herramientas reales.</div>
@@ -356,7 +378,8 @@
           <div class="plan-header">
             <div class="plan-name">Pro</div>
             <div class="plan-price">
-              <span class="price-amount">$30</span>
+              <span class="price-original">$30</span>
+              <span class="price-amount">$15</span>
               <span class="price-period">/mes</span>
             </div>
             <div class="plan-desc">Para coaches en crecimiento que quieren diferenciarse con tecnología.</div>
@@ -377,7 +400,8 @@
           <div class="plan-header">
             <div class="plan-name">Elite</div>
             <div class="plan-price">
-              <span class="price-amount">$40</span>
+              <span class="price-original">$40</span>
+              <span class="price-amount">$20</span>
               <span class="price-period">/mes</span>
             </div>
             <div class="plan-desc">Para coaches consolidados que quieren operar a otro nivel.</div>
@@ -719,6 +743,37 @@
       var i = Math.min(dots.length - 1, Math.round(c.scrollLeft / cardW));
       dots.forEach(function(d, j){ d.classList.toggle('ref-dot--on', j === i); });
     }, { passive: true });
+  })();
+  // ── Founding promo ────────────────────────────────────────────
+  (function(){
+    var SPOTS_TAKEN = 0;                              // ← actualizar manualmente
+    var SPOTS_TOTAL = 10;
+    var DEADLINE    = new Date('2026-05-12T23:59:59-05:00');
+
+    var banner    = document.getElementById('foundingBanner');
+    var elD       = document.getElementById('cdD');
+    var elH       = document.getElementById('cdH');
+    var elM       = document.getElementById('cdM');
+    var elS       = document.getElementById('cdS');
+    var elSpots   = document.getElementById('spotsLeft');
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+
+    function tick(){
+      var diff = DEADLINE - Date.now();
+      if(diff <= 0 || SPOTS_TAKEN >= SPOTS_TOTAL){
+        if(banner) banner.style.display = 'none';
+        return;
+      }
+      elD.textContent = pad(Math.floor(diff / 864e5));
+      elH.textContent = pad(Math.floor((diff % 864e5) / 36e5));
+      elM.textContent = pad(Math.floor((diff % 36e5)  / 6e4));
+      elS.textContent = pad(Math.floor((diff % 6e4)   / 1e3));
+      elSpots.textContent = SPOTS_TOTAL - SPOTS_TAKEN;
+    }
+
+    tick();
+    setInterval(tick, 1000);
   })();
   </script>
 
