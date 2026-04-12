@@ -285,7 +285,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══ NAV ═══ */
 .nav {
   position: sticky;
-  top: 0;
+  top: 40px; /* altura del founder-banner fixed */
   z-index: 100;
   background: rgba(13,13,15,.85);
   backdrop-filter: blur(18px);
