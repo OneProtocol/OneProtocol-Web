@@ -847,11 +847,9 @@ a { text-decoration: none; color: inherit; }
 /* Imagen del carrusel sin frame */
 .phone-img {
   width: 320px;
-  height: 540px;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
+  object-fit: contain;
   display: block;
-  border-radius: 28px;
 }
 
 /* Status bar */
