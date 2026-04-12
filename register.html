@@ -144,35 +144,38 @@
 
       <!-- Success view -->
       <div id="view-success" style="display:none;" class="reg-success">
+
         <div class="success-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
           </svg>
         </div>
-        <h2 class="success-title">Revisa tu correo</h2>
-        <p class="success-sub">
-          Enviamos un enlace de confirmación a<br />
-          <strong id="success-email"></strong>
-        </p>
 
-        <!-- Spam callout -->
+        <div class="success-heading">
+          <h2 class="success-title">Revisa tu correo</h2>
+          <p class="success-sub">Enviamos un enlace de confirmación a</p>
+          <div class="success-email-pill" id="success-email"></div>
+        </div>
+
         <div class="spam-callout">
           <div class="spam-callout-icon">📂</div>
-          <div>
+          <div class="spam-callout-body">
             <strong>¿No lo ves en tu bandeja principal?</strong>
-            <p>El correo de confirmación a veces llega a <strong>Correo no deseado</strong> o <strong>Spam</strong>. Búscalo ahí y márcalo como "No es spam" para que futuros correos lleguen directo.</p>
+            <p>Revisa <strong>Spam</strong> o <strong>Correo no deseado</strong> y márcalo como "No es spam".</p>
           </div>
         </div>
 
-        <button id="resend-btn" type="button" class="btn-resend" onclick="resendConfirmation()">
-          Reenviar correo de confirmación
-        </button>
-        <p id="resend-msg" style="display:none; font-size:12px; color:var(--blue2); text-align:center; margin-top:8px;"></p>
+        <div class="success-actions">
+          <a href="https://app.oneprotocol.fit" class="btn-submit" style="text-decoration:none;">
+            Ir al panel →
+          </a>
+          <button id="resend-btn" type="button" class="btn-resend" onclick="resendConfirmation()">
+            Reenviar correo de confirmación
+          </button>
+          <p id="resend-msg" style="display:none; font-size:12px; color:var(--blue2); text-align:center;"></p>
+        </div>
 
-        <a href="https://app.oneprotocol.fit" class="btn-submit" style="text-decoration:none; margin-top:16px;">
-          Ir al panel →
-        </a>
       </div>
 
     </div>
@@ -351,7 +354,7 @@
       // El referido se registra automáticamente vía trigger en Supabase
       // cuando se crea la fila en la tabla coaches (lee referred_by de auth.users metadata).
 
-      document.getElementById('success-email').textContent      = email;
+      document.getElementById('success-email').textContent = email;
       document.getElementById('view-form').style.display        = 'none';
       document.getElementById('view-success').style.display     = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });

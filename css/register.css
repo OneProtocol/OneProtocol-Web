@@ -311,13 +311,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
-  padding: 20px 0;
+  gap: 20px;
+  padding: 32px 0 16px;
 }
 
 .success-icon {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--blue-bg);
   border: 1px solid var(--blue-brd);
@@ -325,26 +325,39 @@
   align-items: center;
   justify-content: center;
   color: var(--blue2);
+  box-shadow: 0 0 32px rgba(0,123,255,.12);
 }
-.success-icon svg { width: 30px; height: 30px; }
+.success-icon svg { width: 32px; height: 32px; }
+
+.success-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
 
 .success-title {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   font-weight: 800;
-  letter-spacing: -.02em;
+  letter-spacing: -.03em;
+  margin: 0;
 }
 
 .success-sub {
-  font-size: .9rem;
-  color: var(--txt2);
-  line-height: 1.7;
-}
-.success-sub strong { color: var(--txt); }
-
-.success-note {
-  font-size: .78rem;
+  font-size: .88rem;
   color: var(--muted);
-  line-height: 1.6;
+  margin: 0;
+}
+
+.success-email-pill {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--txt);
+  letter-spacing: -.01em;
 }
 
 /* ── Spam callout ── */
@@ -352,53 +365,64 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: rgba(255, 193, 7, 0.08);
-  border: 1px solid rgba(255, 193, 7, 0.25);
-  border-radius: 12px;
-  padding: 14px 16px;
+  background: rgba(255, 193, 7, 0.06);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 14px;
+  padding: 16px;
   text-align: left;
   width: 100%;
   box-sizing: border-box;
 }
 .spam-callout-icon {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
-  margin-top: 1px;
+  line-height: 1;
+  margin-top: 2px;
 }
-.spam-callout > div > strong {
+.spam-callout-body strong {
   display: block;
   font-size: .82rem;
   color: var(--txt);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
-.spam-callout p {
+.spam-callout-body p {
   font-size: .78rem;
   color: var(--txt2);
   line-height: 1.6;
   margin: 0;
 }
-.spam-callout p strong {
+.spam-callout-body p strong {
   display: inline;
   font-size: inherit;
   color: var(--txt);
 }
 
+/* ── Success actions ── */
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.success-actions .btn-submit { margin-bottom: 0; }
+
 /* ── Resend button ── */
 .btn-resend {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   background: transparent;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   color: var(--txt2);
-  font-size: .82rem;
+  font-size: .85rem;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: border-color .2s, color .2s;
+  transition: border-color .2s, color .2s, background .2s;
   -webkit-tap-highlight-color: transparent;
 }
-.btn-resend:hover { border-color: var(--blue2); color: var(--blue2); }
-.btn-resend:disabled { opacity: .45; cursor: default; }
+.btn-resend:hover { border-color: var(--blue-brd); color: var(--blue2); background: var(--blue-bg); }
+.btn-resend:disabled { opacity: .4; cursor: default; }
 
 /* ── Desktop enhancement ── */
 @media (min-width: 600px) {
