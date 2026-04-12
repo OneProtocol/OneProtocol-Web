@@ -872,43 +872,51 @@
       'Cobra como un pro.'
     ];
 
-    var mIdx = 0, cIdx = 0, deleting = false;
-    var TYPE_MS   = 55;   // velocidad escritura (ms/char)
-    var DEL_MS    = 28;   // velocidad borrado
-    var PAUSE_END = 2200; // pausa al terminar de escribir
-    var PAUSE_DEL = 380;  // pausa antes de escribir el siguiente
+    // ── Paso 1: medir el alto real ANTES de empezar ─────────────
+    // Ponemos el mensaje más largo invisible, medimos, bloqueamos el alto
+    var longest = msgs.reduce(function(a,b){ return a.length > b.length ? a : b; });
+    em.style.visibility = 'hidden';
+    em.textContent = longest;
 
-    function tick() {
-      var msg = msgs[mIdx];
+    requestAnimationFrame(function(){
+      var h = em.offsetHeight || 80; // fallback 80px si el DOM aún no pintó
+      // Inline style → máxima prioridad, no puede ser sobreescrito por CSS
+      em.setAttribute('style',
+        'display:block;height:' + h + 'px;overflow:hidden;visibility:visible;');
+      em.textContent = ''; // limpio para que el tipeo arranque vacío
 
-      if (!deleting) {
-        cIdx++;
-        em.textContent = msg.slice(0, cIdx);
-        if (cIdx === msg.length) {
-          // Terminó de escribir — pausa y luego borra
-          setTimeout(function(){ deleting = true; tick(); }, PAUSE_END);
-          return;
+      // ── Paso 2: lógica de tipeo ─────────────────────────────
+      var mIdx = 0, cIdx = 0, deleting = false;
+      var TYPE_MS = 55, DEL_MS = 28, PAUSE_END = 2200, PAUSE_DEL = 380;
+
+      function tick() {
+        var msg = msgs[mIdx];
+        if (!deleting) {
+          cIdx++;
+          em.textContent = msg.slice(0, cIdx);
+          if (cIdx === msg.length) {
+            setTimeout(function(){ deleting = true; tick(); }, PAUSE_END);
+            return;
+          }
+        } else {
+          cIdx--;
+          em.textContent = msg.slice(0, cIdx);
+          if (cIdx === 0) {
+            deleting = false;
+            mIdx = (mIdx + 1) % msgs.length;
+            setTimeout(tick, PAUSE_DEL);
+            return;
+          }
         }
-      } else {
-        cIdx--;
-        em.textContent = msg.slice(0, cIdx);
-        if (cIdx === 0) {
-          // Terminó de borrar — siguiente mensaje
-          deleting = false;
-          mIdx = (mIdx + 1) % msgs.length;
-          setTimeout(tick, PAUSE_DEL);
-          return;
-        }
+        setTimeout(tick, deleting ? DEL_MS : TYPE_MS);
       }
-      setTimeout(tick, deleting ? DEL_MS : TYPE_MS);
-    }
 
-    // Arranca después de que la animación de reveal del hero termina (~1.2s)
-    // El <em> empieza vacío y escribe la primera frase desde cero
-    setTimeout(function(){
-      em.classList.add('typing');
-      tick();
-    }, 1200);
+      // Arranca tras la animación de reveal del hero (~1.2s)
+      setTimeout(function(){
+        em.classList.add('typing');
+        tick();
+      }, 1200);
+    });
   })();
 
   // ── Referral cards carousel dots (mobile) ────────────────────
