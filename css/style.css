@@ -61,6 +61,24 @@ body {
 .stagger-3 { transition-delay: .26s; }
 
 
+/* ── Typewriter cursor ── */
+.hero-title em::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--blue);
+  opacity: 0;
+  animation: none;
+}
+.hero-title em.typing::after {
+  opacity: 1;
+  animation: cur-blink .65s step-end infinite;
+}
+@keyframes cur-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 /* ── Touch feedback ── */
 .touch-scale {
   -webkit-tap-highlight-color: transparent;

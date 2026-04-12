@@ -859,6 +859,59 @@
     els.forEach(function(el){ obs.observe(el); });
   })();
 
+  // ── Hero typewriter ──────────────────────────────────────────
+  (function(){
+    var em = document.querySelector('.hero-title em');
+    if (!em) return;
+
+    var msgs = [
+      'Tu coaching merece más.',
+      'Deja el WhatsApp para otra cosa.',
+      'Sin hojas de cálculo.',
+      'Sin apps dispersas.',
+      'Todo en un solo panel.'
+    ];
+
+    var mIdx = 0, cIdx = 0, deleting = false;
+    var TYPE_MS   = 55;   // velocidad escritura (ms/char)
+    var DEL_MS    = 28;   // velocidad borrado
+    var PAUSE_END = 2200; // pausa al terminar de escribir
+    var PAUSE_DEL = 380;  // pausa antes de escribir el siguiente
+
+    function tick() {
+      var msg = msgs[mIdx];
+
+      if (!deleting) {
+        cIdx++;
+        em.textContent = msg.slice(0, cIdx);
+        if (cIdx === msg.length) {
+          // Terminó de escribir — pausa y luego borra
+          setTimeout(function(){ deleting = true; tick(); }, PAUSE_END);
+          return;
+        }
+      } else {
+        cIdx--;
+        em.textContent = msg.slice(0, cIdx);
+        if (cIdx === 0) {
+          // Terminó de borrar — siguiente mensaje
+          deleting = false;
+          mIdx = (mIdx + 1) % msgs.length;
+          setTimeout(tick, PAUSE_DEL);
+          return;
+        }
+      }
+      setTimeout(tick, deleting ? DEL_MS : TYPE_MS);
+    }
+
+    // Arranca después de que la animación de reveal del hero termina (~1.2s)
+    setTimeout(function(){
+      em.classList.add('typing');
+      // El primer mensaje ya está como texto estático — espera y empieza a borrar
+      cIdx = msgs[0].length;
+      setTimeout(function(){ deleting = true; tick(); }, PAUSE_END);
+    }, 1200);
+  })();
+
   // ── Referral cards carousel dots (mobile) ────────────────────
   function refGoTo(i) {
     var c = document.getElementById('refCards');
