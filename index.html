@@ -839,7 +839,7 @@
       if (!locked && Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 8) {
         locked = true;
       }
-      if (locked) e.preventDefault(); // stop page scroll
+      if (locked && e.cancelable) e.preventDefault(); // stop page scroll
     }, { passive: false });
 
     grid.addEventListener('touchend', function(e) {

@@ -1332,6 +1332,7 @@ a { text-decoration: none; color: inherit; }
     overflow: hidden;
     display: block;
     height: 260px; /* JS overrides after measuring */
+    touch-action: none; /* tell iOS: JS owns all gestures here */
   }
 
   .feature-card {
