@@ -324,11 +324,21 @@
       btnSubmit.disabled       = false;
 
       if (error) {
+        console.error('[Register] Supabase error:', error.message, error);
         let msg = 'Ocurrió un error. Intenta de nuevo.';
-        if (error.message.includes('already registered') || error.message.includes('already been registered')) {
+        const m = error.message || '';
+        if (m.includes('already registered') || m.includes('already been registered') || m.includes('User already registered')) {
           msg = 'Este correo ya está registrado. <a href="https://app.oneprotocol.fit">Inicia sesión →</a>';
-        } else if (error.message.includes('rate')) {
-          msg = 'Demasiados intentos. Espera un momento.';
+        } else if (m.includes('rate') || m.includes('too many')) {
+          msg = 'Demasiados intentos. Espera un momento e intenta de nuevo.';
+        } else if (m.includes('disabled') || m.includes('not allowed') || m.includes('Signups')) {
+          msg = 'El registro está temporalmente deshabilitado. Contáctanos.';
+        } else if (m.includes('invalid') && m.includes('email')) {
+          msg = 'El correo electrónico no es válido.';
+        } else if (m.includes('password')) {
+          msg = 'La contraseña no cumple los requisitos mínimos.';
+        } else if (m) {
+          msg = 'Error: ' + m;
         }
         formError.innerHTML = msg;
         formError.style.display = 'block';
