@@ -1581,7 +1581,7 @@ a { text-decoration: none; color: inherit; }
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 12px;
-    padding: 4px 0 8px;
+    padding: 20px 0 8px; /* 20px arriba para que el badge "Más popular" no se corte */
   }
   .pricing-grid::-webkit-scrollbar { display: none; }
 
