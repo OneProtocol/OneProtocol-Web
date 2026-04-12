@@ -4,7 +4,7 @@
    v6 — 2026-04-12
 ═══════════════════════════════════════════════ */
 
-const CACHE_V = 'op-web-v28'; // ← increment on each deploy
+const CACHE_V = 'op-web-v29'; // ← increment on each deploy
 
 const PRECACHE = [
   '/',
@@ -61,8 +61,10 @@ self.addEventListener('fetch', function (e) {
     e.respondWith(
       fetch(req)
         .then(function (res) {
-          var copy = res.clone();
-          caches.open(CACHE_V).then(function (c) { c.put(req, copy); });
+          if (res && res.ok) {  // solo cachear 200-299, nunca 304
+            var copy = res.clone();
+            caches.open(CACHE_V).then(function (c) { c.put(req, copy); });
+          }
           return res;
         })
         .catch(function () {

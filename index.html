@@ -542,7 +542,7 @@
   <script>
   // ── Service Worker ────────────────────────────────────────────
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).then(function(reg) {
       // Cuando un nuevo SW toma control (skipWaiting activó),
       // recarga la página para que el usuario reciba CSS/JS frescos.
       // Solo recarga una vez: si ya recargamos, el mismo SW sigue en control
