@@ -957,7 +957,10 @@ a { text-decoration: none; color: inherit; }
     max-width: 320px;
     scroll-snap-align: start;
     touch-action: pan-x;
+    transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
   }
+  .ref-card:active { opacity: 1; }
+  .ref-card * { touch-action: pan-x; }
 
   .ref-card:first-child { margin-left: 4px; }
   .ref-card:last-child  { margin-right: 4px; }
@@ -1557,7 +1560,12 @@ a { text-decoration: none; color: inherit; }
     max-width: 300px;
     scroll-snap-align: start;
     touch-action: pan-x;
+    /* Evita que la transición de opacity en :active congele el scroll en iOS */
+    transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
   }
+  .feature-card:active { opacity: 1; }
+  /* touch-action no se hereda: aplicar a todos los hijos */
+  .feature-card * { touch-action: pan-x; }
 
   .feature-card:first-child { margin-left: 4px; }
   .feature-card:last-child  { margin-right: 4px; }
@@ -1584,7 +1592,10 @@ a { text-decoration: none; color: inherit; }
     max-width: 320px;
     scroll-snap-align: start;
     touch-action: pan-x;
+    transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
   }
+  .plan-card:active { opacity: 1; }
+  .plan-card * { touch-action: pan-x; }
 
   .plan-card:first-child { margin-left: 4px; }
   .plan-card:last-child  { margin-right: 4px; }
