@@ -265,14 +265,29 @@
     let _refValid = false; // true cuando el código fue validado
     let _refTimer = null;
 
+    // Normalize slug: convert dots/spaces to hyphens, remove invalid chars, collapse hyphens
+    // Does NOT strip trailing hyphen while typing (so user can type "daniel-arevalo")
+    function normalizeSlug(val, final) {
+      val = val.toLowerCase();
+      val = val.replace(/[\s.]+/g, '-');        // dots and spaces → hyphen
+      val = val.replace(/[^a-z0-9-]/g, '');    // remove anything else
+      val = val.replace(/-+/g, '-');            // collapse double hyphens
+      if (final) val = val.replace(/^-|-$/g, ''); // trim edges only on blur
+      return val;
+    }
+
     document.getElementById('referral').addEventListener('input', function() {
-      const val = this.value.trim().toLowerCase().replace(/[\s.]+/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-      this.value = val;
+      const cursor = this.selectionStart;
+      const normalized = normalizeSlug(this.value, false);
+      this.value = normalized;
+      // Restore cursor position as best we can
+      try { this.setSelectionRange(cursor, cursor); } catch(_) {}
 
       const hint = document.getElementById('hint-referral');
       _refValid = false;
 
-      if (!val) {
+      const clean = normalizeSlug(this.value, true);
+      if (!clean) {
         hint.textContent = 'El código del coach que te recomendó.';
         hint.style.color = '';
         return;
@@ -284,7 +299,7 @@
 
       _refTimer = setTimeout(async function() {
         try {
-          const { data, error } = await db.rpc('validate_referral_slug', { p_slug: val });
+          const { data, error } = await db.rpc('validate_referral_slug', { p_slug: clean });
           if (!error && data && data.length > 0) {
             _refValid = true;
             hint.textContent = '✓ Referido por ' + data[0].coach_name;
@@ -301,6 +316,11 @@
       }, 600);
     });
 
+    // On blur: clean up trailing/leading hyphens
+    document.getElementById('referral').addEventListener('blur', function() {
+      this.value = normalizeSlug(this.value, true);
+    });
+
     // ── Submit ──
     document.getElementById('register-form').addEventListener('submit', async e => {
       e.preventDefault();
@@ -310,7 +330,7 @@
       const email    = document.getElementById('email').value.trim().toLowerCase();
       const password = document.getElementById('password').value;
       const brand    = document.getElementById('brand').value.trim();
-      const referral = document.getElementById('referral').value.trim().toLowerCase();
+      const referral = normalizeSlug(document.getElementById('referral').value, true);
 
       let valid = true;
       if (!name)                                                   { setError('name',     'Ingresa tu nombre completo.'); valid = false; }
