@@ -36,7 +36,7 @@
         Panel todo-en-uno para coaches de fitness
       </div>
       <h1 class="hero-title reveal stagger-1">
-        Deja de improvisar.<br><em>Tu coaching merece más.</em>
+        Deja de improvisar.<br><em></em>
       </h1>
       <p class="hero-sub reveal stagger-2">
         Reemplaza WhatsApp, hojas de cálculo y apps dispersas con un sistema profesional centralizado. Gestión de clientes, seguimiento de adherencia, reportes PDF y más — todo desde un solo panel.
@@ -904,11 +904,10 @@
     }
 
     // Arranca después de que la animación de reveal del hero termina (~1.2s)
+    // El <em> empieza vacío y escribe la primera frase desde cero
     setTimeout(function(){
       em.classList.add('typing');
-      // El primer mensaje ya está como texto estático — espera y empieza a borrar
-      cIdx = msgs[0].length;
-      setTimeout(function(){ deleting = true; tick(); }, PAUSE_END);
+      tick();
     }, 1200);
   })();
 
