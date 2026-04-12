@@ -431,19 +431,39 @@
 
   <!-- ═══ REFERRAL PROGRAM ═══ -->
   <section class="referral-section">
+    <div class="ref-glow"></div>
     <div class="container">
 
       <div class="referral-head">
         <div class="section-label reveal">Programa de referidos</div>
-        <h2 class="referral-title reveal stagger-1">Gana un 25% por cada coach que traigas</h2>
-        <p class="referral-sub reveal stagger-2">Por cada nuevo coach que se registre con tu código recibes el 25% de su primer pago — disponible mientras tú mantengas tu plan activo.</p>
+        <h2 class="referral-title reveal stagger-1">Gana un <span class="ref-pct">25%</span> por cada coach que traigas</h2>
+        <p class="referral-sub reveal stagger-2">Comparte tu código. Cuando un coach se une con tu link y activa su plan, recibes el 25% de su primer pago — directo, sin intermediarios.</p>
       </div>
 
-      <!-- Cards carousel -->
+      <!-- Stats row -->
+      <div class="ref-stats reveal stagger-2">
+        <div class="ref-stat">
+          <span class="ref-stat-num">25%</span>
+          <span class="ref-stat-lbl">comisión directa</span>
+        </div>
+        <div class="ref-stat-div"></div>
+        <div class="ref-stat">
+          <span class="ref-stat-num">∞</span>
+          <span class="ref-stat-lbl">referidos sin límite</span>
+        </div>
+        <div class="ref-stat-div"></div>
+        <div class="ref-stat">
+          <span class="ref-stat-num">$0</span>
+          <span class="ref-stat-lbl">costo de entrada</span>
+        </div>
+      </div>
+
+      <!-- Cards -->
       <div class="ref-cards-outer">
         <div class="ref-cards" id="refCards">
 
           <div class="ref-card touch-scale">
+            <div class="ref-card-num">01</div>
             <div class="feature-icon blue">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
@@ -452,10 +472,11 @@
             </div>
             <div class="ref-card-step">Paso 1</div>
             <h3>Obtén tu código único</h3>
-            <p>Al crear tu cuenta en OneProtocol recibes un slug personal basado en tu nombre (ej. <code>carlos-mendoza</code>). Es tuyo para siempre y visible en tu panel.</p>
+            <p>Al crear tu cuenta recibes un slug personal (ej. <code>carlos-mendoza</code>). Es tuyo para siempre y visible desde tu panel.</p>
           </div>
 
           <div class="ref-card touch-scale">
+            <div class="ref-card-num">02</div>
             <div class="feature-icon blue">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
@@ -464,24 +485,30 @@
               </svg>
             </div>
             <div class="ref-card-step">Paso 2</div>
-            <h3>Comparte tu código o link</h3>
-            <p>Dile tu código directamente o envía tu link de registro <code>oneprotocol.fit/register?ref=tu-código</code>. El nuevo coach lo ingresa al registrarse.</p>
+            <h3>Comparte tu link</h3>
+            <p>Envía <code>oneprotocol.fit/register?ref=tu-código</code> o dí tu código de voz. El coach lo ingresa al registrarse y queda vinculado a ti.</p>
           </div>
 
           <div class="ref-card ref-card--highlight touch-scale">
+            <div class="ref-card-num">03</div>
             <div class="feature-icon blue">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <circle cx="12" cy="12" r="10"/>
                 <path d="M12 6v12M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4.5"/>
               </svg>
             </div>
-            <div class="ref-card-step">Paso 3</div>
-            <h3>Cobra tu bono al instante</h3>
-            <p>Cuando el coach referido activa su plan, recibes el 25% de su primer pago.<br><br>
-            Starter <strong>$5</strong> &nbsp;·&nbsp; Pro <strong>$7.50</strong> &nbsp;·&nbsp; Elite <strong>$10</strong></p>
+            <div class="ref-card-step">Paso 3 — cobras</div>
+            <h3>Recibe tu bono al instante</h3>
+            <p>Cuando activa su plan, el 25% llega a ti de inmediato.</p>
+            <div class="ref-bonus-row">
+              <div class="ref-bonus"><span>Starter</span><strong>$5</strong></div>
+              <div class="ref-bonus"><span>Pro</span><strong>$7.50</strong></div>
+              <div class="ref-bonus ref-bonus--top"><span>Elite</span><strong>$10</strong></div>
+            </div>
           </div>
 
           <div class="ref-card touch-scale">
+            <div class="ref-card-num">✓</div>
             <div class="feature-icon blue">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -489,8 +516,8 @@
               </svg>
             </div>
             <div class="ref-card-step">Condición</div>
-            <h3>Solo si tu plan está activo</h3>
-            <p>El bono se acredita únicamente si tú tienes un plan pagado (Starter, Pro o Elite) en el momento en que el referido se registra. Sin plan activo, no aplica.</p>
+            <h3>Tu plan debe estar activo</h3>
+            <p>El bono aplica solo si tú tienes un plan pagado (Starter, Pro o Elite) al momento del registro. Sin plan activo, no aplica.</p>
           </div>
 
         </div>
@@ -504,9 +531,13 @@
         </div>
       </div>
 
-      <p class="referral-note reveal stagger-1">Con 10 coaches referidos en plan Pro, recibes <strong>$75</strong> — sin hacer nada extra.</p>
-      <div class="referral-cta reveal stagger-2">
-        <a href="/register" class="btn-primary btn-lg">Crear cuenta y obtener mi código →</a>
+      <!-- Callout -->
+      <div class="ref-callout reveal stagger-1">
+        <div class="ref-callout-inner">
+          <p class="ref-callout-label">Potencial de ganancia</p>
+          <p class="ref-callout-text">Con 10 coaches referidos en plan Pro recibes <strong>$75</strong> — pasivo, recurrente y sin esfuerzo extra. A 25 coaches: <strong>$187.50</strong>.</p>
+        </div>
+        <a href="/register" class="btn-primary btn-lg">Obtener mi código gratis →</a>
       </div>
 
     </div>

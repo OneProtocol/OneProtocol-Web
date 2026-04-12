@@ -83,9 +83,17 @@ body {
 /* ── Touch feedback ── */
 .touch-scale {
   -webkit-tap-highlight-color: transparent;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  transition: opacity .12s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
 }
-.touch-scale:active { transform: scale(.96); }
+.touch-scale:active { opacity: .7; }
+
+/* Cards dentro de carruseles horizontales: ceden el gesto al scroll */
+.feature-card,
+.plan-card,
+.ref-card,
+.phone-slide {
+  touch-action: pan-x;
+}
 
 .container {
   width: 100%;
@@ -667,33 +675,96 @@ a { text-decoration: none; color: inherit; }
 
 /* ═══ REFERRAL SECTION ═══ */
 .referral-section {
-  padding: 96px 0;
+  position: relative;
+  padding: 112px 0;
+  background: linear-gradient(180deg, var(--bg) 0%, #0b1120 50%, var(--bg) 100%);
   border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.ref-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(0,123,255,.13) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .referral-head {
   text-align: center;
-  max-width: 620px;
-  margin: 0 auto 48px;
+  max-width: 660px;
+  margin: 0 auto 52px;
 }
 
 .referral-title {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   font-weight: 900;
-  letter-spacing: -.03em;
-  line-height: 1.15;
-  margin-bottom: 16px;
+  letter-spacing: -.04em;
+  line-height: 1.12;
+  margin-bottom: 18px;
   color: var(--txt);
 }
 
+.ref-pct {
+  color: var(--blue2);
+}
+
 .referral-sub {
-  font-size: .95rem;
+  font-size: .97rem;
   color: var(--txt2);
-  line-height: 1.7;
+  line-height: 1.75;
+}
+
+/* ── Stats row ── */
+.ref-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 56px;
+  max-width: 520px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 0;
+}
+
+.ref-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.ref-stat-num {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -.04em;
+  color: var(--txt);
+}
+
+.ref-stat-lbl {
+  font-size: .68rem;
+  color: var(--txt2);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 600;
+}
+
+.ref-stat-div {
+  width: 1px;
+  height: 36px;
+  background: var(--line);
+  flex-shrink: 0;
 }
 
 /* ── Cards ── */
-.ref-cards-outer { margin-bottom: 40px; }
+.ref-cards-outer { margin-bottom: 48px; }
 
 .ref-cards {
   display: grid;
@@ -702,52 +773,68 @@ a { text-decoration: none; color: inherit; }
 }
 
 .ref-card {
+  position: relative;
   background: var(--bg2);
   border: 1px solid var(--line);
   border-radius: var(--r);
-  padding: 28px;
+  padding: 32px 28px 28px;
   transition: var(--transition);
+  overflow: hidden;
 }
 
 .ref-card:hover {
-  border-color: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.14);
   background: var(--bg3);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+.ref-card-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,.05);
+  letter-spacing: -.04em;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .ref-card--highlight {
   border-color: var(--blue-brd);
-  background: linear-gradient(145deg, var(--bg3) 0%, rgba(0,123,255,.06) 100%);
-  box-shadow: 0 0 28px rgba(0,123,255,.1);
+  background: linear-gradient(145deg, #0d1826 0%, rgba(0,123,255,.08) 100%);
+  box-shadow: 0 0 40px rgba(0,123,255,.14), inset 0 1px 0 rgba(0,123,255,.15);
 }
-.ref-card--highlight:hover { border-color: rgba(0,123,255,.4); }
+.ref-card--highlight:hover { border-color: rgba(0,123,255,.5); }
+.ref-card--highlight .ref-card-num { color: rgba(0,123,255,.12); }
 
 .ref-card-step {
-  font-size: .62rem;
+  font-size: .6rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--blue2);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .ref-card h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--txt);
   margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .ref-card p {
   font-size: .875rem;
   color: var(--txt2);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .ref-card p strong { color: var(--txt); }
 
 .ref-card code {
-  background: var(--bg3);
+  background: rgba(255,255,255,.05);
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 1px 6px;
@@ -756,12 +843,50 @@ a { text-decoration: none; color: inherit; }
   font-family: monospace;
 }
 
+/* Bonus pills inside highlight card */
+.ref-bonus-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.ref-bonus {
+  flex: 1;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.ref-bonus span {
+  display: block;
+  font-size: .6rem;
+  color: var(--txt2);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 3px;
+}
+
+.ref-bonus strong {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--txt);
+}
+
+.ref-bonus--top {
+  border-color: var(--blue-brd);
+  background: rgba(0,123,255,.07);
+}
+
+.ref-bonus--top strong { color: var(--blue2); }
+
 /* ── Dots (mobile only) ── */
 .ref-dots-wrap {
   display: none;
   justify-content: center;
   gap: 6px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .ref-dot {
@@ -780,27 +905,61 @@ a { text-decoration: none; color: inherit; }
   border-radius: 3px;
 }
 
-/* ── Note + CTA ── */
-.referral-note {
-  text-align: center;
-  font-size: .85rem;
+/* ── Callout + CTA ── */
+.ref-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--bg2);
+  border: 1px solid var(--blue-brd);
+  border-radius: 16px;
+  padding: 28px 36px;
+  box-shadow: 0 0 32px rgba(0,123,255,.08);
+}
+
+.ref-callout-inner { flex: 1; }
+
+.ref-callout-label {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--blue2);
+  margin-bottom: 6px;
+}
+
+.ref-callout-text {
+  font-size: .97rem;
   color: var(--txt2);
   line-height: 1.6;
-  margin-bottom: 32px;
 }
-.referral-note strong { color: var(--txt); }
 
-.referral-cta { text-align: center; }
+.ref-callout-text strong {
+  color: var(--txt);
+  font-weight: 700;
+}
 
 /* ── Responsive ── */
 @media (max-width: 1100px) {
   .ref-cards { grid-template-columns: repeat(2, 1fr); }
-  .referral-title { font-size: 1.9rem; }
+  .referral-title { font-size: 2.1rem; }
 }
 
 @media (max-width: 768px) {
-  .referral-section { padding: 64px 0; }
-  .referral-title { font-size: 1.6rem; }
+  .referral-section { padding: 72px 0; }
+  .referral-title { font-size: 1.8rem; }
+
+  .ref-stats { max-width: 100%; border-radius: 12px; padding: 20px 0; }
+  .ref-stat-num { font-size: 1.6rem; }
+
+  .ref-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 20px;
+  }
+  .ref-callout .btn-primary { width: 100%; justify-content: center; }
 
   /* Escape container → carrusel full-bleed */
   .ref-cards-outer {
