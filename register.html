@@ -115,10 +115,10 @@
             </div>
 
             <div class="field-group">
-              <label class="field-label" for="name">NOMBRE COMPLETO</label>
+              <label class="field-label" for="name">NOMBRE DEL COACH</label>
               <div class="field-icon-wrap">
                 <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <input class="field-input" type="text" id="name" placeholder="Ej: Ana Torres" autocomplete="name" required />
+                <input class="field-input" type="text" id="name" placeholder="Ej: David Vásquez" autocomplete="name" required />
               </div>
               <span class="field-error" id="err-name"></span>
             </div>
@@ -143,6 +143,18 @@
               </div>
               <div class="password-strength"><div class="strength-fill" id="strength-fill"></div></div>
               <span class="field-error" id="err-password"></span>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="password2">CONFIRMAR CONTRASEÑA</label>
+              <div class="field-icon-wrap">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <input class="field-input" type="password" id="password2" placeholder="Repite tu contraseña" autocomplete="new-password" required />
+                <button type="button" class="field-eye" id="toggle-pass2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <span class="field-error" id="err-password2"></span>
             </div>
 
           </div>
@@ -173,7 +185,7 @@
               </label>
               <div class="field-icon-wrap">
                 <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-                <input class="field-input" type="text" id="brand" placeholder="EliteCoach, FitLab, Studio Torres..." />
+                <input class="field-input" type="text" id="brand" placeholder="EliteCoach, FitLab, BodyStudio..." />
               </div>
               <span class="field-hint">Tu clínica, estudio o marca personal.</span>
             </div>
@@ -285,9 +297,13 @@
       selectedSpecialty = btn.dataset.value;
     });
 
-    // ── Password toggle ──
+    // ── Password toggles ──
     document.getElementById('toggle-pass').addEventListener('click', () => {
       const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    });
+    document.getElementById('toggle-pass2').addEventListener('click', () => {
+      const input = document.getElementById('password2');
       input.type = input.type === 'password' ? 'text' : 'password';
     });
 
@@ -312,7 +328,7 @@
       if (input) input.classList.toggle('field-input--error', !!msg);
     }
     function clearErrors() {
-      ['name','email','password','referral'].forEach(id => setError(id, ''));
+      ['name','email','password','password2','referral'].forEach(id => setError(id, ''));
     }
 
     // ── Pre-llenar referido desde URL (?ref=slug) ──
@@ -394,16 +410,18 @@
       e.preventDefault();
       clearErrors();
 
-      const name     = document.getElementById('name').value.trim();
-      const email    = document.getElementById('email').value.trim().toLowerCase();
-      const password = document.getElementById('password').value;
-      const brand    = document.getElementById('brand').value.trim();
-      const referral = normalizeSlug(document.getElementById('referral').value, true);
+      const name      = document.getElementById('name').value.trim();
+      const email     = document.getElementById('email').value.trim().toLowerCase();
+      const password  = document.getElementById('password').value;
+      const password2 = document.getElementById('password2').value;
+      const brand     = document.getElementById('brand').value.trim();
+      const referral  = normalizeSlug(document.getElementById('referral').value, true);
 
       let valid = true;
-      if (!name)                                                   { setError('name',     'Ingresa tu nombre completo.'); valid = false; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   { setError('email',    'Ingresa un correo válido.');   valid = false; }
-      if (!password || password.length < 8)                        { setError('password', 'Mínimo 8 caracteres.');        valid = false; }
+      if (!name)                                                   { setError('name',      'Ingresa tu nombre y apellido.'); valid = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   { setError('email',     'Ingresa un correo válido.');     valid = false; }
+      if (!password || password.length < 8)                        { setError('password',  'Mínimo 8 caracteres.');          valid = false; }
+      if (password && password !== password2)                      { setError('password2', 'Las contraseñas no coinciden.'); valid = false; }
       if (!valid) return;
 
       const btnSubmit  = document.getElementById('btn-submit');
