@@ -1287,6 +1287,10 @@ a { text-decoration: none; color: inherit; }
   display: none;
 }
 
+.compare-mobile-ui {
+  display: none;
+}
+
 .compare-card {
   background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.015));
   border: 1px solid var(--line);
@@ -1352,6 +1356,35 @@ a { text-decoration: none; color: inherit; }
 .compare-pill--op span,
 .compare-pill--op p {
   color: #eef5ff;
+}
+
+.compare-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 18px;
+}
+
+.compare-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+}
+
+.compare-dot--active {
+  width: 20px;
+  border-radius: 4px;
+  background: var(--blue);
+}
+
+.compare-swipe-hint {
+  margin-top: 10px;
+  text-align: center;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--muted);
 }
 
 .faq-section {
@@ -1508,6 +1541,10 @@ a { text-decoration: none; color: inherit; }
     flex: 0 0 88vw;
     max-width: 360px;
     scroll-snap-align: start;
+  }
+
+  .compare-mobile-ui {
+    display: block;
   }
 
   .compare-row > div {
