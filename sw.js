@@ -1,10 +1,10 @@
-/* ═══════════════════════════════════════════════
-   OneProtocol Web — Service Worker
+/* =======================================================
+   OneProtocol Web - Service Worker
    Bump CACHE_V on every deploy to invalidate cache
-   v7 — 2026-04-12
-═══════════════════════════════════════════════ */
+   v8 - 2026-04-17
+======================================================= */
 
-const CACHE_V = 'op-web-v48'; // ← increment on each deploy
+const CACHE_V = 'op-web-v49'; // increment on each deploy
 
 const PRECACHE = [
   '/',
@@ -18,16 +18,16 @@ const PRECACHE = [
   '/icons/apple-touch-icon.png',
 ];
 
-// ── Install: pre-cache shell assets ──────────────────────────
+// Install: pre-cache shell assets
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE_V)
       .then(function (cache) { return cache.addAll(PRECACHE); })
-      .then(function () { return self.skipWaiting(); }) // activate immediately
+      .then(function () { return self.skipWaiting(); })
   );
 });
 
-// ── Activate: wipe old cache versions ────────────────────────
+// Activate: wipe old cache versions
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
@@ -40,7 +40,7 @@ self.addEventListener('activate', function (e) {
   );
 });
 
-// ── Fetch strategy ────────────────────────────────────────────
+// Fetch strategy
 self.addEventListener('fetch', function (e) {
   var req = e.request;
   var url = new URL(req.url);
@@ -51,17 +51,17 @@ self.addEventListener('fetch', function (e) {
   // Skip Supabase / external API calls
   if (url.hostname.includes('supabase') || url.hostname.includes('resend')) return;
 
-  var ext  = url.pathname.split('.').pop().toLowerCase();
-  var isHTML   = req.headers.get('Accept') && req.headers.get('Accept').includes('text/html');
-  var isAsset  = ['css','js'].indexOf(ext) !== -1;   // CSS & JS → always fresh
-  var isStatic = ['webp','png','jpg','jpeg','svg','ico','woff2','woff'].indexOf(ext) !== -1; // images → cache-first
+  var ext = url.pathname.split('.').pop().toLowerCase();
+  var isHTML = req.headers.get('Accept') && req.headers.get('Accept').includes('text/html');
+  var isAsset = ['css', 'js'].indexOf(ext) !== -1;
+  var isStatic = ['webp', 'png', 'jpg', 'jpeg', 'svg', 'ico', 'woff2', 'woff'].indexOf(ext) !== -1;
 
   if (isHTML || isAsset) {
-    // HTML + CSS/JS → network-first: always fetch fresh, cache as fallback
+    // HTML + CSS/JS: network-first
     e.respondWith(
       fetch(req)
         .then(function (res) {
-          if (res && res.ok) {  // solo cachear 200-299, nunca 304
+          if (res && res.ok) {
             var copy = res.clone();
             caches.open(CACHE_V).then(function (c) { c.put(req, copy); });
           }
@@ -74,7 +74,7 @@ self.addEventListener('fetch', function (e) {
         })
     );
   } else if (isStatic) {
-    // Images → stale-while-revalidate: fast load, update in background
+    // Images: stale-while-revalidate
     e.respondWith(
       caches.open(CACHE_V).then(function (cache) {
         return cache.match(req).then(function (cached) {
@@ -87,5 +87,5 @@ self.addEventListener('fetch', function (e) {
       })
     );
   }
-  // Everything else: let browser handle normally (no SW intervention)
+  // Everything else: let browser handle normally
 });
