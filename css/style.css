@@ -1283,6 +1283,77 @@ a { text-decoration: none; color: inherit; }
   font-weight: 700;
 }
 
+.compare-cards {
+  display: none;
+}
+
+.compare-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.015));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 22px 18px 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+.compare-card-top {
+  margin-bottom: 16px;
+}
+
+.compare-card-kicker {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--blue2);
+}
+
+.compare-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.35;
+  color: var(--txt);
+}
+
+.compare-card-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.compare-pill {
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 14px 13px;
+}
+
+.compare-pill span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--blue2);
+}
+
+.compare-pill p {
+  color: var(--txt2);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+
+.compare-pill--op {
+  background: linear-gradient(160deg, rgba(13,34,63,.95) 0%, rgba(10,21,39,.94) 100%);
+  border-color: rgba(0,123,255,.24);
+  box-shadow: 0 0 28px rgba(0,123,255,.08);
+}
+
+.compare-pill--op span,
+.compare-pill--op p {
+  color: #eef5ff;
+}
+
 .faq-section {
   padding: 96px 0;
   border-top: 1px solid var(--line);
@@ -1417,7 +1488,27 @@ a { text-decoration: none; color: inherit; }
     padding: 0 0 72px;
   }
 
-  .compare-table { border-radius: 16px; }
+  .compare-table { display: none; }
+
+  .compare-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+    padding: 4px 2px 8px;
+  }
+
+  .compare-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .compare-card {
+    flex: 0 0 88vw;
+    max-width: 360px;
+    scroll-snap-align: start;
+  }
 
   .compare-row > div {
     padding: 14px 16px;
