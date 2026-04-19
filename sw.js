@@ -1,10 +1,10 @@
 /* =======================================================
    OneProtocol Web - Service Worker
    Bump CACHE_V on every deploy to invalidate cache
-   v8 - 2026-04-17
+   v9 - 2026-04-19
 ======================================================= */
 
-const CACHE_V = 'op-web-v49'; // increment on each deploy
+const CACHE_V = 'op-web-v50'; // increment on each deploy
 
 const PRECACHE = [
   '/',
