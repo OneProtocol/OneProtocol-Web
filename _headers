@@ -1,16 +1,22 @@
-# Cloudflare Pages — Cache headers
+# Cloudflare Pages - Cache headers
 # HTML: never cache in CDN/browser (always fresh)
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /index.html
   Cache-Control: no-cache, no-store, must-revalidate
 
 /register.html
   Cache-Control: no-cache, no-store, must-revalidate
 
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
 # SW: must never be cached (browser needs byte-diff to detect updates)
 /sw.js
   Cache-Control: no-cache, no-store, must-revalidate
 
-# Static assets: cache 1 week in browser, 1 year on CDN
+# Static assets: cache in browser/CDN, but deploys are forced fresh via versioned URLs
 /css/*
   Cache-Control: public, max-age=604800, s-maxage=31536000
 

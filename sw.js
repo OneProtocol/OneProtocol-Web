@@ -1,21 +1,21 @@
 /* =======================================================
    OneProtocol Web - Service Worker
    Bump CACHE_V on every deploy to invalidate cache
-   v9 - 2026-04-19
+   v10 - 2026-04-19
 ======================================================= */
 
-const CACHE_V = 'op-web-v50'; // increment on each deploy
+const CACHE_V = 'op-web-v51'; // increment on each deploy
 
 const PRECACHE = [
   '/',
   '/index.html',
   '/register.html',
-  '/css/style.css',
-  '/css/register.css',
-  '/icons/logo-full.webp',
+  '/css/style.css?v=20260419b',
+  '/css/register.css?v=20260419b',
+  '/icons/logo-full.webp?v=20260419b',
   '/icons/logo-icon-rounded-sm.webp',
   '/icons/logo-icon-rounded.webp',
-  '/icons/apple-touch-icon.png',
+  '/icons/apple-touch-icon.png?v=20260419b',
 ];
 
 // Install: pre-cache shell assets
