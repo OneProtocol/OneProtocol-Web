@@ -1016,7 +1016,8 @@
       <div class="footer-brand">
         <img src="icons/logo-full.webp" alt="OneProtocol" class="footer-logo-full" />
       </div>
-      <p class="footer-tagline">One Platform, One Protocol.</p>
+      <p class="footer-kicker">ONE PLATFORM, ONE PROTOCOL</p>
+      <p class="footer-tagline">Construye mejor. Entrega mejor. Cobra con una experiencia que sÃ­ se ve profesional.</p>
       <div class="footer-links">
         <a href="https://app.oneprotocol.fit">Iniciar sesión</a>
         <a href="/register" target="_blank" rel="noopener">Registrarse</a>
@@ -1025,6 +1026,19 @@
       <p class="footer-copy">© 2026 OneProtocol. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var ctaTitle = document.querySelector('.cta-title');
+      var footerTagline = document.querySelector('.footer-tagline');
+      if (ctaTitle) {
+        ctaTitle.innerHTML = 'Tu coaching ya es profesional.<br><span class="cta-accent">Tu panel tambi&eacute;n deber&iacute;a serlo.</span>';
+      }
+      if (footerTagline) {
+        footerTagline.textContent = 'Construye mejor. Entrega mejor. Cobra con una experiencia que si se ve profesional.';
+      }
+    })();
+  </script>
 
   <script>
   // ── Service Worker ────────────────────────────────────────────

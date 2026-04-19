@@ -1856,6 +1856,11 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 18px;
 }
 
+.cta-accent {
+  color: var(--blue2);
+  text-shadow: 0 0 26px rgba(0,123,255,.18);
+}
+
 .cta-sub {
   font-size: 1rem;
   color: var(--txt2);
@@ -1873,7 +1878,10 @@ a { text-decoration: none; color: inherit; }
 /* ═══ FOOTER ═══ */
 .footer {
   border-top: 1px solid var(--line);
-  padding: 40px 0;
+  padding: 48px 0 56px;
+  background:
+    radial-gradient(circle at top center, rgba(0,123,255,.09), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0));
 }
 
 .footer-inner {
@@ -1896,10 +1904,19 @@ a { text-decoration: none; color: inherit; }
   mix-blend-mode: screen;
 }
 
+.footer-kicker {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue2);
+}
+
 .footer-tagline {
-  font-size: .82rem;
-  color: var(--muted);
-  font-style: italic;
+  max-width: 520px;
+  font-size: .92rem;
+  color: var(--txt2);
+  line-height: 1.7;
 }
 
 .footer-links {
