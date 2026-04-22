@@ -627,6 +627,7 @@
             <li><span class="check">✓</span> Seguimiento de cumplimiento y logros</li>
             <li><span class="check">✓</span> Mensajería</li>
             <li class="muted"><span class="cross">—</span> Planes interactivos en el celular del cliente (Pro)</li>
+            <li class="muted"><span class="cross">—</span> Videos explicativos de ejercicios (Pro)</li>
             <li class="muted"><span class="cross">—</span> Reportes de progreso (Pro)</li>
             <li class="muted"><span class="cross">—</span> Rutina express con código QR (Pro)</li>
             <li class="muted"><span class="cross">—</span> Capta clientes con formulario (Elite)</li>
@@ -651,8 +652,9 @@
             <li><span class="check">✓</span> Hasta 25 clientes</li>
             <li><span class="check">✓</span> Todo lo de Starter</li>
             <li><span class="check">✓</span> Planes de entrenamiento interactivos en el celular del cliente</li>
+            <li><span class="check">✓</span> Videos explicativos de cada ejercicio</li>
             <li><span class="check">✓</span> Rutina express con código QR al instante</li>
-            <li><span class="check">✓</span> Reportes de progreso descargables</li>
+            <li><span class="check">✓</span> Reportes de progreso en PDF listos para el cliente</li>
             <li class="muted"><span class="cross">—</span> Diseña planes de alimentación (Elite)</li>
             <li class="muted"><span class="cross">—</span> Capta clientes con formulario (Elite)</li>
             <li class="muted"><span class="cross">—</span> Notificaciones al celular (Elite)</li>
@@ -678,7 +680,7 @@
             <li><span class="check">✓</span> Capta clientes con un formulario por link</li>
             <li><span class="check">✓</span> Notificaciones directas al celular del cliente</li>
             <li><span class="check">✓</span> Tu marca y logo en la plataforma</li>
-            <li><span class="check">✓</span> Reportes avanzados de progreso</li>
+            <li><span class="check">✓</span> Reportes avanzados de progreso en PDF</li>
           </ul>
           <a href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Elite%20de%20OneProtocol%20%F0%9F%92%AA" target="_blank" rel="noopener" class="btn-silver btn-full">Ir a Elite</a>
         </div>
@@ -1054,7 +1056,7 @@
   <script>
   // ── Service Worker ────────────────────────────────────────────
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js?v=20260421', { updateViaCache: 'none' }).then(function(reg) {
+    navigator.serviceWorker.register('/sw.js?v=20260421b', { updateViaCache: 'none' }).then(function(reg) {
       // Cuando un nuevo SW toma control (skipWaiting activó),
       // recarga la página para que el usuario reciba CSS/JS frescos.
       // Solo recarga una vez: si ya recargamos, el mismo SW sigue en control
