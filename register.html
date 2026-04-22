@@ -418,7 +418,7 @@
       const referral  = normalizeSlug(document.getElementById('referral').value, true);
 
       let valid = true;
-      if (!name)                                                   { setError('name',      'Ingresa tu nombre y apellido.'); valid = false; }
+      if (!name || name.split(' ').filter(w => w).length < 2)     { setError('name',      'Ingresa nombre y apellido.'); valid = false; }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   { setError('email',     'Ingresa un correo válido.');     valid = false; }
       if (!password || password.length < 8)                        { setError('password',  'Mínimo 8 caracteres.');          valid = false; }
       if (password && password !== password2)                      { setError('password2', 'Las contraseñas no coinciden.'); valid = false; }
@@ -521,7 +521,7 @@
   </script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js?v=20260419b', { updateViaCache: 'none' }).catch(function(){});
+      navigator.serviceWorker.register('/sw.js?v=20260421c', { updateViaCache: 'none' }).catch(function(){});
     }
   </script>
 

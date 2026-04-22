@@ -376,7 +376,7 @@
   border: 1.5px solid rgba(255,255,255,.09);
   border-radius: 13px;
   padding: 14px 14px 14px 42px;
-  font-size: .9rem;
+  font-size: 1rem; /* ≥16px — prevents iOS auto-zoom on focus */
   font-family: inherit;
   color: var(--txt);
   outline: none;
