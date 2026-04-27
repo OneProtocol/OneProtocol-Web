@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Únete a Direct — OneProtocol</title>
+  <meta name="description" content="Entrena y come con ciencia. Sin coach, sin intermediarios. OneProtocol Direct te da las herramientas que usan los profesionales." />
+  <link rel="icon" href="icons/icon-192.png?v=20260419b" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=20260419b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20260426a" />
+  <link rel="stylesheet" href="css/register.css?v=20260426a" />
+
+  <style>
+    /* ── Direct brand overrides ── */
+    :root {
+      --drt-blue:   #007BFF;
+      --drt-purple: #9966dd;
+      --drt-grad:   linear-gradient(135deg, #007BFF, #4a6fff, #9966dd);
+    }
+
+    /* Panel izquierdo con tinte púrpura */
+    .reg-aside {
+      background: linear-gradient(160deg, #11101a 0%, #0c0b16 60%, #080811 100%) !important;
+    }
+    .reg-aside::after {
+      background: linear-gradient(to bottom, transparent, rgba(153,102,221,.5), transparent) !important;
+    }
+
+    /* Glows con tinte directo */
+    .reg-glow--1 {
+      background: radial-gradient(circle, rgba(153,102,221,.14) 0%, transparent 70%) !important;
+    }
+    .reg-glow--2 {
+      background: radial-gradient(circle, rgba(0,123,255,.10) 0%, transparent 70%) !important;
+    }
+
+    /* Acento icono Direct */
+    .reg-aside-icon {
+      background: rgba(153,102,221,.1) !important;
+      border-color: rgba(153,102,221,.25) !important;
+      color: var(--drt-purple) !important;
+    }
+
+    /* Badge de precio en el aside */
+    .drt-aside-price {
+      margin-top: auto;
+      padding-top: 32px;
+    }
+    .drt-aside-price-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 8px;
+    }
+    .drt-aside-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .drt-aside-free {
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -.5px;
+    }
+    .drt-aside-price-note {
+      font-size: 11px;
+      color: rgba(255,255,255,.4);
+      line-height: 1.5;
+    }
+    .drt-aside-price-premium {
+      font-size: 12px;
+      color: var(--drt-purple);
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* Badge Direct en header del form */
+    .drt-form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px 4px 8px;
+      border-radius: 99px;
+      background: rgba(153,102,221,.1);
+      border: 1px solid rgba(153,102,221,.25);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--drt-purple);
+      letter-spacing: .5px;
+      margin-bottom: 12px;
+    }
+    .drt-form-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--drt-purple);
+      fill: none;
+      stroke-width: 2.2;
+    }
+
+    /* Botón submit con gradiente Direct */
+    .btn-submit {
+      background: var(--drt-grad) !important;
+    }
+    .btn-submit:hover {
+      opacity: .92;
+    }
+
+    /* Tagline gradient Direct */
+    .reg-aside-tagline {
+      background: linear-gradient(135deg, #fff 30%, rgba(153,102,221,.7) 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    /* Success: icon ring colores Direct */
+    .success-icon-ring {
+      border-color: rgba(153,102,221,.25) !important;
+    }
+    .success-icon-ring--2 {
+      border-color: rgba(0,123,255,.15) !important;
+    }
+  </style>
+</head>
+<body class="reg-body">
+
+  <div class="reg-glow reg-glow--1" aria-hidden="true"></div>
+  <div class="reg-glow reg-glow--2" aria-hidden="true"></div>
+
+  <div class="reg-layout">
+
+    <!-- ══════════════════════════════════════
+         LEFT PANEL — Direct brand
+    ══════════════════════════════════════ -->
+    <aside class="reg-aside">
+      <a href="/" class="reg-aside-logo-link">
+        <img src="icons/logo-full.webp?v=20260419b" alt="OneProtocol" class="reg-aside-logo" />
+      </a>
+
+      <div class="reg-aside-body">
+        <p class="reg-aside-tagline">Tu coach científico,<br/>sin intermediarios.</p>
+
+        <ul class="reg-aside-features">
+          <li>
+            <span class="reg-aside-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/>
+              </svg>
+            </span>
+            <div>
+              <strong>Onboarding científico</strong>
+              <span>Calculamos tu TDEE, macros y objetivo en 5 minutos. Sin adivinar.</span>
+            </div>
+          </li>
+          <li>
+            <span class="reg-aside-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="5" y="8" width="2" height="8" rx="1"/>
+                <rect x="17" y="8" width="2" height="8" rx="1"/>
+                <rect x="3" y="10" width="2" height="4" rx="1"/>
+                <rect x="19" y="10" width="2" height="4" rx="1"/>
+                <path d="M7 12h10"/>
+              </svg>
+            </span>
+            <div>
+              <strong>Rutinas con base científica</strong>
+              <span>Full Body, PPL, Upper/Lower, Glute Focus y más — con tips por ejercicio.</span>
+            </div>
+          </li>
+          <li>
+            <span class="reg-aside-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2c0 4-4 6-4 10a4 4 0 0 0 8 0c0-4-4-6-4-10Z"/>
+              </svg>
+            </span>
+            <div>
+              <strong>Planes de alimentación</strong>
+              <span>Porciones escaladas a tus calorías. Clásica, Alta Proteína, Flexible, Plant-Based.</span>
+            </div>
+          </li>
+          <li>
+            <span class="reg-aside-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 12h4l2.5-5 4 10 2.5-5H21"/>
+              </svg>
+            </span>
+            <div>
+              <strong>Métricas y progreso real</strong>
+              <span>Registra peso, composición corporal y gráficas de tendencia estadística.</span>
+            </div>
+          </li>
+          <li>
+            <span class="reg-aside-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M8 21h8M12 17v4"/>
+                <path d="M7 4H5a2 2 0 0 0-2 2v2a4 4 0 0 0 4 4h.5"/>
+                <path d="M17 4h2a2 2 0 0 1 2 2v2a4 4 0 0 1-4 4h-.5"/>
+                <path d="M7.5 4h9a1 1 0 0 1 1 1v7a5.5 5.5 0 0 1-11 0V5a1 1 0 0 1 1-1Z"/>
+              </svg>
+            </span>
+            <div>
+              <strong>Logros y hitos de progreso</strong>
+              <span>15 milestones que reconocen tu consistencia y tus resultados.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Precio -->
+      <div class="drt-aside-price">
+        <div class="drt-aside-price-label">Precios</div>
+        <div class="drt-aside-price-row">
+          <span class="drt-aside-free">Gratis</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.4)">para empezar</span>
+        </div>
+        <div class="drt-aside-price-note">
+          Rutina básica, registro de peso y logros de inicio.<br/>Sin tarjeta requerida.
+        </div>
+        <div class="drt-aside-price-premium">
+          ⚡ $9.99/mes — experiencia completa
+        </div>
+      </div>
+    </aside>
+
+    <!-- ══════════════════════════════════════
+         RIGHT PANEL — form
+    ══════════════════════════════════════ -->
+    <main class="reg-main">
+
+      <!-- Mobile logo -->
+      <header class="reg-header">
+        <a href="/" class="reg-logo-link">
+          <img src="icons/logo-full.webp?v=20260419b" alt="OneProtocol" class="reg-logo" />
+        </a>
+      </header>
+
+      <div class="reg-wrap">
+
+        <!-- ── Form view ── -->
+        <div id="view-form">
+
+          <div class="reg-hero">
+            <div class="drt-form-badge">
+              <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+              ONEPROTOCOL DIRECT
+            </div>
+            <h1 class="reg-title">Empieza gratis hoy</h1>
+            <div class="reg-pills">
+              <span class="reg-pill">Sin coach</span>
+              <span class="reg-pill-dot">·</span>
+              <span class="reg-pill">Sin tarjeta</span>
+              <span class="reg-pill-dot">·</span>
+              <span class="reg-pill">Ciencia real</span>
+            </div>
+          </div>
+
+          <form id="register-form" novalidate>
+
+            <div class="reg-section">
+              <div class="reg-section-head">
+                <span class="reg-step-badge">01</span>
+                <span class="reg-section-label">TU CUENTA</span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="name">NOMBRE COMPLETO</label>
+                <div class="field-icon-wrap">
+                  <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                  </svg>
+                  <input class="field-input" type="text" id="name"
+                    placeholder="Ej: Ana García" autocomplete="name" required />
+                </div>
+                <span class="field-error" id="err-name"></span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="email">EMAIL</label>
+                <div class="field-icon-wrap">
+                  <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  <input class="field-input" type="email" id="email"
+                    placeholder="tu@email.com" autocomplete="email" required />
+                </div>
+                <span class="field-error" id="err-email"></span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="password">CONTRASEÑA</label>
+                <div class="field-icon-wrap">
+                  <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                  <input class="field-input" type="password" id="password"
+                    placeholder="Mínimo 8 caracteres" autocomplete="new-password" required />
+                  <button type="button" class="field-eye" id="toggle-pass">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="password-strength">
+                  <div class="strength-fill" id="strength-fill"></div>
+                </div>
+                <span class="field-error" id="err-password"></span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="password2">CONFIRMAR CONTRASEÑA</label>
+                <div class="field-icon-wrap">
+                  <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                  <input class="field-input" type="password" id="password2"
+                    placeholder="Repite tu contraseña" autocomplete="new-password" required />
+                  <button type="button" class="field-eye" id="toggle-pass2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
+                <span class="field-error" id="err-password2"></span>
+              </div>
+
+            </div><!-- /reg-section -->
+
+            <div id="form-error" class="form-error" style="display:none;"></div>
+
+            <button type="submit" class="btn-submit" id="btn-submit">
+              <span id="btn-text">Crear cuenta gratis</span>
+              <svg id="btn-spinner" class="spinner" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" style="display:none;">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83
+                         M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </button>
+
+            <p class="reg-login-link">
+              ¿Ya tienes cuenta?
+              <a href="https://app.oneprotocol.fit/direct.html">Iniciar sesión →</a>
+            </p>
+
+            <p class="auth-terms">
+              ¿Eres coach? <a href="/register.html">Regístrate en la plataforma de coaching →</a>
+            </p>
+
+            <p class="auth-terms" style="margin-top:8px">
+              Al registrarte aceptas nuestros
+              <a href="#">Términos de uso</a> y <a href="#">Política de privacidad</a>.
+            </p>
+
+          </form>
+        </div><!-- /view-form -->
+
+        <!-- ── Success view ── -->
+        <div id="view-success" style="display:none;" class="reg-success">
+
+          <a href="/" class="success-logo-link">
+            <img src="icons/logo-full.webp?v=20260419b" alt="OneProtocol" class="success-logo" />
+          </a>
+
+          <div class="success-icon-wrap">
+            <div class="success-icon-ring"></div>
+            <div class="success-icon-ring success-icon-ring--2"></div>
+            <div class="success-icon-core">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M13 2 4 14h7l-1 8 10-12h-7l1-8Z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="success-heading">
+            <div class="success-badge">✓ Cuenta creada</div>
+            <h2 class="success-title">Revisa tu<br/>correo</h2>
+            <p class="success-sub">Enviamos un enlace de confirmación a</p>
+            <div class="success-email-pill" id="success-email"></div>
+          </div>
+
+          <div class="spam-callout">
+            <div class="spam-callout-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="spam-callout-body">
+              <strong>¿No ves el correo?</strong>
+              <p>Revisa <strong>Spam</strong> o <strong>Correo no deseado</strong>
+                 y márcalo como "No es spam".</p>
+            </div>
+          </div>
+
+          <div class="success-actions">
+            <a href="https://app.oneprotocol.fit/direct.html"
+              class="btn-submit btn-submit--success" style="text-decoration:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                width="18" height="18">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                <polyline points="10 17 15 12 10 7"/>
+                <line x1="15" y1="12" x2="3" y2="12"/>
+              </svg>
+              Ir a OneProtocol Direct
+            </a>
+            <button id="resend-btn" type="button" class="btn-resend"
+              onclick="resendConfirmation()">
+              Reenviar correo de confirmación
+            </button>
+            <p id="resend-msg"
+              style="display:none;font-size:12px;color:var(--blue2);text-align:center;margin:0;"></p>
+          </div>
+
+        </div><!-- /view-success -->
+
+      </div><!-- /reg-wrap -->
+    </main>
+  </div><!-- /reg-layout -->
+
+  <!-- ════════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js"></script>
+  <script>
+    // ── Supabase — mismo proyecto que la app ──────
+    const SUPA_URL = 'https://mbaaipanqgruvastlfat.supabase.co';
+    const SUPA_KEY = 'sb_publishable_PjJKjYP8zKBDlurxtDJNQA_CjZ8dPmv';
+    const db = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+    const APP_DIRECT = 'https://app.oneprotocol.fit/direct.html';
+
+    // ── Password toggle ───────────────────────────
+    document.getElementById('toggle-pass').addEventListener('click', () => {
+      const i = document.getElementById('password');
+      i.type = i.type === 'password' ? 'text' : 'password';
+    });
+    document.getElementById('toggle-pass2').addEventListener('click', () => {
+      const i = document.getElementById('password2');
+      i.type = i.type === 'password' ? 'text' : 'password';
+    });
+
+    // ── Password strength ─────────────────────────
+    document.getElementById('password').addEventListener('input', function() {
+      const v = this.value;
+      let score = 0;
+      if (v.length >= 8)          score++;
+      if (/[A-Z]/.test(v))        score++;
+      if (/[0-9]/.test(v))        score++;
+      if (/[^A-Za-z0-9]/.test(v)) score++;
+      const fill = document.getElementById('strength-fill');
+      fill.style.width      = (score / 4 * 100) + '%';
+      fill.style.background = ['#d44','#e8960c','#007BFF','#2eab65'][score - 1] || 'transparent';
+    });
+
+    // ── Error helpers ─────────────────────────────
+    function setError(id, msg) {
+      const el = document.getElementById('err-' + id);
+      if (el) { el.textContent = msg; el.style.display = msg ? 'block' : 'none'; }
+      const inp = document.getElementById(id);
+      if (inp) inp.classList.toggle('field-input--error', !!msg);
+    }
+    function clearErrors() {
+      ['name','email','password','password2'].forEach(id => setError(id, ''));
+    }
+
+    // ── Submit ────────────────────────────────────
+    document.getElementById('register-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      clearErrors();
+
+      const name      = document.getElementById('name').value.trim();
+      const email     = document.getElementById('email').value.trim().toLowerCase();
+      const password  = document.getElementById('password').value;
+      const password2 = document.getElementById('password2').value;
+
+      let valid = true;
+      if (!name || name.split(' ').filter(w => w).length < 2)
+        { setError('name',      'Ingresa nombre y apellido.'); valid = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        { setError('email',     'Ingresa un correo válido.');  valid = false; }
+      if (!password || password.length < 8)
+        { setError('password',  'Mínimo 8 caracteres.');       valid = false; }
+      if (password && password !== password2)
+        { setError('password2', 'Las contraseñas no coinciden.'); valid = false; }
+      if (!valid) return;
+
+      const btnSubmit  = document.getElementById('btn-submit');
+      const btnText    = document.getElementById('btn-text');
+      const btnSpinner = document.getElementById('btn-spinner');
+      const formError  = document.getElementById('form-error');
+
+      btnText.style.display    = 'none';
+      btnSpinner.style.display = 'block';
+      btnSubmit.disabled       = true;
+      formError.style.display  = 'none';
+
+      const { data, error } = await db.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { name, role: 'direct' },
+          // Al confirmar email, Supabase redirige aquí con #access_token en el hash
+          emailRedirectTo: APP_DIRECT
+        }
+      });
+
+      btnText.style.display    = 'block';
+      btnSpinner.style.display = 'none';
+      btnSubmit.disabled       = false;
+
+      if (error) {
+        let msg = 'Ocurrió un error. Intenta de nuevo.';
+        const m = error.message || '';
+        if (m.includes('already registered') || m.includes('User already registered')) {
+          msg = 'Este correo ya tiene cuenta. <a href="' + APP_DIRECT + '">Inicia sesión →</a>';
+        } else if (m.includes('rate') || m.includes('too many')) {
+          msg = 'Demasiados intentos. Espera un momento.';
+        } else if (m.includes('password')) {
+          msg = 'La contraseña no cumple los requisitos mínimos.';
+        } else if (m) {
+          msg = 'Error: ' + m;
+        }
+        formError.innerHTML     = msg;
+        formError.style.display = 'block';
+        return;
+      }
+
+      // Si Supabase devuelve sesión inmediata (confirmación desactivada en el proyecto)
+      // → redirigir con tokens para login automático en la app
+      if (data?.session?.access_token) {
+        const tokens = new URLSearchParams({
+          access_token:  data.session.access_token,
+          refresh_token: data.session.refresh_token,
+          type: 'signup'
+        }).toString();
+        window.location.href = APP_DIRECT + '#' + tokens;
+        return;
+      }
+
+      // Confirmación por email requerida → mostrar pantalla de éxito
+      window._registeredEmail = email;
+      document.getElementById('success-email').textContent = email;
+      document.getElementById('view-form').style.display    = 'none';
+      document.getElementById('view-success').style.display = 'flex';
+      document.querySelector('.reg-header').style.display   = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── Reenviar confirmación ─────────────────────
+    let _resendCooldown = false;
+    async function resendConfirmation() {
+      if (_resendCooldown) return;
+      const email = window._registeredEmail;
+      if (!email) return;
+
+      _resendCooldown = true;
+      const btn = document.getElementById('resend-btn');
+      const msg = document.getElementById('resend-msg');
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+
+      const { error } = await db.auth.resend({
+        type:  'signup',
+        email,
+        options: { emailRedirectTo: APP_DIRECT }
+      });
+
+      msg.style.display = 'block';
+      msg.textContent   = error
+        ? 'Error al reenviar. Intenta en unos minutos.'
+        : '✓ Correo reenviado. Revisa tu bandeja.';
+
+      btn.textContent = 'Reenviar correo de confirmación';
+      setTimeout(() => {
+        _resendCooldown = false;
+        btn.disabled    = false;
+        msg.style.display = 'none';
+      }, 60000);
+    }
+  </script>
+
+</body>
+</html>
