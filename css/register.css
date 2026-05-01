@@ -194,10 +194,15 @@
 ════════════════════════════════ */
 .reg-main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   position: relative;
+}
+
+@media (min-width: 860px) {
+  .reg-main {
+    overflow-y: auto;
+    height: 100vh;
+  }
 }
 
 /* ── Mobile header (logo) ── */
@@ -221,10 +226,7 @@
 
 /* ── Scrollable form area ── */
 .reg-main > .reg-wrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* block layout — no flex stretching */
 }
 
 /* ── Wrap ── */
@@ -236,7 +238,15 @@
 }
 
 @media (min-width: 860px) {
-  .reg-wrap { padding: 52px 52px 64px; max-width: 560px; }
+  .reg-wrap {
+    padding: 56px 48px 72px;
+    max-width: 620px;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .reg-wrap { padding: 64px 64px 80px; max-width: 660px; }
 }
 
 /* ── Hero ── */
@@ -771,4 +781,10 @@
 @media (min-width: 860px) {
   .success-title { font-size: 3.4rem; }
   .success-logo  { height: 48px; }
+  .reg-success {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 56px 0 72px;
+    min-height: 100vh;
+  }
 }
