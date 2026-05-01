@@ -539,8 +539,16 @@
 
       // Supabase anti-enumeration: email existente retorna éxito falso con identities vacío
       if (data?.user && (!data.user.identities || data.user.identities.length === 0)) {
-        formError.innerHTML     = '¿Ya eres coach de OneProtocol? <strong>Inicia sesión directamente</strong> en Direct con tus mismas credenciales. <a href="' + APP_DIRECT + '">Ir a Direct →</a>';
-        formError.style.display = 'block';
+        document.getElementById('view-form').style.display    = 'none';
+        document.querySelector('.reg-header').style.display   = 'none';
+        document.getElementById('view-success').style.display = 'flex';
+        document.getElementById('success-email').textContent  = email;
+        // Reemplazar contenido del success para el caso "ya tiene cuenta"
+        document.querySelector('.success-badge').textContent  = '¡Ya tienes cuenta!';
+        document.querySelector('.success-title').innerHTML    = '¿Eres coach de<br/>OneProtocol?';
+        document.querySelector('.success-sub').textContent    = 'Entra directo a Direct con tu mismo correo y contraseña. No necesitas registrarte de nuevo.';
+        document.querySelector('.spam-callout').style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
 
