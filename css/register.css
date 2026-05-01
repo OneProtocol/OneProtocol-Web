@@ -69,12 +69,15 @@
     flex-shrink: 0;
     background: linear-gradient(160deg, #13131a 0%, #0e0e14 60%, #0a0a10 100%);
     border-right: 1px solid rgba(255,255,255,.06);
-    padding: 48px 44px 44px;
+    padding: 32px 36px 32px;
     position: sticky;
     top: 0;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
   }
+  .reg-aside::-webkit-scrollbar { display: none; }
 
   /* Decorative right-edge glow on panel */
   .reg-aside::after {
@@ -89,7 +92,7 @@
   }
 }
 
-.reg-aside-logo-link { display: block; margin-bottom: 56px; }
+.reg-aside-logo-link { display: block; margin-bottom: 28px; }
 .reg-aside-logo {
   height: 40px;
   width: auto;
@@ -97,11 +100,11 @@
 }
 
 .reg-aside-tagline {
-  font-size: 1.65rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -.035em;
   line-height: 1.2;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,.55) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -112,7 +115,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
 }
 
 .reg-aside-features li {
