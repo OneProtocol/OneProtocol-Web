@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Únete a Direct — OneProtocol</title>
   <meta name="description" content="Entrena y come con ciencia. Sin coach, sin intermediarios. OneProtocol Direct te da las herramientas que usan los profesionales." />
-  <link rel="icon" href="icons/icon-192.png?v=20260419b" />
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=20260419b" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260426a" />
-  <link rel="stylesheet" href="css/register.css?v=20260426a" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/register.css" />
 
   <style>
     /* ── Direct brand overrides ── */
@@ -141,7 +141,7 @@
     ══════════════════════════════════════ -->
     <aside class="reg-aside">
       <a href="/" class="reg-aside-logo-link">
-        <img src="icons/logo-full.webp?v=20260419b" alt="OneProtocol" class="reg-aside-logo" />
+        <img src="icons/logo-full.webp" alt="OneProtocol" class="reg-aside-logo" />
       </a>
 
       <div class="reg-aside-body">
@@ -237,7 +237,7 @@
       <!-- Mobile logo -->
       <header class="reg-header">
         <a href="/" class="reg-logo-link">
-          <img src="icons/logo-full.webp?v=20260419b" alt="OneProtocol" class="reg-logo" />
+          <img src="icons/logo-full.webp" alt="OneProtocol" class="reg-logo" />
         </a>
       </header>
 
@@ -369,7 +369,7 @@
         <div id="view-success" style="display:none;" class="reg-success">
 
           <a href="/" class="success-logo-link">
-            <img src="icons/logo-full.webp?v=20260419b" alt="OneProtocol" class="success-logo" />
+            <img src="icons/logo-full.webp" alt="OneProtocol" class="success-logo" />
           </a>
 
           <div class="success-icon-wrap">
@@ -604,6 +604,36 @@
         msg.style.display = 'none';
       }, 60000);
     }
+  </script>
+
+  <script>
+    (function () {
+      if (!('serviceWorker' in navigator)) return;
+
+      function clearLegacyServiceWorker() {
+        var unregisters = navigator.serviceWorker.getRegistrations()
+          .then(function (regs) {
+            return Promise.all(regs.map(function (reg) { return reg.unregister(); }));
+          })
+          .catch(function () {});
+
+        var cacheDeletes = window.caches && caches.keys
+          ? caches.keys().then(function (keys) {
+              return Promise.all(keys.map(function (key) { return caches.delete(key); }));
+            }).catch(function () {})
+          : Promise.resolve();
+
+        Promise.all([unregisters, cacheDeletes]).then(function () {
+          if (navigator.serviceWorker.controller && !sessionStorage.getItem('op_sw_cleaned')) {
+            sessionStorage.setItem('op_sw_cleaned', '1');
+            window.location.reload();
+          }
+        });
+      }
+
+      if (document.readyState === 'complete') clearLegacyServiceWorker();
+      else window.addEventListener('load', clearLegacyServiceWorker, { once: true });
+    })();
   </script>
 
 </body>

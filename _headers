@@ -1,24 +1,27 @@
 # Cloudflare Pages - Cache headers
-# HTML: never cache in CDN/browser (always fresh)
+# Landing pages: always fetch the latest HTML.
 /
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-store, max-age=0, s-maxage=0, must-revalidate
 
 /index.html
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-store, max-age=0, s-maxage=0, must-revalidate
 
 /register.html
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-store, max-age=0, s-maxage=0, must-revalidate
 
 /*.html
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-store, max-age=0, s-maxage=0, must-revalidate
 
-# SW: must never be cached (browser needs byte-diff to detect updates)
+# Legacy cleanup service worker: never cache.
 /sw.js
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-cache, no-store, max-age=0, s-maxage=0, must-revalidate
 
-# Static assets: cache in browser/CDN, but deploys are forced fresh via versioned URLs
+# Static assets: store locally but revalidate, so deploys do not need manual version bumps.
 /css/*
-  Cache-Control: public, max-age=604800, s-maxage=31536000
+  Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
 
 /icons/*
-  Cache-Control: public, max-age=604800, s-maxage=31536000
+  Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
+
+/images/*
+  Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
