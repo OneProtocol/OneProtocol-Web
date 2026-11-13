@@ -96,7 +96,8 @@
     const RESUME = 12000, EVERY = 3800;
     let order = cards.map((_, i) => i), timer = null, wait = null, visible = false, drag = null, busy = false;
     const paint = () => {
-      order.forEach((ci, pos) => { const c = cards[ci]; c.style.setProperty('--pos', pos); c.style.zIndex = String(cards.length - pos); c.classList.toggle('is-front', pos === 0); c.setAttribute('aria-hidden', String(pos !== 0)); });
+      // Se ven tres apiladas; las demás esperan detrás, ocultas
+      order.forEach((ci, pos) => { const c = cards[ci]; c.style.setProperty('--pos', Math.min(pos, 2)); c.style.opacity = pos > 2 ? '0' : ''; c.style.zIndex = String(cards.length - pos); c.classList.toggle('is-front', pos === 0); c.setAttribute('aria-hidden', String(pos !== 0)); });
       const front = cards[order[0]]; if (label) label.textContent = front.dataset.label || '';
       dots.forEach((d, i) => d.classList.toggle('on', i === order[0]));
     };
