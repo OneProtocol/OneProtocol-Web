@@ -28,7 +28,9 @@
     const ao = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id));
     }), { rootMargin: '-45% 0px -50% 0px' });
-    links.forEach(a => { const t = $(a.getAttribute('href')); if (t) ao.observe(t); });
+    // Todas las secciones cuentan: al pasar por una sin enlace, ninguno queda marcado
+    let n = 0;
+    $$('main > section, footer').forEach(s => { if (!s.id) s.id = 'sec-' + (++n); ao.observe(s); });
   }
 
   /* Aparición al hacer scroll */
