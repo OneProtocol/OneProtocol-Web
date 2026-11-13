@@ -66,9 +66,9 @@
 
   /* Tu marca: tres coaches de demostración tiñen la app y su tarjeta */
   const BRANDS = {
-    atlas: { name: 'Atlas Coaching', tag: 'Fuerza con método', ini: 'AC', card: 'assets/shots/card-atlas.webp' },
-    nova: { name: 'Nova Performance', tag: 'Rendimiento sin atajos', ini: 'NP', card: 'assets/shots/card-nova.webp' },
-    kora: { name: 'Kora Fit', tag: 'Tu mejor versión', ini: 'KF', card: 'assets/shots/card-kora.webp' }
+    atlas: { name: 'Atlas Coaching', tag: 'Fuerza con método', ini: 'AC', card: 'assets/shots/card-atlas.webp?v=20261113g' },
+    nova: { name: 'Nova Performance', tag: 'Rendimiento sin atajos', ini: 'NP', card: 'assets/shots/card-nova.webp?v=20261113g' },
+    kora: { name: 'Kora Fit', tag: 'Tu mejor versión', ini: 'KF', card: 'assets/shots/card-kora.webp?v=20261113g' }
   };
   const brand = $('#marca');
   if (brand) {

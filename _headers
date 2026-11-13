@@ -25,3 +25,9 @@
 
 /images/*
   Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
