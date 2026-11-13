@@ -1,1778 +1,383 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OneProtocol — El panel profesional que tu coaching merece</title>
-  <meta name="description" content="Una plataforma todo-en-uno para entrenadores y coaches. Gestiona clientes, genera reportes PDF, haz seguimiento de adherencia y más. Todo desde un solo lugar." />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>OneProtocol · La app de tu coaching, con tu marca</title>
+  <meta name="description" content="OneProtocol es la plataforma para coaches: tus clientes reciben su rutina, su dieta y su progreso en una app con tu marca, y tú operas todo desde un solo panel.">
+  <meta name="theme-color" content="#06070a">
+  <meta property="og:title" content="OneProtocol · La app de tu coaching, con tu marca">
+  <meta property="og:description" content="Rutinas guiadas, cuerpo 3D, tarjetas para compartir, builders de rutina y dieta, adherencia y renovaciones. Todo en un solo sistema.">
+  <meta property="og:image" content="https://oneprotocol.fit/assets/shots/card-atlas.webp">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="image" href="assets/shots/app-dia.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/web.css?v=20261113b">
 </head>
 <body>
-  <svg class="icon-sprite" aria-hidden="true" focusable="false">
-    <symbol id="op-users" viewBox="0 0 24 24">
-      <path d="M9 7a4 4 0 1 0 0 8a4 4 0 0 0 0-8Z"/>
-      <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-      <path d="M16 4.2a4 4 0 0 1 0 7.6"/>
-      <path d="M21 21v-2a4 4 0 0 0-3-3.85"/>
-    </symbol>
-    <symbol id="op-activity" viewBox="0 0 24 24">
-      <path d="M3 12h4l2.5-6l5 12l2.5-6h4"/>
-    </symbol>
-    <symbol id="op-report" viewBox="0 0 24 24">
-      <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
-      <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/>
-      <path d="M9 13h6"/>
-      <path d="M9 17h4"/>
-    </symbol>
-    <symbol id="op-qr" viewBox="0 0 24 24">
-      <path d="M4 4h6v6H4z"/>
-      <path d="M14 4h6v6h-6z"/>
-      <path d="M4 14h6v6H4z"/>
-      <path d="M14 14h2v2h-2z"/>
-      <path d="M18 14h2v4h-4v2"/>
-      <path d="M14 20h.01"/>
-    </symbol>
-    <symbol id="op-message" viewBox="0 0 24 24">
-      <path d="M5 19l-2 2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8z"/>
-      <path d="M8 9h8"/>
-      <path d="M8 13h5"/>
-    </symbol>
-    <symbol id="op-clipboard-check" viewBox="0 0 24 24">
-      <path d="M9 5h6"/>
-      <path d="M9 5a3 3 0 0 1 6 0"/>
-      <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
-      <path d="M9 14l2 2l4-4"/>
-    </symbol>
-    <symbol id="op-badge" viewBox="0 0 24 24">
-      <path d="M12 3l2.3 2.1l3.1-.4l.6 3.1l2.7 1.6l-1.3 2.9l1.3 2.9l-2.7 1.6l-.6 3.1l-3.1-.4L12 21l-2.3-2.1l-3.1.4l-.6-3.1l-2.7-1.6l1.3-2.9l-1.3-2.9L6 7.2l.6-3.1l3.1.4z"/>
-      <path d="M9 12l2 2l4-4"/>
-    </symbol>
-    <symbol id="op-chart" viewBox="0 0 24 24">
-      <path d="M4 19V5"/>
-      <path d="M4 19h16"/>
-      <path d="M8 15v-4"/>
-      <path d="M12 15V8"/>
-      <path d="M16 15v-6"/>
-    </symbol>
-    <symbol id="op-calendar-lock" viewBox="0 0 24 24">
-      <path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"/>
-      <path d="M16 3v4"/>
-      <path d="M8 3v4"/>
-      <path d="M4 11h16"/>
-      <path d="M8 15h4"/>
-      <path d="M16 18v-1.5a2 2 0 0 1 4 0V18"/>
-      <path d="M15 18h6v4h-6z"/>
-    </symbol>
-    <symbol id="op-trophy" viewBox="0 0 24 24">
-      <path d="M8 21h8"/>
-      <path d="M12 17v4"/>
-      <path d="M7 4h10v6a5 5 0 0 1-10 0z"/>
-      <path d="M5 5H4a2 2 0 0 0 0 4h3"/>
-      <path d="M19 5h1a2 2 0 0 1 0 4h-3"/>
-    </symbol>
-    <symbol id="op-bowl" viewBox="0 0 24 24">
-      <path d="M4 11h16a8 8 0 0 1-16 0Z"/>
-      <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
-      <path d="M12 7v4"/>
-    </symbol>
-    <symbol id="op-dumbbell" viewBox="0 0 24 24">
-      <path d="M6.5 6.5l11 11"/>
-      <path d="M3 3l3 3"/>
-      <path d="M18 18l3 3"/>
-      <path d="M4 8l4-4"/>
-      <path d="M16 20l4-4"/>
-      <path d="M9 15l6-6"/>
-    </symbol>
-    <symbol id="op-tag" viewBox="0 0 24 24">
-      <path d="M20 13l-7 7a2.8 2.8 0 0 1-4 0l-6-6V4h10z"/>
-      <path d="M7.5 7.5h.01"/>
-    </symbol>
-    <symbol id="op-share" viewBox="0 0 24 24">
-      <path d="M18 8a3 3 0 1 0-2.83-4"/>
-      <path d="M6 15a3 3 0 1 0 2.83 4"/>
-      <path d="M8.6 13.5l6.8 4"/>
-      <path d="M15.4 6.5l-6.8 4"/>
-    </symbol>
-    <symbol id="op-coin" viewBox="0 0 24 24">
-      <path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18Z"/>
-      <path d="M12 7v10"/>
-      <path d="M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3H15"/>
-    </symbol>
-    <symbol id="op-shield-check" viewBox="0 0 24 24">
-      <path d="M12 22s8-4 8-10V5l-8-3l-8 3v7c0 6 8 10 8 10Z"/>
-      <path d="M9 12l2 2l4-4"/>
-    </symbol>
-    <symbol id="op-bolt" viewBox="0 0 24 24">
-      <path d="M13 2L4 14h7l-1 8l10-12h-7z"/>
-    </symbol>
-    <symbol id="op-clock" viewBox="0 0 24 24">
-      <path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18Z"/>
-      <path d="M12 7v5l3 2"/>
-    </symbol>
-    <symbol id="op-apple" viewBox="0 0 24 24">
-      <path d="M12 7c2.5-3 5-2 6-1c2 2 1.5 7.5-1 11c-1.2 1.7-2.6 3-4 3c-.7 0-1.3-.4-2-.4s-1.3.4-2 .4c-1.4 0-2.8-1.3-4-3c-2.5-3.5-3-9-1-11c1-1 3.5-2 6 1"/>
-      <path d="M12 7c0-2 1-3.5 3-4"/>
-    </symbol>
-    <symbol id="op-trending" viewBox="0 0 24 24">
-      <path d="M3 17l6-6l4 4l7-7"/>
-      <path d="M14 8h6v6"/>
-    </symbol>
-    <symbol id="op-check" viewBox="0 0 24 24">
-      <path d="M5 12l4 4L19 6"/>
-    </symbol>
-    <symbol id="op-x" viewBox="0 0 24 24">
-      <path d="M6 6l12 12"/>
-      <path d="M18 6L6 18"/>
-    </symbol>
-  </svg>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 
-  <!-- ═══ NAV ═══ -->
-  <nav class="nav">
-    <div class="nav-inner container">
-      <a href="/" class="nav-logo">
-        <img src="icons/logo-full.webp" alt="OneProtocol" class="logo-img" />
-      </a>
-      <div class="nav-actions">
-        <a href="#pricing" class="btn-ghost" data-track="nav_pricing">Planes</a>
-        <a href="https://app.oneprotocol.fit" class="btn-ghost" data-track="nav_login">Iniciar sesión</a>
-        <a href="/register" class="btn-primary" target="_blank" rel="noopener" data-track="nav_register">Comenzar gratis</a>
-      </div>
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="#top" aria-label="OneProtocol, inicio">
+      <img src="assets/op-symbol.webp" alt="" width="34" height="34">
+      <span>One<b>Protocol</b></span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Secciones">
+      <a href="#cliente">El cliente</a>
+      <a href="#marca">Tu marca</a>
+      <a href="#builders">Builders</a>
+      <a href="#panel">Tu panel</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">Preguntas</a>
+      <a class="nav-login-m" href="https://app.oneprotocol.fit">Iniciar sesión</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" href="https://app.oneprotocol.fit">Iniciar sesión</a>
+      <a class="btn btn-sm btn-blue" href="/register">Comenzar gratis</a>
+      <button class="nav-menu" id="nav-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><i></i><i></i></button>
     </div>
-  </nav>
+  </header>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="container hero-inner">
-      <div class="badge reveal">
-        <span class="badge-dot"></span>
-        Sistema operativo para coaching profesional
+  <main id="main">
+    <!-- ── HERO ── -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-aura" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="kicker rv"><span class="dot"></span>Para coaches, entrenadores y nutricionistas</p>
+        <h1 id="hero-title" class="hero-title rv" style="--d:.06s">Tu coaching,<br><span class="shine">con su propia app.</span></h1>
+        <p class="lede rv" style="--d:.12s">Tus clientes reciben su rutina, su dieta y su progreso en una app con tu logo y tu color. Tú construyes, entregas, mides y renuevas desde un solo panel.</p>
+        <div class="hero-ctas rv" style="--d:.18s">
+          <a class="btn btn-blue" href="/register">Comenzar gratis <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#cliente">Ver cómo se ve</a>
+        </div>
+        <p class="hero-note rv" style="--d:.24s">7 días con todo incluido · Sin tarjeta · Se instala desde el navegador</p>
+        <ul class="hero-stats rv" style="--d:.3s" aria-label="En números">
+          <li><b data-count="222">222</b><span>ejercicios con técnica y video</span></li>
+          <li><b>3D</b><span>cuerpo con los músculos de cada sesión</span></li>
+          <li><b data-count="25" data-suffix="%">25%</b><span>por cada coach que refieras</span></li>
+        </ul>
       </div>
-      <h1 class="hero-title reveal stagger-1">
-        Opera tu coaching<br><em></em>
-      </h1>
-      <p class="hero-sub reveal stagger-2">
-        Gestiona clientes, entrega planes, mide adherencia y controla renovaciones desde un solo sistema. Menos WhatsApp, hojas y PDFs dispersos; más claridad para ti y una experiencia más profesional para tus clientes.
-      </p>
-      <div class="hero-ctas reveal stagger-3">
-        <a href="/register" class="btn-primary btn-lg touch-scale" target="_blank" rel="noopener" data-track="hero_register">Comenzar gratis →</a>
-        <a href="#pricing" class="btn-ghost btn-lg touch-scale" data-track="hero_pricing">Ver planes</a>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="phone hero-back rv" style="--d:.2s"><div class="phone-screen"><img src="assets/shots/app-rutina.webp" alt="" width="1206" height="2320"></div></div>
+        <div class="phone hero-front rv" style="--d:.1s"><div class="phone-screen"><img src="assets/shots/app-dia.webp" alt="" width="1206" height="2320"></div></div>
+        <div class="chip chip-a"><span class="chip-ic ok">✓</span><span><b>Plan entregado</b><small>Camila · Pierna y glúteo</small></span></div>
+        <div class="chip chip-b"><span class="chip-ring" style="--p:92"><b>92%</b></span><span><b>Adherencia</b><small>Esta semana</small></span></div>
+        <div class="chip chip-c"><span class="chip-ic gold">★</span><span><b>Nuevo récord</b><small>Hip Thrust · 90 kg × 10</small></span></div>
       </div>
-      <div class="hero-points reveal stagger-3">
-        <span class="hero-point">Panel móvil del coach</span>
-        <span class="hero-point">App del cliente</span>
-        <span class="hero-point">Membresías automatizadas</span>
+    </section>
+
+    <section class="marquee" aria-label="Lo que incluye">
+      <div class="marquee-track">
+        <span>Rutinas guiadas</span><span>Cuerpo 3D</span><span>Tarjetas para compartir</span><span>Routine Builder</span><span>Diet Builder</span><span>Equivalencias</span><span>Superseries y tempo</span><span>Adherencia</span><span>Reportes PDF</span><span>Chat con tu cliente</span><span>Formulario de ingreso</span><span>Membresías que vencen solas</span><span>Tu marca</span>
+        <span aria-hidden="true">Rutinas guiadas</span><span aria-hidden="true">Cuerpo 3D</span><span aria-hidden="true">Tarjetas para compartir</span><span aria-hidden="true">Routine Builder</span><span aria-hidden="true">Diet Builder</span><span aria-hidden="true">Equivalencias</span><span aria-hidden="true">Superseries y tempo</span><span aria-hidden="true">Adherencia</span><span aria-hidden="true">Reportes PDF</span><span aria-hidden="true">Chat con tu cliente</span><span aria-hidden="true">Formulario de ingreso</span><span aria-hidden="true">Membresías que vencen solas</span><span aria-hidden="true">Tu marca</span>
       </div>
-      <p class="hero-note reveal stagger-3">Sin tarjeta de crédito · Funciona como app desde el navegador · Listo para operar en minutos</p>
-    </div>
-    <div class="hero-visual container">
-      <div class="mobile-showcase reveal stagger-3">
-        <div class="showcase-ribbon">
-          <span>Vistas reales de la experiencia móvil</span>
-          <strong>coach + cliente</strong>
-        </div>
+    </section>
 
-        <img src="/images/mockup-2.png" alt="Vista móvil del cliente en OneProtocol" class="showcase-side showcase-side--left" loading="lazy" decoding="async">
-
-        <div class="phone-carousel-outer">
-
-        <div class="phone-carousel" id="phoneCarousel">
-
-          <!-- ── SLIDE 1: Panel móvil del coach ── -->
-          <div class="phone-slide">
-            <img src="/images/mockup-1.png" alt="Panel móvil del coach" class="phone-img" fetchpriority="high" decoding="async">
-          </div>
-
-          <!-- ── SLIDE 2: Vista del cliente (Sofía) ── -->
-          <div class="phone-slide">
-            <img src="/images/mockup-2.png" alt="Vista del cliente" class="phone-img" loading="lazy" decoding="async">
-          </div>
-
-          <!-- ── SLIDE 3: Progreso y métricas ── -->
-          <div class="phone-slide">
-            <img src="/images/mockup-3.png" alt="Progreso y métricas" class="phone-img" loading="lazy" decoding="async">
-          </div>
-
-          <!-- ── SLIDE 4: IMC - Composición ── -->
-          <div class="phone-slide">
-            <img src="/images/mockup-4.png" alt="IMC - Composición" class="phone-img" loading="lazy" decoding="async">
-          </div>
-
-          <!-- ── SLIDE 5: Bitácora de entrenamiento ── -->
-          <div class="phone-slide">
-            <img src="/images/mockup-5.png" alt="Bitácora de entrenamiento" class="phone-img" loading="lazy" decoding="async">
-          </div>
-
-        </div><!-- /phone-carousel -->
-
-        <!-- Dots + label -->
-        <div class="pcd-wrap">
-          <button class="pcd active" data-s="0"></button>
-          <button class="pcd" data-s="1"></button>
-          <button class="pcd" data-s="2"></button>
-          <button class="pcd" data-s="3"></button>
-          <button class="pcd" data-s="4"></button>
-        </div>
-        <div class="pcl-wrap">
-          <span class="pcl active">Panel móvil del coach</span>
-          <span class="pcl">Vista del cliente</span>
-          <span class="pcl">Progreso y métricas</span>
-          <span class="pcl">IMC - Composición</span>
-          <span class="pcl">Bitácora de entrenamiento</span>
-        </div>
-
-        </div><!-- /phone-carousel-outer -->
-
-        <img src="/images/mockup-3.png" alt="Vista móvil de progreso en OneProtocol" class="showcase-side showcase-side--right" loading="lazy" decoding="async">
-
-        <div class="showcase-trust">
-          <span>Vistas del producto actual</span>
-          <span>Producto móvil primero</span>
-          <span>Capturas del flujo actual</span>
-        </div>
-      </div><!-- /mobile-showcase -->
-    </div>
-  </section>
-
-  <!-- ═══ SOCIAL PROOF BAR ═══ -->
-  <div class="proof-bar">
-    <div class="container proof-inner">
-      <span class="proof-item">✦ Panel coach + app cliente</span>
-      <span class="proof-sep">·</span>
-      <span class="proof-item">✦ Routine Builder + Diet Builder</span>
-      <span class="proof-sep">·</span>
-      <span class="proof-item">✦ Reportes PDF y adherencia</span>
-      <span class="proof-sep">·</span>
-      <span class="proof-item">✦ Quick Routine con QR</span>
-      <span class="proof-sep">·</span>
-      <span class="proof-item">✦ Branding y control de membresías</span>
-    </div>
-  </div>
-
-  <section class="mobile-brief" aria-label="Resumen rápido de OneProtocol">
-    <div class="container">
-      <div class="section-label">Resumen rápido</div>
-      <h2>Si eres coach, esto es lo que importa.</h2>
-      <div class="mobile-brief-grid">
-        <article>
-          <svg class="op-icon" aria-hidden="true"><use href="#op-users"></use></svg>
-          <strong>Centralizas clientes</strong>
-          <span>Fichas, métricas, adherencia, mensajes y progreso en un solo panel.</span>
-        </article>
-        <article>
-          <svg class="op-icon" aria-hidden="true"><use href="#op-clipboard-check"></use></svg>
-          <strong>Entregas mejor</strong>
-          <span>Rutinas, nutrición, reportes y app del cliente con una experiencia más profesional.</span>
-        </article>
-        <article>
-          <svg class="op-icon" aria-hidden="true"><use href="#op-calendar-lock"></use></svg>
-          <strong>Controlas continuidad</strong>
-          <span>Membresías, alertas y acceso para que renovar no dependa de perseguir a mano.</span>
-        </article>
+    <!-- ── EL CLIENTE: historia con el teléfono fijo ── -->
+    <section class="sec story" id="cliente" aria-labelledby="story-title">
+      <div class="sec-head rv">
+        <p class="eyebrow">El cliente</p>
+        <h2 id="story-title">Su plan deja de ser un PDF.<br><span class="dim">Se vuelve una app que lo guía.</span></h2>
       </div>
-      <div class="mobile-jump-links">
-        <a href="#features" data-track="mobile_jump_features">Funciones</a>
-        <a href="#pricing" data-track="mobile_jump_pricing">Planes</a>
-        <a href="#faq" data-track="mobile_jump_faq">FAQ</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SYSTEM VALUE ═══ -->
-  <section class="system-section">
-    <div class="container">
-      <div class="section-label reveal">Por qué es distinto</div>
-      <h2 class="section-title reveal stagger-1">No es otra app de seguimiento. Es la operación completa de tu coaching.</h2>
-      <p class="section-sub reveal stagger-2">OneProtocol une adquisición, entrega, seguimiento, comunicación y renovación en una sola experiencia. Ahorras tiempo, sostienes mejor tus precios y entregas un servicio que se percibe más claro, serio y premium.</p>
-
-      <div class="system-grid">
-        <article class="system-card reveal">
-          <div class="system-eyebrow">Coach OS</div>
-          <h3>Todo lo que el coach necesita para operar</h3>
-          <p>Fichas, biometría, adherencia, mensajería, métricas, reportes PDF, agenda de seguimientos y herramientas para trabajar con criterio clínico y comercial desde un mismo panel.</p>
-          <ul class="system-list">
-            <li>Panel centralizado por cliente</li>
-            <li>Reportes semanales y respuesta directa</li>
-            <li>Biometría, macros y evolución visual</li>
-          </ul>
-        </article>
-
-        <article class="system-card system-card--accent reveal stagger-1">
-          <div class="system-eyebrow">Client Experience</div>
-          <h3>Una app real para el cliente, no solo archivos enviados</h3>
-          <p>Tu cliente entra a su propio panel, revisa entrenamiento y nutrición, recibe mensajes, reportes, notificaciones push y sigue el protocolo con una experiencia mucho más premium. Cuando el servicio se ve así de serio, el valor también se percibe distinto.</p>
-          <ul class="system-list">
-            <li>Planes de entrenamiento y nutrición</li>
-            <li>Bitácora de entrenamiento y PRs</li>
-            <li>Push, branding y acceso por membresía</li>
-          </ul>
-        </article>
-
-        <article class="system-card reveal stagger-2">
-          <div class="system-eyebrow">Revenue Control</div>
-          <h3>Menos fricción para cobrar y más control para renovar</h3>
-          <p>Asignas tiempo de membresía, activas días de gracia y cuando el cliente no renueva, su acceso se suspende. Menos persecución manual y más estructura para sostener tu negocio.</p>
-          <ul class="system-list">
-            <li>Acceso por 30, 60 o 90 días</li>
-            <li>Bloqueo automático post-gracia</li>
-            <li>Flujo claro para reactivación</li>
-          </ul>
-        </article>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══ FEATURES ═══ -->
-  <section class="builders-section">
-    <div class="container">
-      <div class="section-label reveal">Builders premium</div>
-      <h2 class="section-title reveal stagger-1">Routine Builder y Diet Builder hacen que tu entrega se vea tan seria como tu criterio</h2>
-      <p class="section-sub reveal stagger-2">Crea entrenamiento y nutrición con estructura, velocidad y una presentación que eleva la percepción de tu servicio desde el primer día.</p>
-
-      <div class="builders-grid">
-        <article class="builder-card builder-card--routine reveal">
-          <div class="builder-chip">Routine Builder</div>
-          <h3>Rutinas visuales, ordenadas y listas para entregar</h3>
-          <p>Diseña rutinas con splits, bloques visuales, base de ejercicios, acceso a videos y estructura profesional. En vez de improvisar tablas, entregas una experiencia mucho más clara en HTML o PDF.</p>
-          <div class="builder-meta">
-            <span>Splits visuales</span>
-            <span>HTML + PDF</span>
-            <span>Videos</span>
-          </div>
-          <ul class="builder-list">
-            <li>Base de ejercicios con acceso rápido a videos</li>
-            <li>Plantillas por split y armado visual por bloques</li>
-            <li>Entrega premium en HTML o PDF</li>
-          </ul>
-        </article>
-
-        <article class="builder-card builder-card--diet reveal stagger-1">
-          <div class="builder-chip">Diet Builder</div>
-          <h3>Nutrición personalizada con macros, menús y formato interactivo</h3>
-          <p>Calcula macros con datos reales del cliente, distribuye comidas, arma menús con equivalencias y entrega un plan nutricional interactivo que se siente como parte de la app, no como un PDF suelto.</p>
-          <div class="builder-meta">
-            <span>Macros</span>
-            <span>Menús</span>
-            <span>Equivalencias</span>
-          </div>
-          <ul class="builder-list">
-            <li>Macros automáticos según objetivo y composición corporal</li>
-            <li>Menús, equivalencias y timing de comidas</li>
-            <li>Plan HTML interactivo listo para usar</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="protocol-section">
-    <div class="container">
-      <div class="section-label reveal">Así se ve OneProtocol</div>
-      <h2 class="section-title reveal stagger-1">Construyes, entregas, mides y renuevas dentro del mismo sistema</h2>
-      <p class="section-sub reveal stagger-2">El builder acelera el trabajo, la entrega eleva la percepción, el seguimiento demuestra progreso y la membresía protege la continuidad.</p>
-
-      <div class="protocol-grid">
-        <article class="protocol-card protocol-card--wide protocol-card--builder reveal">
-          <div class="protocol-copy">
-            <div class="protocol-chip">01 Construyes</div>
-            <h3>El coach arma el protocolo en minutos, no en horas</h3>
-            <p>Routine Builder ordena días, ejercicios, series, reps, descansos, RIR y video dentro de un flujo visual que acelera la construcción sin volverla improvisada.</p>
-            <ul class="protocol-list">
-              <li>Base de ejercicios lista para reutilizar</li>
-              <li>Bloques claros para organizar el plan</li>
-              <li>Salida lista para HTML o PDF</li>
-            </ul>
-          </div>
-          <div class="protocol-visual">
-            <img src="/images/builder-routine.png" alt="Routine Builder de OneProtocol" class="protocol-phone" loading="lazy" decoding="async">
-          </div>
-        </article>
-
-        <article class="protocol-card protocol-card--routine reveal stagger-1">
-          <div class="protocol-copy">
-            <div class="protocol-chip">02 Entregas entrenamiento</div>
-            <h3>La rutina se ve clara, usable y premium desde el teléfono</h3>
-            <p>El cliente entiende qué hacer, en qué orden y con qué criterio, con acceso directo a videos y una estructura que no parece hecha a mano a última hora.</p>
-            <ul class="protocol-list">
-              <li>Días y bloques fáciles de escanear</li>
-              <li>Video por ejercicio en el mismo flujo</li>
-              <li>Series, reps, descanso y RIR visibles</li>
-            </ul>
-          </div>
-          <div class="protocol-visual">
-            <img src="/images/routine-output.png" alt="Rutina final en OneProtocol" class="protocol-phone" loading="lazy" decoding="async">
-          </div>
-        </article>
-
-        <article class="protocol-card protocol-card--nutrition reveal stagger-2">
-          <div class="protocol-copy">
-            <div class="protocol-chip">03 Entregas nutrición</div>
-            <h3>La dieta deja de ser un PDF suelto y se vuelve experiencia</h3>
-            <p>Diet Builder propone macros según el cliente, trabaja una base real de alimentos y permite entregar un plan estructurado con variantes, comidas y detalle nutricional.</p>
-            <ul class="protocol-list">
-              <li>Macros sugeridos y editables</li>
-              <li>Base de alimentos para construir más rápido</li>
-              <li>Formato claro para el cliente final</li>
-            </ul>
-          </div>
-          <div class="protocol-visual">
-            <img src="/images/nutrition-output.png" alt="Plan nutricional en OneProtocol" class="protocol-phone" loading="lazy" decoding="async">
-          </div>
-        </article>
-
-        <article class="protocol-card protocol-card--wide protocol-card--report reveal">
-          <div class="protocol-copy">
-            <div class="protocol-chip">04 Mides y demuestras</div>
-            <h3>El seguimiento no depende de memoria: queda respaldado por reportes</h3>
-            <p>Fechas, mediciones, cambios, progreso real o regresión quedan documentados en un output profesional que el cliente entiende y el coach puede usar para sostener decisiones.</p>
-            <ul class="protocol-list">
-              <li>Historial de mediciones con contexto</li>
-              <li>Cambios visibles en cada periodo</li>
-              <li>Reporte PDF listo para compartir</li>
-            </ul>
-          </div>
-          <div class="protocol-visual">
-            <img src="/images/report-output.png" alt="Reporte PDF generado por OneProtocol" class="protocol-phone" loading="lazy" decoding="async">
-          </div>
-        </article>
-
-        <article class="protocol-card protocol-card--wide protocol-card--membership reveal stagger-1">
-          <div class="protocol-copy">
-            <div class="protocol-chip">05 Renuevas con control</div>
-            <h3>La continuidad también vive dentro del producto</h3>
-            <p>El cliente ve cuando su acceso está por vencer, entiende el siguiente paso y tú mantienes control desde el panel. Si hace falta hablar contigo, OneProtocol lo conecta con tu WhatsApp mediante un mensaje listo para enviar.</p>
-            <ul class="protocol-list">
-              <li>Alertas antes del vencimiento</li>
-              <li>Acceso condicionado por membresía</li>
-              <li>CTA directo a tu WhatsApp con mensaje de renovación</li>
-            </ul>
-          </div>
-          <div class="protocol-visual">
-            <img src="/images/membership-warning.png" alt="Aviso de membresía por vencer en OneProtocol" class="protocol-phone" loading="lazy" decoding="async">
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="operating-section">
-    <div class="container">
-      <div class="section-label reveal">Por qué se siente distinto</div>
-      <h2 class="section-title reveal stagger-1">OneProtocol tiene sentido cuando ves el flujo completo</h2>
-      <p class="section-sub reveal stagger-2">No es una suma de módulos desconectados. Cada pieza existe para construir mejor, entregar mejor, demostrar mejor o renovar mejor.</p>
-
-      <div class="operating-grid">
-        <article class="operating-card reveal">
-          <span class="operating-num">01</span>
-          <h3>Todo nace en el builder</h3>
-          <p>El trabajo del coach comienza con una herramienta que ordena el criterio y acelera la ejecución.</p>
-        </article>
-        <article class="operating-card reveal stagger-1">
-          <span class="operating-num">02</span>
-          <h3>El cliente recibe un producto serio</h3>
-          <p>Rutina, nutrición y reportes se entregan con una presentación que aumenta la percepción de valor.</p>
-        </article>
-        <article class="operating-card reveal stagger-2">
-          <span class="operating-num">03</span>
-          <h3>El seguimiento conserva memoria</h3>
-          <p>Métricas, adherencia y progreso no dependen del recuerdo del coach ni del cliente.</p>
-        </article>
-        <article class="operating-card reveal">
-          <span class="operating-num">04</span>
-          <h3>La continuidad también está resuelta</h3>
-          <p>Membresía, alertas y acceso reducen la fricción de renovar, y si el cliente necesita escribirte, OneProtocol lo lleva a tu WhatsApp con el mensaje ya preparado.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="features" id="features">
-    <div class="container">
-      <div class="section-label reveal">Funciones</div>
-      <h2 class="section-title reveal stagger-1">Todo lo que un coach profesional necesita, con un por qué claro</h2>
-      <p class="section-sub reveal stagger-2">Sin apps de terceros, sin procesos partidos y sin funciones metidas por llenar una tabla. Aquí cada módulo ayuda a operar mejor.</p>
-
-      <div class="features-grid" id="featuresCarousel">
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-users"></use></svg>
-          </div>
-          <h3>Gestión de clientes</h3>
-          <p>Fichas digitales completas con métricas, composición corporal, historial y fotos de progreso. Todo centralizado.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-activity"></use></svg>
-          </div>
-          <h3>Seguimiento de adherencia</h3>
-          <p>Registro semanal del cumplimiento del protocolo. Detecta quién necesita tu atención antes de que se vaya.</p>
-        </div>
-
-        <div class="feature-card feature-card--highlight">
-          <div class="feature-icon silver">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-report"></use></svg>
-          </div>
-          <h3>Reportes PDF automáticos</h3>
-          <p>Genera reportes profesionales con gráficas de progreso en un clic. Tu cliente lo recibe listo para compartir.</p>
-          <span class="feature-tag">Más usado</span>
-        </div>
-
-        <div class="feature-card feature-card--highlight">
-          <div class="feature-icon silver">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-qr"></use></svg>
-          </div>
-          <h3>Quick Routine con QR</h3>
-          <p>Crea y comparte una rutina en PDF con videos en segundos. Tu cliente la escanea y la tiene al instante.</p>
-          <span class="feature-tag">Exclusivo</span>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-message"></use></svg>
-          </div>
-          <h3>Mensajería integrada</h3>
-          <p>Comunicación directa con cada cliente desde el panel. Sin salir de OneProtocol, sin mezclar conversaciones.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-clipboard-check"></use></svg>
-          </div>
-          <h3>Formulario de intake</h3>
-          <p>Onboarding profesional y personalizable con tu marca. Tu cliente completa, tú recibes todo organizado.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-badge"></use></svg>
-          </div>
-          <h3>Tu marca, tu identidad</h3>
-          <p>Tu logo y nombre en lugar de OneProtocol para tus clientes. Tú eres el profesional, nosotros el motor.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-chart"></use></svg>
-          </div>
-          <h3>Biometría y métricas</h3>
-          <p>Registra peso, grasa, músculo, medidas y más. Las gráficas hablan por sí solas en cada consulta.</p>
-        </div>
-
-        <div class="feature-card feature-card--highlight">
-          <div class="feature-icon silver">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-calendar-lock"></use></svg>
-          </div>
-          <h3>Control de membresías</h3>
-          <p>Tú asignas 30, 60 o 90 días de acceso. Si el cliente no renueva, la app gestiona alertas, acceso y CTA directo a tu WhatsApp para que renovar no dependa de perseguirlo a mano.</p>
-          <span class="feature-tag">Automatizado</span>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-trophy"></use></svg>
-          </div>
-          <h3>Bitácora de PRs</h3>
-          <p>Tu cliente siempre sabe cuánto levantó la última vez. Historial de récords personales por ejercicio para progresar con datos.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-bowl"></use></svg>
-          </div>
-          <h3>Diet Builder</h3>
-          <p>Calcula macros, organiza menús, trabaja equivalencias y entrega un plan nutricional interactivo con mucha mejor presentación y menos tiempo operativo.</p>
-          <span class="feature-tag">Premium</span>
-        </div>
-
-        <div class="feature-card feature-card--highlight">
-          <div class="feature-icon blue">
-            <svg class="op-icon" aria-hidden="true"><use href="#op-dumbbell"></use></svg>
-          </div>
-          <h3>Routine Builder</h3>
-          <p>Arma rutinas con base de ejercicios, videos y estructura visual para entregar en HTML o PDF. Más claridad para el cliente, menos trabajo artesanal para ti.</p>
-          <span class="feature-tag">Premium</span>
-        </div>
-
-      </div>
-      <!-- Features dots (mobile only) -->
-      <div class="features-dots" id="featuresDots">
-        <button class="features-dot active" data-f="0"></button>
-        <button class="features-dot" data-f="1"></button>
-        <button class="features-dot" data-f="2"></button>
-        <button class="features-dot" data-f="3"></button>
-        <button class="features-dot" data-f="4"></button>
-        <button class="features-dot" data-f="5"></button>
-        <button class="features-dot" data-f="6"></button>
-        <button class="features-dot" data-f="7"></button>
-        <button class="features-dot" data-f="8"></button>
-        <button class="features-dot" data-f="9"></button>
-        <button class="features-dot" data-f="10"></button>
-        <button class="features-dot" data-f="11"></button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══ HOW IT WORKS ═══ -->
-  <section class="how">
-    <div class="container">
-      <div class="section-label reveal">Cómo funciona</div>
-      <h2 class="section-title reveal stagger-1">Listo en minutos, pero diseñado para operar en serio</h2>
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-num">01</div>
-          <h3>Crea tu cuenta</h3>
-          <p>Regístrate gratis en segundos. Sin instalaciones, funciona directo desde tu navegador como una app.</p>
-        </div>
-        <div class="step-arrow">→</div>
-        <div class="step reveal">
-          <div class="step-num">02</div>
-          <h3>Agrega tus clientes</h3>
-          <p>Crea las fichas de tus clientes, registra sus métricas iniciales y activa el seguimiento.</p>
-        </div>
-        <div class="step-arrow">→</div>
-        <div class="step reveal">
-          <div class="step-num">03</div>
-          <h3>Trabaja como un pro</h3>
-          <p>Genera reportes, entrega rutinas y planes nutricionales con builders premium, y monitorea adherencia sin trabajar a punta de parches.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══ WORKFLOW ═══ -->
-  <section class="workflow-section">
-    <div class="container">
-      <div class="section-label reveal">Flujo real</div>
-      <h2 class="section-title reveal stagger-1">Desde el intake hasta la renovación, todo vive en el mismo sistema</h2>
-      <p class="section-sub reveal stagger-2">Esto es lo que hace que OneProtocol se sienta como un todo-en-uno real y no como una suma de herramientas desconectadas.</p>
-
-      <div class="workflow-grid">
-        <article class="workflow-card reveal">
-          <span class="workflow-step">01</span>
-          <h3>Captas o registras al cliente</h3>
-          <p>Alta manual o por intake link. Desde el inicio se guardan datos, objetivos, ficha clínica y contexto real para trabajar bien.</p>
-        </article>
-        <article class="workflow-card reveal stagger-1">
-          <span class="workflow-step">02</span>
-          <h3>Construyes el protocolo</h3>
-          <p>Subes planes o generas entregables con Routine Builder, Diet Builder, Quick Routine con QR y macros calculados con los datos del cliente.</p>
-        </article>
-        <article class="workflow-card reveal stagger-2">
-          <span class="workflow-step">03</span>
-          <h3>El cliente lo vive como una app</h3>
-          <p>Accede a entrenamiento, nutrición, bitácora, PRs, mensajes, branding y actualizaciones sin depender de cadenas eternas de chat.</p>
-        </article>
-        <article class="workflow-card reveal">
-          <span class="workflow-step">04</span>
-          <h3>Mides adherencia y respondes</h3>
-          <p>Recibes reportes semanales, revisas progreso, generas PDFs profesionales y detectas antes quién necesita intervención.</p>
-        </article>
-        <article class="workflow-card reveal stagger-1">
-          <span class="workflow-step">05</span>
-          <h3>Controlas renovación y continuidad</h3>
-          <p>La membresía define el acceso. Si no paga, entra en gracia y luego se bloquea el panel del cliente. Menos desgaste operativo para ti.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PRICING ═══ -->
-  <section class="pricing" id="pricing">
-    <div class="container">
-      <div class="section-label reveal">Planes</div>
-      <h2 class="section-title reveal stagger-1">Invierte en tu negocio</h2>
-      <p class="section-sub reveal stagger-2">Empieza gratis, valida el flujo con tus clientes y escala cuando necesites más capacidad.</p>
-
-      <div class="pricing-grid" id="pricingCarousel">
-
-        <!-- TRIAL -->
-        <div class="plan-card">
-          <div class="plan-header">
-            <div class="plan-name">Trial</div>
-            <div class="plan-price"><span class="price-amount">Gratis</span></div>
-            <div class="plan-desc">7 días para vivir la plataforma completa. Sin tarjeta.</div>
-          </div>
-          <ul class="plan-features">
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Hasta 5 clientes</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Ficha completa de cada cliente</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Crea planes de entrenamiento visualmente atractivos</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Crea planes nutricionales para tus clientes</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Registro de sesiones de entrenamiento</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Genera rutinas con código QR al instante</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Reportes de progreso</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Seguimiento de adherencia</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Mensajería</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Capta clientes con formulario (Elite)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Notificaciones al celular (Elite)</li>
-          </ul>
-          <a href="/register" class="btn-outline btn-full" target="_blank" rel="noopener" data-track="pricing_trial">Comenzar gratis</a>
-        </div>
-
-        <!-- STARTER -->
-        <div class="plan-card">
-          <div class="plan-header">
-            <div class="plan-name">Starter</div>
-            <div class="plan-price">
-              <span class="price-amount">$20</span>
-              <span class="price-period">/mes</span>
-            </div>
-            <div class="plan-desc">Para coaches arrancando su negocio con lo esencial.</div>
-          </div>
-          <ul class="plan-features">
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Hasta 10 clientes</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Ficha completa de cada cliente</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Crea rutinas y descárgalas en PDF</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Registro de sesiones de entrenamiento</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Medidas y composición corporal</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Seguimiento de cumplimiento y logros</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Mensajería</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Planes interactivos en el celular del cliente (Pro)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Videos explicativos de ejercicios (Pro)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Reportes de progreso (Pro)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Rutina express con código QR (Pro)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Capta clientes con formulario (Elite)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Notificaciones al celular (Elite)</li>
-          </ul>
-          <a href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Starter%20de%20OneProtocol%20%F0%9F%92%AA" target="_blank" rel="noopener" class="btn-outline btn-full" data-track="pricing_starter_whatsapp">Empezar ahora</a>
-        </div>
-
-        <!-- PRO -->
-        <div class="plan-card plan-card--featured">
-          <div class="plan-badge">Más popular</div>
-          <div class="plan-header">
-            <div class="plan-name">Pro</div>
-            <div class="plan-price">
-              <span class="price-amount">$30</span>
-              <span class="price-period">/mes</span>
-            </div>
-            <div class="plan-desc">Para coaches en crecimiento que quieren diferenciarse.</div>
-          </div>
-          <ul class="plan-features">
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Hasta 25 clientes</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Todo lo de Starter</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Planes de entrenamiento interactivos en el celular del cliente</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Videos explicativos de cada ejercicio</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Rutina express con código QR al instante</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Reportes de progreso en PDF listos para el cliente</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Diseña planes de alimentación (Elite)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Capta clientes con formulario (Elite)</li>
-            <li class="muted"><span class="cross"><svg class="mini-icon" aria-hidden="true"><use href="#op-x"></use></svg></span> Notificaciones al celular (Elite)</li>
-          </ul>
-          <a href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Pro%20de%20OneProtocol%20%F0%9F%92%AA" target="_blank" rel="noopener" class="btn-primary btn-full" data-track="pricing_pro_whatsapp">Empezar en Pro</a>
-        </div>
-
-        <!-- ELITE -->
-        <div class="plan-card plan-card--elite">
-          <div class="plan-header">
-            <div class="plan-name">Elite</div>
-            <div class="plan-price">
-              <span class="price-amount">$40</span>
-              <span class="price-period">/mes</span>
-            </div>
-            <div class="plan-desc">Para coaches consolidados que quieren operar a otro nivel.</div>
-          </div>
-          <ul class="plan-features">
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Clientes ilimitados</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Todo lo de Pro</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Diseña planes de alimentación completos</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Capta clientes con un formulario por link</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Notificaciones directas al celular del cliente</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Tu marca y logo en la plataforma</li>
-            <li><span class="check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span> Reportes avanzados de progreso en PDF</li>
-          </ul>
-          <a href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Elite%20de%20OneProtocol%20%F0%9F%92%AA" target="_blank" rel="noopener" class="btn-silver btn-full" data-track="pricing_elite_whatsapp">Ir a Elite</a>
-        </div>
-
-      </div>
-
-      <!-- Pricing dots (mobile only) -->
-      <div class="pricing-dots" id="pricingDots">
-        <button class="pricing-dot active" data-p="0"></button>
-        <button class="pricing-dot" data-p="1"></button>
-        <button class="pricing-dot" data-p="2"></button>
-        <button class="pricing-dot" data-p="3"></button>
-      </div>
-
-      <p class="pricing-note reveal stagger-1">¿Tienes dudas sobre cuál plan es el tuyo? Entra al Trial o escríbenos por WhatsApp para revisar tu caso.</p>
-    </div>
-  </section>
-
-  <!-- ═══ COMPARISON ═══ -->
-  <section class="compare-section">
-    <div class="container">
-      <div class="section-label reveal">Comparación</div>
-      <h2 class="section-title reveal stagger-1">La diferencia entre administrar clientes y operar un sistema</h2>
-      <p class="section-sub reveal stagger-2">OneProtocol reemplaza el caos de herramientas sueltas con una experiencia unificada para coach y cliente.</p>
-
-      <div class="compare-table reveal">
-        <div class="compare-head">
-          <div>Qué necesitas resolver</div>
-          <div>Método manual</div>
-          <div>Apps genéricas</div>
-          <div>OneProtocol</div>
-        </div>
-        <div class="compare-row">
-          <div>Entregar entrenamiento y nutrición</div>
-          <div><span class="compare-mobile-label">Método manual</span>PDFs, links y chats dispersos</div>
-          <div><span class="compare-mobile-label">Apps genéricas</span>Normalmente una sola parte del flujo</div>
-          <div><span class="compare-mobile-label">OneProtocol</span>Entrenamiento + nutrición + entrega al cliente en un mismo panel</div>
-        </div>
-        <div class="compare-row">
-          <div>Seguimiento semanal</div>
-          <div><span class="compare-mobile-label">Método manual</span>Mensajes sueltos y revisión manual</div>
-          <div><span class="compare-mobile-label">Apps genéricas</span>Seguimiento parcial o sin contexto completo</div>
-          <div><span class="compare-mobile-label">OneProtocol</span>Adherencia, reportes, biometría y respuesta directa</div>
-        </div>
-        <div class="compare-row">
-          <div>Experiencia del cliente</div>
-          <div><span class="compare-mobile-label">Método manual</span>WhatsApp + archivos + recordatorios manuales</div>
-          <div><span class="compare-mobile-label">Apps genéricas</span>Cliente salta entre varias interfaces</div>
-          <div><span class="compare-mobile-label">OneProtocol</span>App del cliente con planes, mensajes, PRs y branding</div>
-        </div>
-        <div class="compare-row">
-          <div>Renovación y membresías</div>
-          <div><span class="compare-mobile-label">Método manual</span>Perseguir pagos a mano</div>
-          <div><span class="compare-mobile-label">Apps genéricas</span>Pocas veces integrado al acceso del cliente</div>
-          <div><span class="compare-mobile-label">OneProtocol</span>Acceso con expiración, gracia y bloqueo automático</div>
-        </div>
-        <div class="compare-row">
-          <div>Diferenciación profesional</div>
-          <div><span class="compare-mobile-label">Método manual</span>Mucho trabajo invisible, poca percepción premium</div>
-          <div><span class="compare-mobile-label">Apps genéricas</span>Marca ajena, poco control de experiencia</div>
-          <div><span class="compare-mobile-label">OneProtocol</span>Tu logo, tu marca y una operación que sí se siente propia</div>
-        </div>
-      </div>
-      <div class="compare-cards reveal" id="compareCards">
-        <article class="compare-card">
-          <div class="compare-card-top">
-            <span class="compare-card-kicker">01 / 05</span>
-            <h3>Entregar entrenamiento y nutrición</h3>
-          </div>
-          <div class="compare-card-stack">
-            <div class="compare-pill">
-              <span>Método manual</span>
-              <p>PDFs, links y chats dispersos</p>
-            </div>
-            <div class="compare-pill">
-              <span>Apps genéricas</span>
-              <p>Normalmente una sola parte del flujo</p>
-            </div>
-            <div class="compare-pill compare-pill--op">
-              <span>OneProtocol</span>
-              <p>Entrenamiento + nutrición + entrega al cliente en un mismo panel</p>
+      <div class="story-grid">
+        <div class="story-stick">
+          <div class="phone story-phone">
+            <div class="phone-screen" id="story-screen">
+              <img class="is-on" data-shot="1" src="assets/shots/app-rutina.webp" alt="Rutina de la semana en la app del cliente" width="1206" height="2320" loading="lazy">
+              <img data-shot="2" src="assets/shots/app-dia.webp" alt="Día de entrenamiento con el cuerpo 3D y los músculos que trabaja" width="1206" height="2320" loading="lazy">
+              <img data-shot="3" src="assets/shots/app-launch.webp" alt="Arranque del entrenamiento con la marca del coach" width="1206" height="2320" loading="lazy">
+              <img data-shot="4" src="assets/shots/app-player.webp" alt="Reproductor de rutina: ejercicio, técnica, series y descanso" width="1206" height="2320" loading="lazy">
             </div>
           </div>
-        </article>
-
-        <article class="compare-card">
-          <div class="compare-card-top">
-            <span class="compare-card-kicker">02 / 05</span>
-            <h3>Seguimiento semanal</h3>
-          </div>
-          <div class="compare-card-stack">
-            <div class="compare-pill">
-              <span>Método manual</span>
-              <p>Mensajes sueltos y revisión manual</p>
-            </div>
-            <div class="compare-pill">
-              <span>Apps genéricas</span>
-              <p>Seguimiento parcial o sin contexto completo</p>
-            </div>
-            <div class="compare-pill compare-pill--op">
-              <span>OneProtocol</span>
-              <p>Adherencia, reportes, biometría y respuesta directa</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="compare-card">
-          <div class="compare-card-top">
-            <span class="compare-card-kicker">03 / 05</span>
-            <h3>Experiencia del cliente</h3>
-          </div>
-          <div class="compare-card-stack">
-            <div class="compare-pill">
-              <span>Método manual</span>
-              <p>WhatsApp + archivos + recordatorios manuales</p>
-            </div>
-            <div class="compare-pill">
-              <span>Apps genéricas</span>
-              <p>Cliente salta entre varias interfaces</p>
-            </div>
-            <div class="compare-pill compare-pill--op">
-              <span>OneProtocol</span>
-              <p>App del cliente con planes, mensajes, PRs y branding</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="compare-card">
-          <div class="compare-card-top">
-            <span class="compare-card-kicker">04 / 05</span>
-            <h3>Renovación y membresías</h3>
-          </div>
-          <div class="compare-card-stack">
-            <div class="compare-pill">
-              <span>Método manual</span>
-              <p>Perseguir pagos a mano</p>
-            </div>
-            <div class="compare-pill">
-              <span>Apps genéricas</span>
-              <p>Pocas veces integrado al acceso del cliente</p>
-            </div>
-            <div class="compare-pill compare-pill--op">
-              <span>OneProtocol</span>
-              <p>Acceso con expiración, gracia y bloqueo automático</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="compare-card">
-          <div class="compare-card-top">
-            <span class="compare-card-kicker">05 / 05</span>
-            <h3>Diferenciación profesional</h3>
-          </div>
-          <div class="compare-card-stack">
-            <div class="compare-pill">
-              <span>Método manual</span>
-              <p>Mucho trabajo invisible, poca percepción premium</p>
-            </div>
-            <div class="compare-pill">
-              <span>Apps genéricas</span>
-              <p>Marca ajena, poco control de experiencia</p>
-            </div>
-            <div class="compare-pill compare-pill--op">
-              <span>OneProtocol</span>
-              <p>Tu logo, tu marca y una operación que sí se siente propia</p>
-            </div>
-          </div>
-        </article>
+          <p class="story-tag" id="story-tag">01 · Su semana</p>
+        </div>
+        <ol class="story-steps">
+          <li class="story-step is-on" data-step="1">
+            <span class="step-n">01</span>
+            <h3>Ve su semana entera</h3>
+            <p>Días, sesiones, duración estimada y qué toca hoy. Cada ejercicio con sus series, repeticiones, descanso y RIR, tal como lo armaste.</p>
+          </li>
+          <li class="story-step" data-step="2">
+            <span class="step-n">02</span>
+            <h3>Entiende qué trabaja</h3>
+            <p>Un cuerpo anatómico en 3D enciende los músculos de la sesión, con más intensidad donde más series hay. Lo gira, lo acerca y toca un músculo para verlo.</p>
+          </li>
+          <li class="story-step" data-step="3">
+            <span class="step-n">03</span>
+            <h3>Arranca con tu marca</h3>
+            <p>Al iniciar, la sesión se abre con tu nombre y tu color. No entrena con una app genérica: entrena con tu método.</p>
+          </li>
+          <li class="story-step" data-step="4">
+            <span class="step-n">04</span>
+            <h3>Entrena guiado, serie por serie</h3>
+            <p>Calentamiento, técnica, video corto, pesos sugeridos, descanso que corre solo y cambio de ejercicio si la máquina está ocupada. Todo queda registrado para ti.</p>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <div class="compare-mobile-ui">
-        <div class="compare-dots" aria-hidden="true">
-          <button class="compare-dot compare-dot--active" data-c="0" aria-label="Ir a comparación 1"></button>
-          <button class="compare-dot" data-c="1" aria-label="Ir a comparación 2"></button>
-          <button class="compare-dot" data-c="2" aria-label="Ir a comparación 3"></button>
-          <button class="compare-dot" data-c="3" aria-label="Ir a comparación 4"></button>
-          <button class="compare-dot" data-c="4" aria-label="Ir a comparación 5"></button>
-        </div>
-        <p class="compare-swipe-hint">Desliza para comparar</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ REFERRAL PROGRAM ═══ -->
-
-  <section class="referral-section">
-    <div class="ref-glow"></div>
-    <div class="container">
-
-      <div class="referral-head">
-        <div class="section-label reveal">Programa de referidos</div>
-        <h2 class="referral-title reveal stagger-1">Gana un <span class="ref-pct">25%</span> por cada coach que traigas</h2>
-        <p class="referral-sub reveal stagger-2">Comparte tu código. Cuando un coach se une con tu link y activa su plan, recibes el 25% de su primer pago — directo, sin intermediarios.</p>
-      </div>
-
-      <!-- Stats row -->
-      <div class="ref-stats reveal stagger-2">
-        <div class="ref-stat">
-          <span class="ref-stat-num">25%</span>
-          <span class="ref-stat-lbl">comisión directa</span>
-        </div>
-        <div class="ref-stat-div"></div>
-        <div class="ref-stat">
-          <span class="ref-stat-num">∞</span>
-          <span class="ref-stat-lbl">ilimitados</span>
-        </div>
-        <div class="ref-stat-div"></div>
-        <div class="ref-stat">
-          <span class="ref-stat-num">$0</span>
-          <span class="ref-stat-lbl">costo de entrada</span>
-        </div>
-      </div>
-
-      <!-- Cards -->
-      <div class="ref-cards-outer">
-        <div class="ref-cards" id="refCards">
-
-          <div class="ref-card">
-            <div class="ref-card-num">01</div>
-            <div class="feature-icon blue">
-              <svg class="op-icon" aria-hidden="true"><use href="#op-tag"></use></svg>
-            </div>
-            <div class="ref-card-step">Paso 1</div>
-            <h3>Obtén tu código único</h3>
-            <p>Al crear tu cuenta recibes un slug personal (ej. <code>carlos-mendoza</code>). Es tuyo para siempre y visible desde tu panel.</p>
+    <!-- ── TU MARCA ── -->
+    <section class="sec brand" id="marca" aria-labelledby="brand-title" data-brand="atlas">
+      <div class="brand-grid">
+        <div class="brand-copy">
+          <p class="eyebrow rv">Tu marca · Elite</p>
+          <h2 id="brand-title" class="rv">No es la app de OneProtocol.<br><span class="dim">Es la app de tu coaching.</span></h2>
+          <p class="lede rv">Subes tu logo y eliges tu color. La app de tus clientes, el arranque de cada sesión, las tarjetas que comparten y los reportes llevan tu marca.</p>
+          <div class="brand-pick rv" role="group" aria-label="Probar con un coach de ejemplo">
+            <button type="button" data-b="atlas" class="is-on"><i style="--c:#3D8BFF">AC</i>Atlas Coaching</button>
+            <button type="button" data-b="nova"><i style="--c:#E5A23C">NP</i>Nova Performance</button>
+            <button type="button" data-b="kora"><i style="--c:#2EC4A6">KF</i>Kora Fit</button>
           </div>
-
-          <div class="ref-card">
-            <div class="ref-card-num">02</div>
-            <div class="feature-icon blue">
-              <svg class="op-icon" aria-hidden="true"><use href="#op-share"></use></svg>
-            </div>
-            <div class="ref-card-step">Paso 2</div>
-            <h3>Comparte tu link</h3>
-            <p>Envía <code>oneprotocol.fit/register?ref=tu-código</code> o comenta tu código. El coach lo ingresa al registrarse y queda vinculado a ti.</p>
-          </div>
-
-          <div class="ref-card ref-card--highlight">
-            <div class="ref-card-num">03</div>
-            <div class="feature-icon blue">
-              <svg class="op-icon" aria-hidden="true"><use href="#op-coin"></use></svg>
-            </div>
-            <div class="ref-card-step">Paso 3 — cobras</div>
-            <h3>Recibe tu bono al instante</h3>
-            <p>Cuando activa su plan, el 25% llega a ti de inmediato.</p>
-            <div class="ref-bonus-row">
-              <div class="ref-bonus"><span>Starter</span><strong>$5</strong></div>
-              <div class="ref-bonus"><span>Pro</span><strong>$7.50</strong></div>
-              <div class="ref-bonus ref-bonus--top"><span>Elite</span><strong>$10</strong></div>
-            </div>
-          </div>
-
-          <div class="ref-card">
-            <div class="ref-card-num">✓</div>
-            <div class="feature-icon blue">
-              <svg class="op-icon" aria-hidden="true"><use href="#op-shield-check"></use></svg>
-            </div>
-            <div class="ref-card-step">Condición</div>
-            <h3>Tu plan debe estar activo</h3>
-            <p>El bono aplica solo si tú tienes un plan pagado (Starter, Pro o Elite) al momento del registro. Sin plan activo, no aplica.</p>
-          </div>
-
+          <p class="brand-note rv">Coaches de demostración. Prueba con cada uno.</p>
         </div>
-
-        <!-- Dots (mobile) -->
-        <div class="ref-dots-wrap" id="refDots">
-          <span class="ref-dot ref-dot--on" onclick="refGoTo(0)"></span>
-          <span class="ref-dot" onclick="refGoTo(1)"></span>
-          <span class="ref-dot" onclick="refGoTo(2)"></span>
-          <span class="ref-dot" onclick="refGoTo(3)"></span>
-        </div>
-      </div>
-
-      <!-- Callout -->
-      <div class="ref-callout reveal stagger-1">
-        <div class="ref-callout-inner">
-          <p class="ref-callout-label">Potencial de ganancia</p>
-          <p class="ref-callout-text">Con 10 coaches referidos en plan Pro recibes <strong>$75</strong> — pasivo, y sin esfuerzo extra. A 25 coaches: <strong>$187.50</strong>.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══ DIRECT ═══ -->
-  <section class="direct-section" id="direct">
-    <div class="direct-glow direct-glow--1" aria-hidden="true"></div>
-    <div class="direct-glow direct-glow--2" aria-hidden="true"></div>
-
-    <div class="container">
-
-      <!-- Label -->
-      <div class="direct-eyebrow reveal">
-        <svg class="mini-icon" aria-hidden="true"><use href="#op-bolt"></use></svg>
-        PRODUCTO PARALELO
-      </div>
-
-      <!-- Headline -->
-      <h2 class="direct-title reveal stagger-1">
-        OneProtocol Direct es para quien entrena sin coach.<br/>
-        <span class="direct-title-grad">La plataforma principal sigue siendo para profesionales.</span>
-      </h2>
-      <p class="direct-sub reveal stagger-2">
-        Si eres coach, OneProtocol te ayuda a operar clientes. Direct es la versión individual para personas que quieren TDEE, rutinas progresivas, planes de alimentación y métricas sin contratar acompañamiento personalizado.
-      </p>
-
-      <!-- Feature pills -->
-      <div class="direct-pills reveal stagger-2">
-        <div class="direct-pill">
-          <svg class="mini-icon" aria-hidden="true"><use href="#op-clock"></use></svg>
-          TDEE personalizado
-        </div>
-        <div class="direct-pill">
-          <svg class="mini-icon" aria-hidden="true"><use href="#op-dumbbell"></use></svg>
-          5 rutinas científicas
-        </div>
-        <div class="direct-pill">
-          <svg class="mini-icon" aria-hidden="true"><use href="#op-apple"></use></svg>
-          Planes de alimentación
-        </div>
-        <div class="direct-pill">
-          <svg class="mini-icon" aria-hidden="true"><use href="#op-trending"></use></svg>
-          Métricas y progreso
-        </div>
-      </div>
-
-      <!-- Card principal -->
-      <div class="direct-card reveal stagger-3">
-
-        <!-- Left: feature list -->
-        <div class="direct-card-left">
-          <div class="direct-card-badge">Para quien toma el control</div>
-          <h3 class="direct-card-title">Todo lo que necesitas.<br/>Nada que no.</h3>
-
-          <ul class="direct-feature-list">
-            <li>
-              <span class="dfl-check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span>
-              <div>
-                <strong>Onboarding científico en 5 minutos</strong>
-                <span>Calculamos tu metabolismo basal, TDEE, calorías objetivo y macros según tu meta — ganar músculo, perder grasa o recomposición.</span>
+        <div class="brand-stage" aria-hidden="true">
+          <div class="phone brand-phone rv">
+            <div class="phone-screen bm">
+              <div class="bm-top"><span class="bm-logo" id="bm-logo">AC</span><span class="bm-name"><b id="bm-name">Atlas Coaching</b><small id="bm-tag">Fuerza con método</small></span></div>
+              <div class="bm-hello"><small>Buenos días</small><b>Camila Ríos</b><span>Recomposición corporal · Semana 6</span></div>
+              <div class="bm-week">
+                <span>Lun<i>01</i></span><span>Mar<i>02</i></span><span class="off">Mié<i>–</i></span><span>Jue<i>01</i></span><span class="on">Vie<i>02</i></span><span>Sáb<i>03</i></span><span class="off">Dom<i>–</i></span>
               </div>
-            </li>
-            <li>
-              <span class="dfl-check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span>
-              <div>
-                <strong>Rutinas con progresión y educación</strong>
-                <span>Full Body, Upper/Lower, PPL, Glute Focus y Torso/Pierna. Cada ejercicio incluye sets, reps, RIR, descanso y el <em>por qué</em> científico.</span>
-              </div>
-            </li>
-            <li>
-              <span class="dfl-check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span>
-              <div>
-                <strong>Planes de alimentación escalados</strong>
-                <span>Las porciones se adaptan automáticamente a tus calorías. Clásica, Alta Proteína, Flexible y Plant-Based.</span>
-              </div>
-            </li>
-            <li>
-              <span class="dfl-check"><svg class="mini-icon" aria-hidden="true"><use href="#op-check"></use></svg></span>
-              <div>
-                <strong>Seguimiento de métricas y logros</strong>
-                <span>Gráfica de progreso, tendencia estadística, composición corporal y 15 hitos que reconocen tu consistencia.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: pricing + CTA -->
-        <div class="direct-card-right">
-          <div class="direct-price-card">
-            <div class="dpc-label">PLAN GRATUITO</div>
-            <div class="dpc-price">
-              <span class="dpc-amount">$0</span>
-              <span class="dpc-period">para siempre</span>
+              <div class="bm-today"><small>Hoy toca</small><b>Torso A</b><span>5 ejercicios · 18 series · ≈ 45 min</span><em>Iniciar entrenamiento</em></div>
+              <div class="bm-row"><span class="bm-ring" style="--p:86"><b>86%</b></span><span><b>Tu adherencia</b><small>12 de 14 sesiones este mes</small></span></div>
+              <div class="bm-row"><span class="bm-msg">💬</span><span><b id="bm-coach">Mensaje de Atlas</b><small>«Sube 2,5 kg en el press si sale limpio»</small></span></div>
             </div>
-            <ul class="dpc-includes">
-              <li>✓ Onboarding + TDEE + macros</li>
-              <li>✓ Rutina Full Body (3 días)</li>
-              <li>✓ Registro de peso</li>
-              <li>✓ 3 logros de inicio</li>
-            </ul>
-            <a href="/register-direct.html" class="direct-cta-btn" data-track="direct_register">
-              Comenzar gratis →
-            </a>
-            <div class="dpc-note">Sin tarjeta · Sin depender de un coach</div>
           </div>
-
-          <div class="direct-premium-strip">
-            <svg class="mini-icon" aria-hidden="true"><use href="#op-bolt"></use></svg>
-            <span><strong>Direct Premium</strong> desde $9.99/mes — todas las rutinas, métricas completas, planes de dieta y logros</span>
-          </div>
-        </div>
-
-      </div><!-- /direct-card -->
-
-      <!-- Diferenciador -->
-      <div class="direct-vs reveal stagger-3">
-        <div class="dvs-col coaching">
-          <div class="dvs-label">Con un coach</div>
-          <ul>
-            <li>Acompañamiento personalizado</li>
-            <li>Corrección de técnica en vivo</li>
-            <li>Ajustes semanales</li>
-            <li>$50–$300/mes promedio</li>
-          </ul>
-          <a href="/register" class="dvs-cta coaching-cta" target="_blank" rel="noopener" data-track="direct_vs_coach">Soy coach →</a>
-        </div>
-        <div class="dvs-divider">
-          <div class="dvs-or">VS</div>
-        </div>
-        <div class="dvs-col direct">
-          <div class="dvs-label">Con Direct</div>
-          <ul>
-            <li>Herramientas científicas siempre disponibles</li>
-            <li>Educación contextual en cada paso</li>
-            <li>Tú decides cuándo y cómo</li>
-            <li>Gratis para empezar · $9.99/mes completo</li>
-          </ul>
-          <a href="/register-direct.html" class="dvs-cta direct-cta" data-track="direct_vs_direct">Unirme a Direct →</a>
+          <figure class="brand-card rv"><img id="bm-card" src="assets/shots/card-atlas.webp" alt="" width="1080" height="1920" loading="lazy"></figure>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ── PARA PRESUMIR: mazo ── -->
+    <section class="sec share" aria-labelledby="share-title">
+      <div class="share-grid">
+        <div class="share-deck rv" id="share-deck" aria-label="Tarjetas para compartir. Arrastra, toca o usa las flechas.">
+          <div class="share-deck-cards">
+            <figure class="deck-card" data-label="Atlas Coaching · Pierna y glúteo"><img src="assets/shots/card-atlas.webp" alt="Tarjeta de entrenamiento con la marca Atlas Coaching: cuerpo 3D, tiempo, series, volumen y récord" width="1080" height="1920" loading="lazy"></figure>
+            <figure class="deck-card" data-label="Nova Performance · Torso A"><img src="assets/shots/card-nova.webp" alt="Tarjeta de entrenamiento con la marca Nova Performance" width="1080" height="1920" loading="lazy"></figure>
+            <figure class="deck-card" data-label="Kora Fit · Full Body"><img src="assets/shots/card-kora.webp" alt="Tarjeta de entrenamiento con la marca Kora Fit" width="1080" height="1920" loading="lazy"></figure>
+          </div>
+          <div class="share-deck-bar"><span class="share-deck-label" id="share-deck-label">Atlas Coaching · Pierna y glúteo</span><span class="share-deck-dots"><i class="on"></i><i></i><i></i></span><span class="share-deck-hint">Desliza o toca</span></div>
+        </div>
+        <div class="share-copy">
+          <p class="eyebrow rv">Para presumir</p>
+          <h2 id="share-title" class="rv">Cada sesión,<br><span class="dim">una historia con tu marca.</span></h2>
+          <p class="lede rv">Al terminar, tu cliente comparte su entrenamiento en formato historia: músculos trabajados en 3D, tiempo, series, volumen y récords. Tu nombre y tu Instagram viajan en cada publicación.</p>
+          <ul class="ticks rv">
+            <li>Lista para Instagram y WhatsApp, en un toque</li>
+            <li>Récords personales detectados solos</li>
+            <li>También sobre una foto suya, sin subirla a ningún lado</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <style>
-    /* ── Direct section ───────────────────────── */
-    .direct-section {
-      position: relative;
-      padding: 100px 0 80px;
-      overflow: hidden;
-      border-top: 1px solid rgba(255,255,255,.05);
-    }
-    .direct-glow {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(140px);
-    }
-    .direct-glow--1 {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(153,102,221,.09) 0%, transparent 70%);
-      top: -200px; right: -150px;
-    }
-    .direct-glow--2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,123,255,.07) 0%, transparent 70%);
-      bottom: -100px; left: -100px;
-    }
-    .direct-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 10px; font-weight: 800; letter-spacing: 2px;
-      color: #9966dd; margin-bottom: 20px;
-      padding: 5px 14px 5px 10px; border-radius: 99px;
-      background: rgba(153,102,221,.1); border: 1px solid rgba(153,102,221,.2);
-    }
-    .direct-eyebrow svg { width: 14px; height: 14px; stroke: #9966dd; }
+    <!-- ── BUILDERS ── -->
+    <section class="sec builders" id="builders" aria-labelledby="builders-title">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Builders</p>
+        <h2 id="builders-title">Armas en minutos.<br><span class="dim">Entregas como un profesional.</span></h2>
+        <p class="lede">Routine Builder y Diet Builder con biblioteca de ejercicios y alimentos. Lo que publicas le llega al cliente al instante, con aviso a su celular.</p>
+      </div>
+      <div class="build-grid">
+        <article class="build-card rv" id="rb" aria-label="Routine Builder en acción">
+          <header><span class="build-ic">⚡</span><span><b>Routine Builder</b><small>Protocolo de fuerza · Camila</small></span><span class="build-pill">Semana A/B</span></header>
+          <div class="rb-tabs"><span class="on">Día 1 · Pierna</span><span>Día 2 · Torso</span><span>Día 3 · Full</span></div>
+          <ul class="rb-list">
+            <li><i>1</i><span><b>Sentadilla con barra</b><small><em>4 × 6-8</em><em>RIR 2</em><em>Tempo 3-1-1</em></small></span></li>
+            <li><i>2</i><span><b>Hip Thrust con barra</b><small><em>4 × 8-10</em><em>RIR 1-2</em><em class="blue">Top set</em></small></span></li>
+            <li><i>A1</i><span><b>Peso muerto rumano</b><small><em>3 × 8-10</em><em class="violet">Superserie</em></small></span></li>
+            <li><i>A2</i><span><b>Zancadas</b><small><em>3 × 10-12</em><em class="violet">Superserie</em></small></span></li>
+          </ul>
+          <footer><span class="rb-sum">4 ejercicios · 14 series · ≈ 30 min</span><button type="button" class="rb-pub" tabindex="-1"><span>Publicar al cliente</span></button></footer>
+          <div class="rb-toast" aria-hidden="true"><span class="chip-ic ok">✓</span><span><b>Plan enviado a Camila</b><small>Le llegó el aviso a su celular</small></span></div>
+        </article>
+        <article class="build-card rv" id="db" style="--d:.08s" aria-label="Diet Builder en acción">
+          <header><span class="build-ic green">◐</span><span><b>Diet Builder</b><small>Recomposición · 2.050 kcal</small></span><span class="build-pill green">Menús + equivalencias</span></header>
+          <div class="db-top">
+            <svg class="db-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" class="db-track"/>
+              <circle cx="60" cy="60" r="50" class="db-arc p" pathLength="100" style="--len:34;--off:0"/>
+              <circle cx="60" cy="60" r="50" class="db-arc c" pathLength="100" style="--len:42;--off:-34"/>
+              <circle cx="60" cy="60" r="50" class="db-arc g" pathLength="100" style="--len:24;--off:-76"/>
+            </svg>
+            <div class="db-kcal"><b data-count="2050">2.050</b><small>kcal / día</small></div>
+            <ul class="db-macros"><li><i class="p"></i>Proteína <b>175 g</b></li><li><i class="c"></i>Carbohidratos <b>215 g</b></li><li><i class="g"></i>Grasas <b>55 g</b></li></ul>
+          </div>
+          <ul class="db-meals">
+            <li><span>Desayuno</span><b>Avena, claras y frutos rojos</b><em>520 kcal</em></li>
+            <li><span>Almuerzo</span><b>Pollo, arroz y vegetales</b><em>680 kcal</em></li>
+            <li><span>Merienda</span><b>Yogur griego y nueces</b><em>310 kcal</em></li>
+            <li><span>Cena</span><b>Salmón, papa y ensalada</b><em>540 kcal</em></li>
+          </ul>
+          <p class="db-note">Tu cliente cambia un alimento por su equivalente sin salirse de sus macros.</p>
+        </article>
+      </div>
+    </section>
 
-    .direct-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900; letter-spacing: -.04em;
-      line-height: 1.1; margin-bottom: 20px;
-      color: var(--txt);
-    }
-    .direct-title-grad {
-      background: linear-gradient(135deg, #007BFF, #4a6fff, #9966dd);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .direct-sub {
-      font-size: 1.05rem; color: var(--muted); line-height: 1.7;
-      max-width: 660px; margin-bottom: 32px;
-    }
+    <!-- ── TU PANEL ── -->
+    <section class="sec panel" id="panel" aria-labelledby="panel-title">
+      <div class="panel-grid">
+        <div class="panel-copy">
+          <p class="eyebrow rv">Tu panel</p>
+          <h2 id="panel-title" class="rv">Toda tu operación,<br><span class="dim">en una sola pantalla.</span></h2>
+          <p class="lede rv">Quién entrena, quién se está cayendo, quién vence esta semana y qué te preguntaron. Desde el celular o la computadora.</p>
+          <ul class="feat-list rv">
+            <li><b>Adherencia real</b><span>Sesiones completadas frente a las planificadas, cliente por cliente.</span></li>
+            <li><b>Membresías que vencen solas</b><span>Días de gracia y luego el plan se pausa. Sin perseguir pagos a mano.</span></li>
+            <li><b>Ficha y progreso</b><span>Peso, medidas, fotos, composición y reportes PDF listos para enviar.</span></li>
+            <li><b>Chat y formulario de ingreso</b><span>Captas clientes con un link y conversas sin salir del panel.</span></li>
+          </ul>
+        </div>
+        <div class="dash rv" id="dash" aria-label="Panel del coach con clientes de ejemplo">
+          <div class="dash-bar"><i></i><i></i><i></i><span>app.oneprotocol.fit · Panel</span></div>
+          <div class="dash-body">
+            <div class="dash-hello"><small>Viernes 13 de noviembre</small><b>Buenos días, Andrea</b></div>
+            <div class="dash-kpis">
+              <div><small>Clientes</small><b data-count="38">38</b></div>
+              <div><small>Activos</small><b class="green" data-count="34">34</b></div>
+              <div><small>Por vencer</small><b class="amber" data-count="3">3</b></div>
+              <div><small>Adherencia</small><b class="blue" data-count="87" data-suffix="%">87%</b></div>
+            </div>
+            <ul class="dash-list">
+              <li><span class="av" style="--c:#3D8BFF">CR</span><span class="who"><b>Camila Ríos</b><small>Recomposición · Sem 6</small></span><span class="bar"><i style="--w:92%"></i></span><span class="pill ok">Activa</span></li>
+              <li><span class="av" style="--c:#E5A23C">MV</span><span class="who"><b>Mateo Vega</b><small>Hipertrofia · Sem 3</small></span><span class="bar"><i style="--w:78%"></i></span><span class="pill ok">Activa</span></li>
+              <li><span class="av" style="--c:#2EC4A6">VP</span><span class="who"><b>Valeria Paz</b><small>Pérdida de grasa · Sem 9</small></span><span class="bar"><i style="--w:64%"></i></span><span class="pill amber">Vence en 2 d</span></li>
+              <li><span class="av" style="--c:#A78BFA">JL</span><span class="who"><b>Julián León</b><small>Fuerza · Sem 1</small></span><span class="bar"><i style="--w:40%"></i></span><span class="pill blue">Nuevo</span></li>
+            </ul>
+            <div class="dash-alert"><span>⏰</span><span><b>Valeria vence el domingo</b><small>Recuérdale por WhatsApp con un toque</small></span><em>WhatsApp</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    /* Feature pills */
-    .direct-pills {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px;
-    }
-    .direct-pill {
-      display: flex; align-items: center; gap: 7px;
-      padding: 7px 14px; border-radius: 99px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      font-size: 12px; font-weight: 600; color: var(--muted);
-    }
-    .direct-pill svg {
-      width: 14px; height: 14px;
-      stroke: #9966dd; flex-shrink: 0;
-    }
+    <!-- ── FLUJO ── -->
+    <section class="sec flow" aria-labelledby="flow-title">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Un solo sistema</p>
+        <h2 id="flow-title">Del primer contacto<br><span class="dim">a la renovación.</span></h2>
+      </div>
+      <ol class="flow-row" id="flow">
+        <li class="rv"><span class="flow-ic">01</span><b>Ingreso</b><small>Formulario por link: datos, objetivos, lesiones y fotos.</small></li>
+        <li class="rv" style="--d:.06s"><span class="flow-ic">02</span><b>Plan</b><small>Rutina y dieta con los builders, o tu propio PDF.</small></li>
+        <li class="rv" style="--d:.12s"><span class="flow-ic">03</span><b>Seguimiento</b><small>Sesiones, pesos, adherencia y mensajes en vivo.</small></li>
+        <li class="rv" style="--d:.18s"><span class="flow-ic">04</span><b>Reporte</b><small>Progreso, medidas y fotos en un PDF con tu marca.</small></li>
+        <li class="rv" style="--d:.24s"><span class="flow-ic">05</span><b>Renovación</b><small>Aviso antes de vencer, días de gracia y pausa automática.</small></li>
+      </ol>
+    </section>
 
-    /* Main card */
-    .direct-card {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 40px; align-items: start;
-      background: rgba(255,255,255,.025);
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 24px; padding: 40px;
-      margin-bottom: 40px;
-    }
-    @media (max-width: 860px) {
-      .direct-card { grid-template-columns: 1fr; padding: 28px 24px; }
-    }
+    <!-- ── PLANES ── -->
+    <section class="sec pricing" id="planes" aria-labelledby="pricing-title">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Planes</p>
+        <h2 id="pricing-title">Empieza gratis.<br><span class="dim">Crece cuando lo necesites.</span></h2>
+      </div>
+      <div class="plans">
+        <article class="plan rv">
+          <h3>Trial</h3><p class="price"><b>Gratis</b></p><p class="plan-sub">7 días para vivir la plataforma completa. Sin tarjeta.</p>
+          <ul><li>Hasta 5 clientes</li><li>Rutinas y dietas con los builders</li><li>App del cliente con reproductor y 3D</li><li>Seguimiento de adherencia</li><li>Reportes y mensajería</li></ul>
+          <a class="btn btn-ghost" href="/register">Comenzar gratis</a>
+        </article>
+        <article class="plan rv" style="--d:.05s">
+          <h3>Starter</h3><p class="price"><b>$20</b><span>/mes</span></p><p class="plan-sub">Para coaches arrancando con lo esencial.</p>
+          <ul><li>Hasta 10 clientes</li><li>Ficha completa de cada cliente</li><li>Rutinas en PDF</li><li>Registro de sesiones</li><li>Medidas y composición corporal</li><li>Cumplimiento, logros y mensajería</li></ul>
+          <a class="btn btn-ghost" href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Starter%20de%20OneProtocol%20%F0%9F%92%AA">Empezar ahora</a>
+        </article>
+        <article class="plan plan-hot rv" style="--d:.1s">
+          <span class="plan-badge">Más popular</span>
+          <h3>Pro</h3><p class="price"><b>$30</b><span>/mes</span></p><p class="plan-sub">Para coaches en crecimiento que quieren diferenciarse.</p>
+          <ul><li>Hasta 25 clientes</li><li>Todo lo de Starter</li><li>Planes interactivos en el celular del cliente</li><li>Videos de técnica de cada ejercicio</li><li>Rutina express con código QR</li><li>Reportes de progreso en PDF</li></ul>
+          <a class="btn btn-blue" href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Pro%20de%20OneProtocol%20%F0%9F%92%AA">Empezar en Pro</a>
+        </article>
+        <article class="plan plan-elite rv" style="--d:.15s">
+          <h3>Elite</h3><p class="price"><b>$40</b><span>/mes</span></p><p class="plan-sub">Para coaches consolidados que operan a otro nivel.</p>
+          <ul><li>Clientes ilimitados</li><li>Todo lo de Pro</li><li>Planes de alimentación completos</li><li>Formulario de ingreso por link</li><li>Avisos al celular del cliente</li><li>Tu marca y tu logo en toda la app</li><li>Reportes avanzados en PDF</li></ul>
+          <a class="btn btn-gold" href="https://wa.me/593983037119?text=Hola%2C%20me%20interesa%20el%20plan%20Elite%20de%20OneProtocol%20%F0%9F%92%AA">Ir a Elite</a>
+        </article>
+      </div>
+      <p class="plans-note rv">¿Dudas sobre cuál es el tuyo? Entra al Trial o escríbenos por WhatsApp y revisamos tu caso.</p>
+    </section>
 
-    .direct-card-badge {
-      display: inline-block; font-size: 9px; font-weight: 800;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: #9966dd; background: rgba(153,102,221,.1);
-      border: 1px solid rgba(153,102,221,.2);
-      border-radius: 99px; padding: 4px 12px; margin-bottom: 14px;
-    }
-    .direct-card-title {
-      font-size: 1.6rem; font-weight: 900; letter-spacing: -.03em;
-      color: var(--txt); line-height: 1.2; margin-bottom: 28px;
-    }
-    .direct-feature-list {
-      list-style: none; display: flex; flex-direction: column; gap: 20px;
-    }
-    .direct-feature-list li {
-      display: flex; align-items: flex-start; gap: 12px;
-    }
-    .dfl-check {
-      width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
-      background: rgba(78,222,128,.12); border: 1px solid rgba(78,222,128,.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; color: #4ade80; margin-top: 1px;
-      font-weight: 700;
-    }
-    .direct-feature-list li div { display: flex; flex-direction: column; gap: 3px; }
-    .direct-feature-list li strong {
-      font-size: .875rem; font-weight: 700; color: var(--txt);
-    }
-    .direct-feature-list li span {
-      font-size: .78rem; color: var(--muted); line-height: 1.5;
-    }
-    .direct-feature-list li span em { color: #9966dd; font-style: normal; }
+    <!-- ── REFERIDOS ── -->
+    <section class="sec refer" id="referidos" aria-labelledby="refer-title">
+      <div class="refer-box rv">
+        <div class="refer-copy">
+          <p class="eyebrow">Programa de referidos</p>
+          <h2 id="refer-title">Gana un <span class="shine-blue">25%</span><br><span class="dim">por cada coach que traigas.</span></h2>
+          <p class="lede">Comparte tu link. Cuando un coach se registra con tu código y activa su plan, recibes el 25% de su primer pago. Solo necesitas tener tu plan activo.</p>
+          <ol class="refer-steps"><li><b>Tu código</b><span>Lo recibes al crear tu cuenta</span></li><li><b>Tu link</b><span>oneprotocol.fit/register?ref=tu-código</span></li><li><b>Tu bono</b><span>Llega cuando activa su plan</span></li></ol>
+        </div>
+        <div class="calc" id="calc">
+          <p class="calc-t">Calcula tu bono</p>
+          <label for="calc-n">Coaches referidos <output id="calc-n-out">10</output></label>
+          <input type="range" id="calc-n" min="1" max="50" value="10">
+          <div class="calc-plans" role="radiogroup" aria-label="Plan que activan">
+            <button type="button" role="radio" aria-checked="false" data-v="5">Starter</button>
+            <button type="button" role="radio" aria-checked="true" data-v="7.5" class="on">Pro</button>
+            <button type="button" role="radio" aria-checked="false" data-v="10">Elite</button>
+          </div>
+          <p class="calc-total"><small>Recibes</small><b id="calc-total">$75</b></p>
+          <p class="calc-note">25% del primer pago de cada coach que activa su plan.</p>
+        </div>
+      </div>
+    </section>
 
-    /* Right column */
-    .direct-card-right {
-      display: flex; flex-direction: column; gap: 14px;
-    }
-    .direct-price-card {
-      background: linear-gradient(160deg, #13101f 0%, #0e0c1a 100%);
-      border: 1px solid rgba(153,102,221,.25);
-      border-radius: 18px; padding: 28px 24px;
-    }
-    .dpc-label {
-      font-size: 9px; font-weight: 800; letter-spacing: 2px;
-      color: #9966dd; margin-bottom: 14px;
-    }
-    .dpc-price {
-      display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px;
-    }
-    .dpc-amount {
-      font-size: 3rem; font-weight: 900; color: #fff; letter-spacing: -2px;
-    }
-    .dpc-period { font-size: 13px; color: rgba(255,255,255,.4); font-weight: 500; }
-    .dpc-includes {
-      list-style: none; display: flex; flex-direction: column; gap: 7px;
-      margin-bottom: 22px; font-size: 12px; color: rgba(255,255,255,.7);
-    }
-    .dpc-includes li::before { content: ''; }
+    <!-- ── DIRECT ── -->
+    <section class="sec direct" id="direct" aria-labelledby="direct-title">
+      <div class="direct-box rv">
+        <div>
+          <p class="eyebrow violet">OneProtocol Direct</p>
+          <h2 id="direct-title">¿Entrenas sin coach?<br><span class="dim">Direct es para ti.</span></h2>
+          <p class="lede">TDEE y macros según tu meta, cinco rutinas con progresión, planes de alimentación que se ajustan a tus calorías y métricas con logros. Gratis para empezar.</p>
+          <div class="hero-ctas"><a class="btn btn-violet" href="/register-direct.html">Unirme a Direct</a><a class="btn btn-ghost" href="/register">Soy coach</a></div>
+        </div>
+        <ul class="direct-list">
+          <li><b>Onboarding en 5 minutos</b><span>Metabolismo basal, TDEE, calorías objetivo y macros.</span></li>
+          <li><b>Rutinas con progresión</b><span>Full Body, Upper/Lower, PPL, Glute Focus y Torso/Pierna.</span></li>
+          <li><b>Planes que se escalan solos</b><span>Clásica, Alta Proteína, Flexible y Plant-Based.</span></li>
+          <li><b>Gratis o Premium</b><span>$0 para siempre, o Premium desde $9,99/mes con todo.</span></li>
+        </ul>
+      </div>
+    </section>
 
-    .direct-cta-btn {
-      display: block; text-align: center;
-      background: linear-gradient(135deg, #007BFF, #4a6fff, #9966dd);
-      color: #fff; font-size: 13px; font-weight: 800;
-      letter-spacing: .5px; padding: 14px;
-      border-radius: 12px; text-decoration: none;
-      transition: opacity .2s; margin-bottom: 10px;
-    }
-    .direct-cta-btn:hover { opacity: .88; }
-    .dpc-note {
-      text-align: center; font-size: 10px; color: rgba(255,255,255,.3);
-    }
-    .direct-premium-strip {
-      display: flex; align-items: flex-start; gap: 8px;
-      padding: 12px 14px; border-radius: 12px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      font-size: 11px; color: var(--muted); line-height: 1.5;
-    }
-    .direct-premium-strip svg { flex-shrink: 0; stroke: #9966dd; margin-top: 2px; }
-    .direct-premium-strip strong { color: var(--txt); }
-
-    /* VS comparator */
-    .direct-vs {
-      display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
-      border-radius: 20px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,.07);
-    }
-    @media (max-width: 640px) {
-      .direct-vs { grid-template-columns: 1fr; }
-      .dvs-divider { padding: 0; }
-      .dvs-or { writing-mode: initial; transform: none; padding: 8px 24px; }
-    }
-    .dvs-col {
-      padding: 32px 28px;
-      display: flex; flex-direction: column; gap: 14px;
-    }
-    .dvs-col.coaching { background: rgba(255,255,255,.02); }
-    .dvs-col.direct   { background: rgba(153,102,221,.05); }
-    .dvs-label {
-      font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-    .dvs-col.coaching .dvs-label { color: var(--muted); }
-    .dvs-col.direct   .dvs-label { color: #9966dd; }
-    .dvs-col ul {
-      list-style: none; display: flex; flex-direction: column; gap: 8px;
-      font-size: 12px; color: var(--muted); line-height: 1.5; flex: 1;
-    }
-    .dvs-col ul li::before { content: '— '; opacity: .4; }
-    .dvs-cta {
-      display: inline-block; padding: 10px 16px; border-radius: 10px;
-      font-size: 12px; font-weight: 700; text-decoration: none;
-      text-align: center; transition: opacity .2s;
-    }
-    .dvs-cta:hover { opacity: .8; }
-    .coaching-cta {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      color: var(--txt);
-    }
-    .direct-cta {
-      background: linear-gradient(135deg, #007BFF, #9966dd);
-      color: #fff;
-    }
-    .dvs-divider {
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,.03); padding: 0 8px;
-      border-left: 1px solid rgba(255,255,255,.06);
-      border-right: 1px solid rgba(255,255,255,.06);
-    }
-    .dvs-or {
-      font-size: 11px; font-weight: 800; letter-spacing: 2px;
-      color: rgba(255,255,255,.2);
-      writing-mode: vertical-rl; transform: rotate(180deg);
-    }
-  </style>
-
-  <!-- ═══ FAQ ═══ -->
-  <section class="faq-section" id="faq">
-    <div class="container">
-      <div class="section-label reveal">FAQ</div>
-      <h2 class="section-title reveal stagger-1">Lo que un coach normalmente pregunta antes de entrar</h2>
+    <!-- ── FAQ ── -->
+    <section class="sec faq" id="faq" aria-labelledby="faq-title">
+      <div class="sec-head center rv"><p class="eyebrow">Preguntas</p><h2 id="faq-title">Lo que un coach pregunta<br><span class="dim">antes de entrar.</span></h2></div>
       <div class="faq-list">
-        <details class="faq-item reveal">
-          <summary>¿OneProtocol es solo para fitness?</summary>
-          <p>No. Nació fuerte en fitness y coaching físico, pero el modelo también sirve para nutrición, rendimiento, bienestar y operaciones híbridas donde el profesional necesita seguimiento, entregables y una experiencia móvil para su cliente.</p>
-        </details>
-        <details class="faq-item reveal stagger-1">
-          <summary>¿Mis clientes tienen que descargar una app?</summary>
-          <p>No necesariamente. Pueden entrar desde el navegador y usarla como app. La experiencia está pensada para sentirse como producto móvil real sin obligarte a depender de App Store o Play Store.</p>
-        </details>
-        <details class="faq-item reveal stagger-2">
-          <summary>¿Puedo trabajar entrenamiento y nutrición en el mismo lugar?</summary>
-          <p>Sí. El sistema contempla ambos slots, además de builders, planes HTML/PDF, reportes, biometría, macros y comunicación continua con el cliente.</p>
-        </details>
-        <details class="faq-item reveal">
-          <summary>¿Qué pasa si el cliente no renueva?</summary>
-          <p>La membresía vence, puede entrar en días de gracia y luego el acceso al plan del cliente se suspende automáticamente. Eso reduce muchísimo la fricción operativa de perseguir pagos manualmente.</p>
-        </details>
-        <details class="faq-item reveal stagger-1">
-          <summary>¿Puedo usar mi marca?</summary>
-          <p>Sí. OneProtocol contempla branding para que el cliente perciba tu logo, tu nombre de marca y una experiencia más propia, más profesional y más coherente con tu negocio.</p>
-        </details>
-        <details class="faq-item reveal stagger-2">
-          <summary>¿Cuánto tiempo toma empezar?</summary>
-          <p>Puedes crear tu cuenta y comenzar a registrar clientes en minutos. La curva real no está en aprender software complejo, sino en aprovechar un sistema ya conectado para dejar de operar por partes.</p>
-        </details>
+        <details class="rv"><summary>¿Mis clientes tienen que descargar algo de la tienda?</summary><p>No. Entran desde el navegador y la instalan como app en su pantalla de inicio, en iPhone y Android. Funciona como una app real sin depender de App Store o Play Store.</p></details>
+        <details class="rv"><summary>¿Puedo trabajar entrenamiento y nutrición en el mismo lugar?</summary><p>Sí. Tienes Routine Builder y Diet Builder, y también puedes subir tus propios planes en PDF o enlace. Cada cliente ve su rutina, su dieta y su progreso en la misma app.</p></details>
+        <details class="rv"><summary>¿Qué pasa si un cliente no renueva?</summary><p>Su membresía vence, entra en días de gracia y luego su plan se pausa solo. Tú ves quién vence esta semana y le escribes por WhatsApp con un toque.</p></details>
+        <details class="rv"><summary>¿Puedo usar mi marca?</summary><p>Sí, en Elite. Tu logo, tu color y tu nombre aparecen en la app del cliente, en el arranque de cada sesión, en las tarjetas que comparte y en los reportes.</p></details>
+        <details class="rv"><summary>¿Sirve solo para fitness?</summary><p>Nació en el coaching físico, pero funciona igual para nutrición, rendimiento y bienestar: cualquier profesional que entrega planes y hace seguimiento.</p></details>
+        <details class="rv"><summary>¿Cuánto tarda empezar?</summary><p>Minutos. Creas tu cuenta, registras a tu primer cliente y le publicas su plan. El Trial de 7 días incluye todo.</p></details>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══ FINAL CTA ═══ -->
-  <section class="cta-section">
-    <div class="cta-glow"></div>
-    <div class="container cta-inner">
-      <h2 class="cta-title reveal">Tu coaching ya es profesional.<br />Tu panel también debería serlo.</h2>
-      <p class="cta-sub reveal stagger-1">Únete a OneProtocol y gestiona tu negocio desde un solo lugar — sin fricciones, sin herramientas genéricas. Menos horas perdidas administrando y una experiencia más sólida para cobrar como un profesional.</p>
-      <a href="/register" class="btn-primary btn-xl reveal stagger-2" target="_blank" rel="noopener" data-track="final_register">Crear mi cuenta gratis →</a>
-      <p class="cta-note reveal stagger-3">Sin tarjeta de crédito · Funciona como app desde tu navegador</p>
-    </div>
-  </section>
+    <!-- ── CTA FINAL ── -->
+    <section class="sec final" aria-labelledby="final-title">
+      <div class="final-aura" aria-hidden="true"></div>
+      <img class="final-logo rv" src="assets/op-symbol.webp" alt="" width="84" height="84">
+      <h2 id="final-title" class="rv">Tu coaching ya es profesional.<br><span class="shine">Tu app también debería serlo.</span></h2>
+      <div class="hero-ctas center rv"><a class="btn btn-blue" href="/register">Crear mi cuenta gratis <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://wa.me/593983037119?text=Hola%2C%20quiero%20conocer%20OneProtocol">Hablar por WhatsApp</a></div>
+      <p class="hero-note center rv">Sin tarjeta de crédito · Funciona como app desde el navegador</p>
+    </section>
+  </main>
 
-  <!-- ═══ FOOTER ═══ -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="icons/logo-full.webp" alt="OneProtocol" class="footer-logo-full" />
-      </div>
-      <p class="footer-kicker">ONE PLATFORM, ONE PROTOCOL</p>
-      <p class="footer-tagline">Construye mejor. Entrega mejor. Cobra con una experiencia que sí se ve profesional.</p>
-      <div class="footer-links">
-        <a href="https://app.oneprotocol.fit" data-track="footer_login">Iniciar sesión</a>
-        <a href="/register" target="_blank" rel="noopener" data-track="footer_register">Registrarse (Coach)</a>
-        <a href="/register-direct.html" data-track="footer_direct_register">Registrarse (Direct)</a>
-        <a href="#pricing" data-track="footer_pricing">Planes</a>
-        <a href="#direct" data-track="footer_direct">OneProtocol Direct</a>
-      </div>
-      <p class="footer-copy">© 2026 OneProtocol. Todos los derechos reservados.</p>
+    <div class="footer-in">
+      <a class="nav-logo" href="#top"><img src="assets/op-symbol.webp" alt="" width="30" height="30"><span>One<b>Protocol</b></span></a>
+      <p>One Platform, One Protocol.</p>
+      <nav aria-label="Pie de página"><a href="https://app.oneprotocol.fit">Iniciar sesión</a><a href="/register">Registrarse (Coach)</a><a href="/register-direct.html">Registrarse (Direct)</a><a href="#planes">Planes</a></nav>
+      <small>© 2026 OneProtocol. Coaches y clientes de las capturas son de demostración.</small>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var ctaTitle = document.querySelector('.cta-title');
-      var footerTagline = document.querySelector('.footer-tagline');
-      if (ctaTitle) {
-        ctaTitle.innerHTML = 'Tu coaching ya es profesional.<br><span class="cta-accent">Tu panel tambi&eacute;n deber&iacute;a serlo.</span>';
-      }
-      if (footerTagline) {
-        footerTagline.textContent = 'Construye mejor. Entrega mejor. Cobra con una experiencia que sí se ve profesional.';
-      }
-    })();
-  </script>
-
-  <script>
-    (function () {
-      document.addEventListener('click', function (event) {
-        var link = event.target.closest('[data-track]');
-        if (!link) return;
-
-        var payload = {
-          event: 'oneprotocol_cta_click',
-          cta: link.getAttribute('data-track'),
-          href: link.getAttribute('href') || '',
-          path: window.location.pathname
-        };
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(payload);
-        window.dispatchEvent(new CustomEvent('oneprotocol:track', { detail: payload }));
-      });
-    })();
-  </script>
-
-  <script>
-  // ── Legacy service worker cleanup ─────────────────────────────
-  (function () {
-    if (!('serviceWorker' in navigator)) return;
-
-    function clearLegacyServiceWorker() {
-      var unregisters = navigator.serviceWorker.getRegistrations()
-        .then(function (regs) {
-          return Promise.all(regs.map(function (reg) { return reg.unregister(); }));
-        })
-        .catch(function () {});
-
-      var cacheDeletes = window.caches && caches.keys
-        ? caches.keys().then(function (keys) {
-            return Promise.all(keys.map(function (key) { return caches.delete(key); }));
-          }).catch(function () {})
-        : Promise.resolve();
-
-      Promise.all([unregisters, cacheDeletes]).then(function () {
-        if (navigator.serviceWorker.controller && !sessionStorage.getItem('op_sw_cleaned')) {
-          sessionStorage.setItem('op_sw_cleaned', '1');
-          window.location.reload();
-        }
-      });
-    }
-
-    if (document.readyState === 'complete') clearLegacyServiceWorker();
-    else window.addEventListener('load', clearLegacyServiceWorker, { once: true });
-  })();
-
-  // ── Phone carousel ────────────────────────────────────────────
-  (function(){
-    var car   = document.getElementById('phoneCarousel');
-    var dots  = document.querySelectorAll('.pcd');
-    var lbls  = document.querySelectorAll('.pcl');
-    var total = dots.length;
-    var cur   = 0;
-    var timer;
-
-    function goTo(i){
-      cur = (i + total) % total;
-      car.scrollTo({ left: cur * car.offsetWidth, behavior:'smooth' });
-      dots.forEach(function(d,j){ d.classList.toggle('active', j===cur); });
-      lbls.forEach(function(l,j){ l.classList.toggle('active', j===cur); });
-    }
-
-    dots.forEach(function(d){
-      d.addEventListener('click', function(){ clearInterval(timer); goTo(parseInt(d.dataset.s)); startAuto(); });
-    });
-
-    // Sync dots on manual swipe
-    car.addEventListener('scroll', function(){
-      var i = Math.round(car.scrollLeft / car.offsetWidth);
-      if(i !== cur){ cur = i; dots.forEach(function(d,j){ d.classList.toggle('active', j===cur); }); lbls.forEach(function(l,j){ l.classList.toggle('active', j===cur); }); }
-    }, { passive:true });
-
-    function startAuto(){
-      timer = setInterval(function(){ goTo(cur + 1); }, 3800);
-    }
-    car.addEventListener('touchstart', function(){ clearInterval(timer); }, { passive:true });
-    car.addEventListener('touchend',   function(){ startAuto(); }, { passive:true });
-
-    startAuto();
-  })();
-
-  // ── Features carousel dots (mobile) ─────────────────────────
-  (function(){
-    var car  = document.getElementById('featuresCarousel');
-    var dots = document.querySelectorAll('.features-dot');
-    if(!car || !dots.length) return;
-
-    car.addEventListener('scroll', function(){
-      var cardW = car.scrollWidth / dots.length;
-      var i = Math.min(dots.length - 1, Math.round(car.scrollLeft / cardW));
-      dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
-    }, { passive:true });
-
-    dots.forEach(function(d){
-      d.addEventListener('click', function(){
-        var cardW = car.scrollWidth / dots.length;
-        car.scrollTo({ left: parseInt(d.dataset.f) * cardW, behavior:'smooth' });
-      });
-    });
-  })();
-
-  // ── Pricing carousel dots (mobile) ───────────────────────────
-  (function(){
-    var car  = document.getElementById('pricingCarousel');
-    var dots = document.querySelectorAll('.pricing-dot');
-    if(!car || !dots.length) return;
-
-    car.addEventListener('scroll', function(){
-      var cardW = car.scrollWidth / dots.length;
-      var i = Math.min(dots.length - 1, Math.round(car.scrollLeft / cardW));
-      dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
-    }, { passive:true });
-
-    dots.forEach(function(d){
-      d.addEventListener('click', function(){
-        var cardW = car.scrollWidth / dots.length;
-        car.scrollTo({ left: parseInt(d.dataset.p) * cardW, behavior:'smooth' });
-      });
-    });
-  })();
-
-  (function(){
-    var car  = document.getElementById('compareCards');
-    var dots = document.querySelectorAll('.compare-dot');
-    if(!car || !dots.length) return;
-
-    function getCardWidth(){
-      var firstCard = car.querySelector('.compare-card');
-      if(!firstCard) return car.offsetWidth;
-      var styles = window.getComputedStyle(car);
-      var gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
-      return firstCard.offsetWidth + gap;
-    }
-
-    function setActive(i){
-      dots.forEach(function(d,j){ d.classList.toggle('compare-dot--active', j===i); });
-    }
-
-    car.addEventListener('scroll', function(){
-      var cardW = getCardWidth();
-      var i = Math.min(dots.length - 1, Math.max(0, Math.round(car.scrollLeft / cardW)));
-      setActive(i);
-    }, { passive:true });
-
-    dots.forEach(function(d){
-      d.addEventListener('click', function(){
-        var cardW = getCardWidth();
-        car.scrollTo({ left: parseInt(d.dataset.c, 10) * cardW, behavior:'smooth' });
-      });
-    });
-  })();
-
-  // ── Reveal on scroll — auto-stagger batches ──────────────────
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    if (!els.length) return;
-
-    var obs = new IntersectionObserver(function(entries){
-      // Collect everything entering in this tick
-      var batch = entries.filter(function(e){ return e.isIntersecting; });
-      if (!batch.length) return;
-
-      // Group by parent so cards in the same grid stagger together
-      var groups = {};
-      batch.forEach(function(e){
-        var p = e.target.parentElement;
-        var key = p ? (p.id || p.className.split(' ')[0] || 'root') : 'root';
-        if (!groups[key]) groups[key] = [];
-        groups[key].push(e.target);
-      });
-
-      Object.keys(groups).forEach(function(key){
-        groups[key].forEach(function(el, i){
-          // Skip elements that already have a manual stagger class
-          if (!/stagger-/.test(el.className)){
-            el.style.transitionDelay = (i * 0.1) + 's';
-          }
-          el.classList.add('visible');
-          obs.unobserve(el);
-        });
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
-    els.forEach(function(el){ obs.observe(el); });
-  })();
-
-  // ── Hero typewriter ──────────────────────────────────────────
-  (function(){
-    var em = document.querySelector('.hero-title em');
-    if (!em) return;
-
-    var msgs = [
-      'desde un solo sistema.',
-      'con panel y app cliente.',
-      'sin WhatsApp ni parches.',
-      'con builders y reportes.',
-      'con control real de membresías.'
-    ];
-
-    // ── Paso 1: medir el alto real ANTES de empezar ─────────────
-    // Ponemos el mensaje más largo invisible, medimos, bloqueamos el alto
-    var longest = msgs.reduce(function(a,b){ return a.length > b.length ? a : b; });
-    em.style.visibility = 'hidden';
-    em.textContent = longest;
-
-    requestAnimationFrame(function(){
-      var h = em.offsetHeight || 80; // fallback 80px si el DOM aún no pintó
-      // Inline style → máxima prioridad, no puede ser sobreescrito por CSS
-      em.setAttribute('style',
-        'display:block;height:' + h + 'px;overflow:hidden;visibility:visible;');
-      em.textContent = ''; // limpio para que el tipeo arranque vacío
-
-      // ── Paso 2: lógica de tipeo ─────────────────────────────
-      var mIdx = 0, cIdx = 0, deleting = false;
-      var TYPE_MS = 55, DEL_MS = 28, PAUSE_END = 2200, PAUSE_DEL = 380;
-
-      function tick() {
-        var msg = msgs[mIdx];
-        if (!deleting) {
-          cIdx++;
-          em.textContent = msg.slice(0, cIdx);
-          if (cIdx === msg.length) {
-            setTimeout(function(){ deleting = true; tick(); }, PAUSE_END);
-            return;
-          }
-        } else {
-          cIdx--;
-          em.textContent = msg.slice(0, cIdx);
-          if (cIdx === 0) {
-            deleting = false;
-            mIdx = (mIdx + 1) % msgs.length;
-            setTimeout(tick, PAUSE_DEL);
-            return;
-          }
-        }
-        setTimeout(tick, deleting ? DEL_MS : TYPE_MS);
-      }
-
-      // Arranca tras la animación de reveal del hero (~1.2s)
-      setTimeout(function(){
-        tick();
-      }, 1200);
-    });
-  })();
-
-  // ── Referral cards carousel dots (mobile) ────────────────────
-  function refGoTo(i) {
-    var c = document.getElementById('refCards');
-    if (!c) return;
-    var card = c.children[i];
-    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-  (function(){
-    var c    = document.getElementById('refCards');
-    var dots = document.querySelectorAll('#refDots .ref-dot');
-    if (!c || !dots.length) return;
-    c.addEventListener('scroll', function(){
-      var cardW = c.scrollWidth / dots.length;
-      var i = Math.min(dots.length - 1, Math.round(c.scrollLeft / cardW));
-      dots.forEach(function(d, j){ d.classList.toggle('ref-dot--on', j === i); });
-    }, { passive: true });
-  })();
-  </script>
-
+  <script src="js/web.js?v=20261113b" defer></script>
 </body>
 </html>
